@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Services – Luizmary FZE LLC | UAE Business Consultancy</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--gold:#C9A84C;--gold-light:#E2C97E;--navy:#0D1B2A;--navy-mid:#162437;--navy-light:#1E3148;--white:#FFFFFF;--text-muted:#8A9BB0;--border:rgba(201,168,76,0.25)}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Inter',sans-serif;background:var(--navy);color:var(--white);overflow-x:hidden}
+  nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:0 5%;height:72px;background:rgba(13,27,42,0.97);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+  .nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:700;color:var(--gold);text-decoration:none;line-height:1.1}
+  .nav-logo span{display:block;font-size:0.55rem;font-family:'Inter',sans-serif;color:var(--text-muted);letter-spacing:0.18em;text-transform:uppercase;font-weight:400}
+  .nav-links{display:flex;gap:1.8rem;list-style:none}
+  .nav-links a{color:var(--text-muted);text-decoration:none;font-size:0.83rem;font-weight:500;transition:color 0.2s}
+  .nav-links a:hover,.nav-links a.active{color:var(--gold)}
+  .nav-cta{background:var(--gold);color:var(--navy);border:none;padding:0.55rem 1.4rem;font-family:'Montserrat',sans-serif;font-size:0.78rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;text-decoration:none;display:inline-block}
+  .nav-cta:hover{background:var(--gold-light)}
+  /* PAGE HERO */
+  .page-hero{padding:9rem 8% 5rem;background:var(--navy-mid);border-bottom:1px solid var(--border);position:relative;overflow:hidden}
+  .page-hero::before{content:'';position:absolute;top:0;right:0;width:40%;height:100%;background:url('https://images.unsplash.com/photo-1486325212027-8081e485255e?w=900&q=70') center/cover no-repeat;opacity:0.07}
+  .page-hero-eyebrow{color:var(--gold);font-size:0.7rem;letter-spacing:0.22em;text-transform:uppercase;font-family:'Montserrat',sans-serif;font-weight:600;display:flex;align-items:center;gap:0.7rem;margin-bottom:1rem}
+  .page-hero-eyebrow::before{content:'';width:24px;height:1px;background:var(--gold)}
+  .page-hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.5rem,4.5vw,3.8rem);font-weight:600;line-height:1.1;max-width:700px;margin-bottom:1.2rem}
+  .page-hero h1 em{color:var(--gold);font-style:normal}
+  .page-hero p{color:var(--text-muted);font-size:1rem;line-height:1.75;max-width:560px}
+  /* BREADCRUMB */
+  .breadcrumb{font-size:0.78rem;color:var(--text-muted);margin-top:2rem;display:flex;align-items:center;gap:0.5rem}
+  .breadcrumb a{color:var(--text-muted);text-decoration:none;transition:color 0.2s}
+  .breadcrumb a:hover{color:var(--gold)}
+  .breadcrumb span{color:var(--gold)}
+  /* SECTION */
+  .services-section{padding:5rem 8%}
+  .services-section:nth-child(odd){background:var(--navy)}
+  .services-section:nth-child(even){background:var(--navy-mid)}
+  .service-block{display:grid;grid-template-columns:1fr 1.6fr;gap:5rem;align-items:start;margin-top:3rem}
+  .service-block.reverse{grid-template-columns:1.6fr 1fr}
+  .service-block-visual img{width:100%;aspect-ratio:4/3;object-fit:cover;border:1px solid var(--border)}
+  .service-block-meta{position:sticky;top:90px}
+  .service-tag{display:inline-block;background:rgba(201,168,76,0.12);border:1px solid var(--gold);color:var(--gold);font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;font-family:'Montserrat',sans-serif;font-weight:600;padding:0.35rem 0.8rem;margin-bottom:1.2rem}
+  .service-block-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3vw,2.6rem);font-weight:600;line-height:1.15;color:var(--white);margin-bottom:1rem}
+  .gold-rule{width:40px;height:2px;background:var(--gold);margin:1rem 0 1.5rem}
+  .service-block-desc{color:rgba(255,255,255,0.7);font-size:0.95rem;line-height:1.85;margin-bottom:1.8rem}
+  .service-sub-list{list-style:none;padding:0;display:flex;flex-direction:column;gap:0.7rem;margin-bottom:2rem}
+  .service-sub-list li{display:flex;align-items:flex-start;gap:0.8rem;font-size:0.88rem;color:rgba(255,255,255,0.75);line-height:1.5}
+  .service-sub-list li::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--gold);flex-shrink:0;margin-top:0.45rem}
+  .service-highlight-box{background:rgba(201,168,76,0.06);border:1px solid var(--border);border-left:3px solid var(--gold);padding:1.2rem 1.5rem;margin-top:1.5rem}
+  .service-highlight-box p{font-size:0.85rem;color:rgba(255,255,255,0.65);line-height:1.7}
+  .btn-primary{background:var(--gold);color:var(--navy);padding:0.85rem 2rem;border:none;font-family:'Montserrat',sans-serif;font-size:0.8rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;text-decoration:none;transition:background 0.2s,transform 0.15s;display:inline-block}
+  .btn-primary:hover{background:var(--gold-light);transform:translateY(-2px)}
+  /* DIVIDER */
+  .section-divider{border:none;border-top:1px solid var(--border);margin:0}
+  /* ALL SERVICES GRID */
+  .all-services-strip{background:var(--navy-mid);padding:3rem 8%;border-top:1px solid var(--border)}
+  .all-services-strip h2{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:600;color:var(--white);margin-bottom:1.5rem;text-align:center}
+  .mini-services-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--border);border:1px solid var(--border)}
+  .mini-service{background:var(--navy-mid);padding:1.5rem;text-align:center;transition:background 0.2s}
+  .mini-service:hover{background:var(--navy-light)}
+  .mini-service a{text-decoration:none;color:var(--text-muted);font-size:0.8rem;font-weight:500;transition:color 0.2s}
+  .mini-service:hover a{color:var(--gold)}
+  /* CTA STRIP */
+  .cta-strip{background:var(--navy);padding:4rem 8%;display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap;border-top:1px solid var(--border)}
+  .cta-strip h2{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:600;color:var(--white)}
+  .cta-strip p{color:var(--text-muted);font-size:0.9rem;margin-top:0.4rem}
+  /* FOOTER */
+  footer{background:#0a1520;border-top:1px solid var(--border);padding:4rem 8% 0}
+  .footer-top{display:grid;grid-template-columns:1.8fr 1fr 1fr 1fr 1.4fr;gap:2.5rem;padding-bottom:3rem;border-bottom:1px solid var(--border)}
+  .footer-brand-name{font-family:'Cormorant Garamond',serif;font-size:1.7rem;font-weight:700;color:var(--gold);margin-bottom:0.3rem}
+  .footer-brand-sub{font-size:0.65rem;color:var(--text-muted);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:1rem}
+  .footer-brand-desc{font-size:0.82rem;color:var(--text-muted);line-height:1.75;margin-bottom:1.5rem}
+  .footer-social{display:flex;gap:0.6rem;flex-wrap:wrap}
+  .social-btn{width:34px;height:34px;border:1px solid var(--border);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:border-color 0.2s,background 0.2s;text-decoration:none}
+  .social-btn:hover{border-color:var(--gold);background:rgba(201,168,76,0.1)}
+  .social-btn svg{width:14px;height:14px;stroke:var(--text-muted);fill:none;stroke-width:2;transition:stroke 0.2s}
+  .social-btn:hover svg{stroke:var(--gold)}
+  .footer-col-title{font-size:0.72rem;color:var(--gold);letter-spacing:0.15em;text-transform:uppercase;font-weight:600;margin-bottom:1.2rem;padding-bottom:0.6rem;border-bottom:1px solid var(--border)}
+  .footer-col ul{list-style:none;display:flex;flex-direction:column;gap:0.5rem}
+  .footer-col ul li{display:flex;align-items:center;gap:0.4rem}
+  .footer-col ul li::before{content:'›';color:var(--gold);font-size:1rem}
+  .footer-col ul a{color:var(--text-muted);text-decoration:none;font-size:0.83rem;transition:color 0.2s}
+  .footer-col ul a:hover{color:var(--gold)}
+  .footer-contact-item{display:flex;gap:0.7rem;align-items:flex-start;margin-bottom:1rem}
+  .footer-contact-item svg{width:15px;height:15px;stroke:var(--gold);fill:none;stroke-width:1.8;flex-shrink:0;margin-top:2px}
+  .footer-contact-text{font-size:0.82rem;color:var(--text-muted);line-height:1.5}
+  .footer-contact-text a{color:var(--text-muted);text-decoration:none}
+  .footer-contact-text a:hover{color:var(--gold)}
+  .footer-bottom{padding:1.5rem 0;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+  .footer-copy{font-size:0.78rem;color:rgba(138,155,176,0.6)}
+  .footer-disclaimer{font-size:0.7rem;color:rgba(138,155,176,0.35);max-width:100%;line-height:1.65;padding:1rem 0 2rem;border-top:1px solid rgba(201,168,76,0.08)}
+  /* WA */
+  .wa-widget{position:fixed;bottom:2rem;left:2rem;z-index:999}
+  .wa-btn{width:58px;height:58px;border-radius:50%;background:#25D366;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,0.4);transition:transform 0.2s}
+  .wa-btn:hover{transform:scale(1.08)}
+  .wa-btn svg{width:30px;height:30px;fill:white}
+  .wa-popup{position:absolute;bottom:70px;left:0;width:300px;background:var(--navy-light);border:1px solid var(--border);border-radius:12px;padding:1.2rem;box-shadow:0 12px 40px rgba(0,0,0,0.5);display:none;flex-direction:column;gap:0.5rem}
+  .wa-popup.open{display:flex;animation:popIn 0.2s ease}
+  @keyframes popIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+  .wa-popup-header{display:flex;align-items:center;justify-content:space-between}
+  .wa-popup-title{font-size:0.85rem;font-weight:600;color:var(--white);display:flex;align-items:center;gap:0.4rem}
+  .wa-popup-title::before{content:'';width:8px;height:8px;border-radius:50%;background:#25D366}
+  .wa-close{background:none;border:none;color:var(--text-muted);cursor:pointer;font-size:1.3rem;line-height:1}
+  .wa-popup input,.wa-popup textarea{background:var(--navy);border:1px solid var(--border);color:var(--white);padding:0.55rem 0.8rem;font-family:'Inter',sans-serif;font-size:0.8rem;border-radius:6px;outline:none;width:100%;transition:border-color 0.2s;margin-top:0.4rem}
+  .wa-popup input:focus,.wa-popup textarea:focus{border-color:var(--gold)}
+  .wa-send-btn{background:#25D366;color:white;border:none;padding:0.6rem;font-family:'Montserrat',sans-serif;font-size:0.78rem;font-weight:700;border-radius:6px;cursor:pointer;width:100%;margin-top:0.4rem}
+  .wa-send-btn:hover{background:#1ebe5a}
+  .wa-success{display:none;text-align:center;padding:0.8rem 0}
+  .wa-success-icon{font-size:1.8rem;margin-bottom:0.4rem}
+  .wa-success p{font-size:0.82rem;color:rgba(255,255,255,0.8);line-height:1.5}
+  @media(max-width:1100px){.footer-top{grid-template-columns:1fr 1fr 1fr}.footer-top>div:first-child{grid-column:1/-1}}
+  @media(max-width:900px){.service-block,.service-block.reverse{grid-template-columns:1fr;gap:2.5rem}.service-block-meta{position:static}.mini-services-grid{grid-template-columns:repeat(3,1fr)}}
+  @media(max-width:640px){nav{padding:0 4%}.nav-links{display:none}.page-hero{padding:7rem 5% 4rem}.services-section{padding:4rem 5%}.mini-services-grid{grid-template-columns:1fr 1fr}.footer-top{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="luizmary.html" class="nav-logo">Luizmary FZE LLC<span>Business & Compliance Consultancy · UAE</span></a>
+  <ul class="nav-links">
+    <li><a href="luizmary.html#about">About</a></li>
+    <li><a href="services.html" class="active">Services</a></li>
+    <li><a href="luizmary.html#license">Company Info</a></li>
+    <li><a href="luizmary.html#process">Process</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <a href="contact.html" class="nav-cta">Get Consultation</a>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-eyebrow">Professional Services</div>
+  <h1>Expert Services for <em>UAE Businesses</em><br>That Mean Serious Growth</h1>
+  <p>From general trading and e-commerce to compliance, accounting, and corporate setup — every service we offer is designed to make your business in the UAE stronger, leaner, and more resilient.</p>
+  <div class="breadcrumb"><a href="luizmary.html">Home</a> › <span>Services</span></div>
+</div>
+
+<div class="all-services-strip">
+  <h2>Jump to a Service</h2>
+  <div class="mini-services-grid">
+    <div class="mini-service"><a href="#trading">General Trading</a></div>
+    <div class="mini-service"><a href="#ecommerce">E-Commerce &amp; Online Retail</a></div>
+    <div class="mini-service"><a href="#compliance">Compliance Consultancy</a></div>
+    <div class="mini-service"><a href="#accounting">Accounting &amp; Tax</a></div>
+    <div class="mini-service"><a href="#corporate">Corporate Services</a></div>
+  </div>
+</div>
+
+<!-- GENERAL TRADING -->
+<section class="services-section" id="trading">
+  <div class="service-tag">Service 01</div>
+  <div class="service-block">
+    <div class="service-block-meta">
+      <div class="service-block-title">General Trading</div>
+      <div class="gold-rule"></div>
+      <p class="service-block-desc">Operating as a licensed General Trading entity in the UAE's Sharjah Publishing City Free Zone, Luizmary FZE LLC provides businesses with the structure and support to engage in lawful import, export, and domestic trade across a broad spectrum of goods and commodities.</p>
+      <p class="service-block-desc">Whether you're an international entrepreneur seeking a UAE trading foothold or an established business expanding your product lines, our General Trading licence covers the full operational breadth required to trade freely and compliantly.</p>
+      <ul class="service-sub-list">
+        <li>Import and export of goods across permitted categories</li>
+        <li>Domestic supply chain and commodity distribution</li>
+        <li>Supplier due diligence and vendor management support</li>
+        <li>Trade documentation preparation and compliance review</li>
+        <li>Free zone trading privileges — 100% foreign ownership</li>
+        <li>Customs coordination and Incoterms advisory</li>
+        <li>Product sourcing and procurement guidance</li>
+      </ul>
+      <div class="service-highlight-box"><p><strong style="color:var(--gold)">Why it matters:</strong> A properly structured UAE trading licence is the gateway to the wider Middle East, Africa, and South Asia markets. We ensure your entity is set up correctly from day one.</p></div>
+      <div style="margin-top:1.8rem"><a href="contact.html" class="btn-primary">Enquire About This Service →</a></div>
+    </div>
+    <div class="service-block-visual">
+      <img src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=900&q=80" alt="General trading and logistics UAE">
+    </div>
+  </div>
+</section>
+<hr class="section-divider">
+
+<!-- ECOMMERCE -->
+<section class="services-section" id="ecommerce">
+  <div class="service-tag">Service 02</div>
+  <div class="service-block reverse">
+    <div class="service-block-visual">
+      <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=900&q=80" alt="E-Commerce and online retail UAE">
+    </div>
+    <div class="service-block-meta">
+      <div class="service-block-title">E-Commerce &amp; Retail Online</div>
+      <div class="gold-rule"></div>
+      <p class="service-block-desc">The UAE is one of the fastest-growing e-commerce markets in the MENA region. Luizmary FZE LLC is licensed for Retail Sale via Mail Order Houses or via the Internet (E-Commerce), meaning we help you structure, launch, and run a compliant online retail operation from a UAE Free Zone base.</p>
+      <p class="service-block-desc">We guide businesses through the practical and regulatory complexities of selling online in the UAE — from trade licence structures to consumer law compliance and cross-border logistics.</p>
+      <ul class="service-sub-list">
+        <li>E-commerce trade licence setup and advisory</li>
+        <li>Online retail regulatory framework compliance</li>
+        <li>Cross-border digital sales and import duty guidance</li>
+        <li>Payment gateway integration advisory</li>
+        <li>UAE consumer protection law compliance review</li>
+        <li>Marketplace seller compliance (Amazon UAE, Noon, etc.)</li>
+        <li>Returns, refunds, and data protection policy structuring</li>
+      </ul>
+      <div class="service-highlight-box"><p><strong style="color:var(--gold)">Key advantage:</strong> A Free Zone e-commerce licence in the UAE gives you 0% corporate tax (within the small business relief threshold), 100% profit repatriation, and access to one of the world's most connected logistics hubs.</p></div>
+      <div style="margin-top:1.8rem"><a href="contact.html" class="btn-primary">Enquire About This Service →</a></div>
+    </div>
+  </div>
+</section>
+<hr class="section-divider">
+
+<!-- COMPLIANCE -->
+<section class="services-section" id="compliance">
+  <div class="service-tag">Service 03</div>
+  <div class="service-block">
+    <div class="service-block-meta">
+      <div class="service-block-title">Compliance Consultancy</div>
+      <div class="gold-rule"></div>
+      <p class="service-block-desc">In today's regulatory environment, compliance is not optional — it is foundational. Luizmary FZE LLC offers a full-service compliance consultancy practice helping businesses in the UAE and beyond build robust compliance frameworks, meet regulatory requirements, and avoid costly penalties.</p>
+      <p class="service-block-desc">Our approach is proactive rather than reactive: we help clients understand what compliance obligations apply to their business, implement the right controls, and stay audit-ready at all times.</p>
+      <ul class="service-sub-list">
+        <li>Anti-Money Laundering (AML) &amp; Counter-Terrorism Financing (CFT) compliance programs</li>
+        <li>AML risk assessments and Customer Due Diligence (CDD) framework design</li>
+        <li>Regulatory risk identification, mapping, and gap analysis</li>
+        <li>Compliance policy and procedure development</li>
+        <li>Internal compliance audit and health check</li>
+        <li>Regulatory liaison and authority submission support</li>
+        <li>KYC/KYB process design and implementation</li>
+        <li>Ongoing compliance monitoring and advisory retainer</li>
+      </ul>
+      <div class="service-highlight-box"><p><strong style="color:var(--gold)">UAE Context:</strong> The UAE's regulatory framework has evolved significantly — including mandatory AML obligations for Designated Non-Financial Businesses and Professions (DNFBPs). We keep you ahead of regulatory change.</p></div>
+      <div style="margin-top:1.8rem"><a href="contact.html" class="btn-primary">Enquire About This Service →</a></div>
+    </div>
+    <div class="service-block-visual">
+      <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=900&q=80" alt="Compliance consultancy UAE">
+    </div>
+  </div>
+</section>
+<hr class="section-divider">
+
+<!-- ACCOUNTING -->
+<section class="services-section" id="accounting">
+  <div class="service-tag">Service 04</div>
+  <div class="service-block reverse">
+    <div class="service-block-visual">
+      <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=900&q=80" alt="Accounting bookkeeping tax UAE">
+    </div>
+    <div class="service-block-meta">
+      <div class="service-block-title">Accounting, Bookkeeping &amp; Tax Consultancy</div>
+      <div class="gold-rule"></div>
+      <p class="service-block-desc">Luizmary FZE LLC is licensed to provide accounting, bookkeeping, auditing, and tax consultancy services to UAE-registered businesses and international clients. Our financial services practice combines technical precision with practical commercial insight to ensure your numbers work as hard as your business does.</p>
+      <p class="service-block-desc">With the UAE's introduction of Corporate Income Tax (CIT) and ongoing VAT obligations, having expert financial and tax support is no longer a luxury — it's a necessity.</p>
+      <ul class="service-sub-list">
+        <li>Full-cycle bookkeeping and accounts maintenance</li>
+        <li>Monthly, quarterly, and annual financial reporting</li>
+        <li>Statutory audit preparation and coordination</li>
+        <li>Internal audit services and financial health reviews</li>
+        <li>VAT registration, return filing, and refund assistance</li>
+        <li>UAE Corporate Tax (CIT) advisory and structuring</li>
+        <li>Tax residency certificate advisory</li>
+        <li>Transfer pricing documentation and advisory</li>
+        <li>Economic Substance Regulation (ESR) compliance</li>
+      </ul>
+      <div class="service-highlight-box"><p><strong style="color:var(--gold)">UAE Tax Landscape:</strong> Since the introduction of a 9% Corporate Tax in 2023 and ongoing VAT obligations, accurate financial record-keeping and proactive tax planning are essential for all UAE businesses.</p></div>
+      <div style="margin-top:1.8rem"><a href="contact.html" class="btn-primary">Enquire About This Service →</a></div>
+    </div>
+  </div>
+</section>
+<hr class="section-divider">
+
+<!-- CORPORATE -->
+<section class="services-section" id="corporate">
+  <div class="service-tag">Service 05</div>
+  <div class="service-block">
+    <div class="service-block-meta">
+      <div class="service-block-title">Corporate Services Provider</div>
+      <div class="gold-rule"></div>
+      <p class="service-block-desc">As a licensed Corporate Services Provider (CSP) in the UAE, Luizmary FZE LLC delivers end-to-end corporate support services that take the administrative complexity out of running a UAE business. From initial company registration through to annual renewals, visa management, and document clearance — we handle it all.</p>
+      <p class="service-block-desc">Our corporate services are designed for both new market entrants and established businesses seeking a reliable, knowledgeable partner to manage their UAE corporate affairs.</p>
+      <ul class="service-sub-list">
+        <li>Company registration and trade licence setup (Free Zone, Mainland, Offshore)</li>
+        <li>PRO (Public Relations Officer) services and government liaison</li>
+        <li>Residence visa and employment permit facilitation</li>
+        <li>Trade licence renewal and amendment management</li>
+        <li>Document clearing, attestation, and legalisation</li>
+        <li>Corporate bank account opening advisory and facilitation</li>
+        <li>Registered office and business address services</li>
+        <li>Ultimate Beneficial Owner (UBO) registration and filing</li>
+        <li>Company liquidation and deregistration support</li>
+      </ul>
+      <div class="service-highlight-box"><p><strong style="color:var(--gold)">Full lifecycle support:</strong> From incorporating your business to ongoing annual renewals and regulatory filings, we act as your corporate affairs partner so you can focus on growing your business.</p></div>
+      <div style="margin-top:1.8rem"><a href="contact.html" class="btn-primary">Enquire About This Service →</a></div>
+    </div>
+    <div class="service-block-visual">
+      <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=900&q=80" alt="Corporate services UAE company setup">
+    </div>
+  </div>
+</section>
+
+<div class="cta-strip">
+  <div><h2>Not Sure Which Service You Need?</h2><p>Book a free, no-obligation consultation and we'll point you in the right direction.</p></div>
+  <a href="contact.html" class="btn-primary">Book a Free Consultation →</a>
+</div>
+
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-brand-name">Luizmary FZE LLC</div>
+      <div class="footer-brand-sub">Licensed · Sharjah Publishing City Free Zone · UAE</div>
+      <p class="footer-brand-desc">At Luizmary, we deliver end-to-end solutions designed for entrepreneurs and growing enterprises. From company formation and compliance to tax strategy, audit, and accounting — our team ensures every step is seamless, compliant, and built for growth.</p>
+      <div class="footer-social">
+        <a href="#" class="social-btn" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+        <a href="#" class="social-btn" aria-label="Twitter/X"><svg viewBox="0 0 24 24"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/></svg></a>
+        <a href="#" class="social-btn" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg></a>
+        <a href="#" class="social-btn" aria-label="Instagram"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+        <a href="#" class="social-btn" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 00-1.95 1.96A29 29 0 001 12a29 29 0 00.46 5.58A2.78 2.78 0 003.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 001.95-1.95A29 29 0 0023 12a29 29 0 00-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg></a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">Quick Links</div>
+      <ul><li><a href="luizmary.html#about">About Us</a></li><li><a href="services.html">Our Services</a></li><li><a href="contact.html">Contact Us</a></li><li><a href="contact.html">Book Appointment</a></li><li><a href="luizmary.html#license">Company Info</a></li></ul>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">Services</div>
+      <ul><li><a href="#trading">General Trading</a></li><li><a href="#ecommerce">E-Commerce</a></li><li><a href="#compliance">Compliance Consultancy</a></li><li><a href="#accounting">Accounting &amp; Tax</a></li><li><a href="#corporate">Corporate Services</a></li></ul>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">Useful Links</div>
+      <ul><li><a href="luizmary.html#about">Company Overview</a></li><li><a href="contact.html">Book Appointment</a></li><li><a href="luizmary.html#license">Registration Info</a></li><li><a href="contact.html">Privacy Policy</a></li><li><a href="contact.html">Terms &amp; Conditions</a></li><li><a href="contact.html">Career</a></li></ul>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">Get in Touch</div>
+      <div class="footer-contact-item"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg><div class="footer-contact-text">Business Centre, Sharjah Publishing City Free Zone, Sharjah, UAE</div></div>
+      <div class="footer-contact-item"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg><div class="footer-contact-text"><a href="mailto:info@luizmaryfze.com">info@luizmaryfze.com</a></div></div>
+      <div class="footer-contact-item"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg><div class="footer-contact-text">Available on request</div></div>
+    </div>
+  </div>
+  <div class="footer-bottom"><div class="footer-copy">© 2025 Luizmary FZE LLC. All Rights Reserved.</div><div style="font-size:0.72rem;color:rgba(138,155,176,0.4)">Sharjah Publishing City Free Zone · UAE</div></div>
+  <div class="footer-disclaimer"><strong style="color:rgba(138,155,176,0.55)">Disclaimer:</strong> The data and services offered on this website by Luizmary FZE LLC are independent and not endorsed by, affiliated with, or otherwise connected to any government agencies. Luizmary FZE LLC is a Corporate Service Provider (CSP) licensed under the Sharjah Publishing City Free Zone authority. It provides secretarial and specialised services, including consulting, accounting, and administrative support.</div>
+</footer>
+
+<div class="wa-widget">
+  <div class="wa-popup" id="waPopup">
+    <div class="wa-popup-header"><div class="wa-popup-title">Quick Consultation</div><button class="wa-close" onclick="toggleWa()">×</button></div>
+    <div id="waForm">
+      <input type="text" id="waName" placeholder="Your Name">
+      <input type="tel" id="waPhone" placeholder="Phone / WhatsApp Number">
+      <textarea id="waMessage" rows="3" placeholder="What service are you interested in?" style="resize:none"></textarea>
+      <button class="wa-send-btn" onclick="sendWaRequest()">Send via WhatsApp</button>
+    </div>
+    <div class="wa-success" id="waSuccess"><div class="wa-success-icon">✅</div><p>Sent! We'll contact you soon.</p></div>
+  </div>
+  <button class="wa-btn" onclick="toggleWa()"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></button>
+</div>
+<script>
+  function toggleWa(){document.getElementById('waPopup').classList.toggle('open');}
+  function sendWaRequest(){
+    const n=document.getElementById('waName').value.trim(),p=document.getElementById('waPhone').value.trim(),m=document.getElementById('waMessage').value.trim();
+    if(!n){alert('Please enter your name.');return;}
+    const txt=encodeURIComponent('*Service Enquiry — Luizmary FZE LLC*\n\nName: '+n+'\nPhone: '+(p||'Not provided')+'\nEnquiry: '+(m||'No details provided'));
+    window.open('https://wa.me/971000000000?text='+txt,'_blank');
+    document.getElementById('waForm').style.display='none';document.getElementById('waSuccess').style.display='block';
+    setTimeout(()=>{document.getElementById('waPopup').classList.remove('open');document.getElementById('waForm').style.display='block';document.getElementById('waSuccess').style.display='none';['waName','waPhone','waMessage'].forEach(id=>document.getElementById(id).value='');},3000);
+  }
+</script>
+</body>
+</html>

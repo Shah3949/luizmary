@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Us – Luizmary FZE LLC | Book a Consultation</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+<!-- EmailJS SDK -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<style>
+  :root{--gold:#C9A84C;--gold-light:#E2C97E;--navy:#0D1B2A;--navy-mid:#162437;--navy-light:#1E3148;--white:#FFFFFF;--text-muted:#8A9BB0;--border:rgba(201,168,76,0.25);--green:#22c55e;--red:#ef4444}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Inter',sans-serif;background:var(--navy);color:var(--white);overflow-x:hidden}
+  nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:0 5%;height:72px;background:rgba(13,27,42,0.97);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+  .nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:700;color:var(--gold);text-decoration:none;line-height:1.1}
+  .nav-logo span{display:block;font-size:0.55rem;font-family:'Inter',sans-serif;color:var(--text-muted);letter-spacing:0.18em;text-transform:uppercase;font-weight:400}
+  .nav-links{display:flex;gap:1.8rem;list-style:none}
+  .nav-links a{color:var(--text-muted);text-decoration:none;font-size:0.83rem;font-weight:500;transition:color 0.2s}
+  .nav-links a:hover,.nav-links a.active{color:var(--gold)}
+  .nav-cta{background:var(--gold);color:var(--navy);border:none;padding:0.55rem 1.4rem;font-family:'Montserrat',sans-serif;font-size:0.78rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;text-decoration:none;display:inline-block}
+  .nav-cta:hover{background:var(--gold-light)}
+  /* PAGE HERO */
+  .page-hero{padding:9rem 8% 5rem;background:var(--navy-mid);border-bottom:1px solid var(--border);position:relative;overflow:hidden}
+  .page-hero::before{content:'';position:absolute;top:0;right:0;width:40%;height:100%;background:url('https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=900&q=70') center/cover no-repeat;opacity:0.07}
+  .page-hero-eyebrow{color:var(--gold);font-size:0.7rem;letter-spacing:0.22em;text-transform:uppercase;font-family:'Montserrat',sans-serif;font-weight:600;display:flex;align-items:center;gap:0.7rem;margin-bottom:1rem}
+  .page-hero-eyebrow::before{content:'';width:24px;height:1px;background:var(--gold)}
+  .page-hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.5rem,4.5vw,3.8rem);font-weight:600;line-height:1.1;max-width:700px;margin-bottom:1.2rem}
+  .page-hero h1 em{color:var(--gold);font-style:normal}
+  .page-hero p{color:var(--text-muted);font-size:1rem;line-height:1.75;max-width:560px}
+  .breadcrumb{font-size:0.78rem;color:var(--text-muted);margin-top:2rem;display:flex;align-items:center;gap:0.5rem}
+  .breadcrumb a{color:var(--text-muted);text-decoration:none;transition:color 0.2s}
+  .breadcrumb a:hover{color:var(--gold)}
+  .breadcrumb span{color:var(--gold)}
+  /* CONTACT MAIN */
+  .contact-main{padding:5rem 8%;display:grid;grid-template-columns:1fr 1.3fr;gap:5rem;align-items:start}
+  /* LEFT INFO */
+  .contact-info-title{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:600;color:var(--white);margin-bottom:0.8rem}
+  .contact-info-lead{color:var(--text-muted);font-size:0.95rem;line-height:1.75;margin-bottom:2.5rem}
+  .contact-info-items{display:flex;flex-direction:column;gap:1.5rem}
+  .contact-info-item{display:flex;gap:1.2rem;align-items:flex-start}
+  .contact-icon{width:44px;height:44px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:border-color 0.2s}
+  .contact-icon:hover{border-color:var(--gold)}
+  .contact-icon svg{width:18px;height:18px;stroke:var(--gold);fill:none;stroke-width:1.5}
+  .contact-info-label{font-size:0.65rem;color:var(--gold);letter-spacing:0.12em;text-transform:uppercase;font-weight:600}
+  .contact-info-text{font-size:0.9rem;color:var(--white);line-height:1.5;margin-top:0.25rem}
+  .contact-info-text a{color:var(--white);text-decoration:none;transition:color 0.2s}
+  .contact-info-text a:hover{color:var(--gold)}
+  .hours-note{margin-top:2.5rem;padding:1.2rem 1.5rem;background:rgba(201,168,76,0.06);border:1px solid var(--border);border-left:3px solid var(--gold)}
+  .hours-note p{font-size:0.85rem;color:rgba(255,255,255,0.65);line-height:1.7}
+  /* RIGHT FORM */
+  .contact-form-wrap{background:var(--navy-mid);border:1px solid var(--border);padding:2.5rem}
+  .contact-form-title{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:600;color:var(--white);margin-bottom:0.4rem}
+  .contact-form-sub{font-size:0.82rem;color:var(--text-muted);margin-bottom:2rem;line-height:1.5}
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+  .form-field{display:flex;flex-direction:column;gap:0.4rem;margin-bottom:1rem}
+  .form-field label{font-size:0.68rem;color:var(--text-muted);letter-spacing:0.1em;text-transform:uppercase;font-weight:500}
+  .form-field label .req{color:var(--gold)}
+  .form-field input,.form-field textarea,.form-field select{background:var(--navy-light);border:1px solid var(--border);color:var(--white);padding:0.75rem 1rem;font-family:'Inter',sans-serif;font-size:0.88rem;outline:none;transition:border-color 0.2s;width:100%;resize:vertical}
+  .form-field input:focus,.form-field textarea:focus,.form-field select:focus{border-color:var(--gold)}
+  .form-field select option{background:var(--navy-mid)}
+  .btn-submit{background:var(--gold);color:var(--navy);padding:1rem;border:none;font-family:'Montserrat',sans-serif;font-size:0.85rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;width:100%;transition:background 0.2s,transform 0.15s;display:flex;align-items:center;justify-content:center;gap:0.6rem}
+  .btn-submit:hover{background:var(--gold-light);transform:translateY(-1px)}
+  .btn-submit:disabled{opacity:0.6;cursor:not-allowed;transform:none}
+  /* ALERTS */
+  .alert{padding:1rem 1.2rem;border-radius:4px;font-size:0.85rem;line-height:1.5;margin-top:1rem;display:none}
+  .alert.success{background:rgba(34,197,94,0.1);border:1px solid rgba(34,197,94,0.3);color:#86efac}
+  .alert.error{background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.3);color:#fca5a5}
+  .alert.show{display:block}
+  /* PRIVACY NOTE */
+  .privacy-note{font-size:0.72rem;color:var(--text-muted);text-align:center;margin-top:1rem;line-height:1.5}
+  /* BRANCHES */
+  .branches-section{padding:5rem 8%;background:var(--navy-mid)}
+  .branches-section-title{font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:600;color:var(--white);margin-bottom:0.6rem;text-align:center}
+  .branches-section-sub{color:var(--text-muted);font-size:0.92rem;text-align:center;max-width:480px;margin:0 auto 3rem}
+  .branches-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+  .branch-card{background:var(--navy);border:1px solid var(--border);padding:2rem;position:relative;overflow:hidden;transition:border-color 0.3s}
+  .branch-card:hover{border-color:var(--gold)}
+  .branch-card::before{content:'';position:absolute;top:0;left:0;width:4px;height:100%;background:var(--gold)}
+  .branch-flag{font-size:1.5rem;margin-bottom:1rem}
+  .branch-name{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:600;color:var(--white);margin-bottom:1.2rem;padding-bottom:1rem;border-bottom:1px solid var(--border)}
+  .branch-detail{display:flex;gap:0.75rem;align-items:flex-start;margin-bottom:0.9rem}
+  .branch-detail svg{width:15px;height:15px;stroke:var(--gold);fill:none;stroke-width:1.8;flex-shrink:0;margin-top:2px}
+  .branch-detail-text{font-size:0.84rem;color:rgba(255,255,255,0.65);line-height:1.5}
+  .branch-detail-text a{color:rgba(255,255,255,0.65);text-decoration:none;transition:color 0.2s}
+  .branch-detail-text a:hover{color:var(--gold)}
+  .branch-hours-badge{display:inline-flex;align-items:center;gap:0.4rem;font-size:0.7rem;color:var(--gold);margin-top:0.5rem;padding:0.3rem 0.7rem;border:1px solid var(--border)}
+  .branch-hours-badge::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--green)}
+  /* MAP PLACEHOLDER */
+  .map-section{padding:0 8% 5rem;background:var(--navy-mid)}
+  .map-embed{width:100%;height:320px;border:1px solid var(--border);background:var(--navy-light);display:flex;align-items:center;justify-content:center;color:var(--text-muted);font-size:0.9rem}
+  /* FOOTER */
+  footer{background:#0a1520;border-top:1px solid var(--border);padding:4rem 8% 0}
+  .footer-top{display:grid;grid-template-columns:1.8fr 1fr 1fr 1fr 1.4fr;gap:2.5rem;padding-bottom:3rem;border-bottom:1px solid var(--border)}
+  .footer-brand-name{font-family:'Cormorant Garamond',serif;font-size:1.7rem;font-weight:700;color:var(--gold);margin-bottom:0.3rem}
+  .footer-brand-sub{font-size:0.65rem;color:var(--text-muted);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:1rem}
+  .footer-brand-desc{font-size:0.82rem;color:var(--text-muted);line-height:1.75;margin-bottom:1.5rem}
+  .footer-social{display:flex;gap:0.6rem;flex-wrap:wrap}
+  .social-btn{width:34px;height:34px;border:1px solid var(--border);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:border-color 0.2s,background 0.2s;text-decoration:none}
+  .social-btn:hover{border-color:var(--gold);background:rgba(201,168,76,0.1)}
+  .social-btn svg{width:14px;height:14px;stroke:var(--text-muted);fill:none;stroke-width:2;transition:stroke 0.2s}
+  .social-btn:hover svg{stroke:var(--gold)}
+  .footer-col-title{font-size:0.72rem;color:var(--gold);letter-spacing:0.15em;text-transform:uppercase;font-weight:600;margin-bottom:1.2rem;padding-bottom:0.6rem;border-bottom:1px solid var(--border)}
+  .footer-col ul{list-style:none;display:flex;flex-direction:column;gap:0.5rem}
+  .footer-col ul li{display:flex;align-items:center;gap:0.4rem}
+  .footer-col ul li::before{content:'›';color:var(--gold);font-size:1rem}
+  .footer-col ul a{color:var(--text-muted);text-decoration:none;font-size:0.83rem;transition:color 0.2s}
+  .footer-col ul a:hover{color:var(--gold)}
+  .footer-contact-item{display:flex;gap:0.7rem;align-items:flex-start;margin-bottom:1rem}
+  .footer-contact-item svg{width:15px;height:15px;stroke:var(--gold);fill:none;stroke-width:1.8;flex-shrink:0;margin-top:2px}
+  .footer-contact-text{font-size:0.82rem;color:var(--text-muted);line-height:1.5}
+  .footer-contact-text a{color:var(--text-muted);text-decoration:none}
+  .footer-contact-text a:hover{color:var(--gold)}
+  .footer-bottom{padding:1.5rem 0;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+  .footer-copy{font-size:0.78rem;color:rgba(138,155,176,0.6)}
+  .footer-disclaimer{font-size:0.7rem;color:rgba(138,155,176,0.35);max-width:100%;line-height:1.65;padding:1rem 0 2rem;border-top:1px solid rgba(201,168,76,0.08)}
+  /* WA */
+  .wa-widget{position:fixed;bottom:2rem;left:2rem;z-index:999}
+  .wa-btn{width:58px;height:58px;border-radius:50%;background:#25D366;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,0.4);transition:transform 0.2s}
+  .wa-btn:hover{transform:scale(1.08)}
+  .wa-btn svg{width:30px;height:30px;fill:white}
+  .wa-popup{position:absolute;bottom:70px;left:0;width:300px;background:var(--navy-light);border:1px solid var(--border);border-radius:12px;padding:1.2rem;box-shadow:0 12px 40px rgba(0,0,0,0.5);display:none;flex-direction:column;gap:0.5rem}
+  .wa-popup.open{display:flex;animation:popIn 0.2s ease}
+  @keyframes popIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+  .wa-popup-header{display:flex;align-items:center;justify-content:space-between}
+  .wa-popup-title{font-size:0.85rem;font-weight:600;color:var(--white);display:flex;align-items:center;gap:0.4rem}
+  .wa-popup-title::before{content:'';width:8px;height:8px;border-radius:50%;background:#25D366}
+  .wa-close{background:none;border:none;color:var(--text-muted);cursor:pointer;font-size:1.3rem;line-height:1}
+  .wa-popup input,.wa-popup textarea{background:var(--navy);border:1px solid var(--border);color:var(--white);padding:0.55rem 0.8rem;font-family:'Inter',sans-serif;font-size:0.8rem;border-radius:6px;outline:none;width:100%;transition:border-color 0.2s;margin-top:0.4rem}
+  .wa-popup input:focus,.wa-popup textarea:focus{border-color:var(--gold)}
+  .wa-send-btn{background:#25D366;color:white;border:none;padding:0.6rem;font-family:'Montserrat',sans-serif;font-size:0.78rem;font-weight:700;border-radius:6px;cursor:pointer;width:100%;margin-top:0.4rem}
+  .wa-send-btn:hover{background:#1ebe5a}
+  .wa-success{display:none;text-align:center;padding:0.8rem 0}
+  .wa-success-icon{font-size:1.8rem;margin-bottom:0.4rem}
+  .wa-success p{font-size:0.82rem;color:rgba(255,255,255,0.8);line-height:1.5}
+  /* RESPONSIVE */
+  @media(max-width:1100px){.footer-top{grid-template-columns:1fr 1fr 1fr}.footer-top>div:first-child{grid-column:1/-1}.branches-grid{grid-template-columns:1fr 1fr}}
+  @media(max-width:900px){.contact-main{grid-template-columns:1fr;gap:3rem}}
+  @media(max-width:640px){nav{padding:0 4%}.nav-links{display:none}.page-hero{padding:7rem 5% 4rem}.contact-main{padding:4rem 5%}.form-row{grid-template-columns:1fr}.branches-section{padding:4rem 5%}.branches-grid{grid-template-columns:1fr}.footer-top{grid-template-columns:1fr}.map-section{padding:0 5% 4rem}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="luizmary.html" class="nav-logo">Luizmary FZE LLC<span>Business & Compliance Consultancy · UAE</span></a>
+  <ul class="nav-links">
+    <li><a href="luizmary.html#about">About</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="luizmary.html#license">Company Info</a></li>
+    <li><a href="luizmary.html#process">Process</a></li>
+    <li><a href="contact.html" class="active">Contact</a></li>
+  </ul>
+  <a href="contact.html" class="nav-cta">Get Consultation</a>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-eyebrow">Get in Touch</div>
+  <h1>Start a Conversation with <em>Our Team</em></h1>
+  <p>Whether you're setting up a new business in the UAE, need compliance support, or want to explore our services — fill in the form and we'll be in touch within one business day.</p>
+  <div class="breadcrumb"><a href="luizmary.html">Home</a> › <span>Contact Us</span></div>
+</div>
+
+<div class="contact-main">
+  <!-- LEFT: INFO -->
+  <div>
+    <div class="contact-info-title">How to Reach Us</div>
+    <p class="contact-info-lead">Our team is based in the Sharjah Publishing City Free Zone and is available for in-person meetings, calls, and virtual consultations.</p>
+    <div class="contact-info-items">
+      <div class="contact-info-item">
+        <div class="contact-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+        <div><div class="contact-info-label">Registered Address</div><div class="contact-info-text">Business Centre, Sharjah Publishing City Free Zone,<br>Sharjah, United Arab Emirates</div></div>
+      </div>
+      <div class="contact-info-item">
+        <div class="contact-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+        <div><div class="contact-info-label">Email</div><div class="contact-info-text"><a href="mailto:info@luizmaryfze.com">info@luizmaryfze.com</a></div></div>
+      </div>
+      <div class="contact-info-item">
+        <div class="contact-icon"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg></div>
+        <div><div class="contact-info-label">Phone / WhatsApp</div><div class="contact-info-text">Available on request — use the form or WhatsApp button</div></div>
+      </div>
+      <div class="contact-info-item">
+        <div class="contact-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+        <div><div class="contact-info-label">Working Hours</div><div class="contact-info-text">Mon – Fri: 8:00 am – 7:00 pm (UAE Time, GST+4)</div></div>
+      </div>
+    </div>
+    <div class="hours-note">
+      <p><strong style="color:var(--gold)">Response time:</strong> We aim to respond to all enquiries within one business day. For urgent matters, use the WhatsApp button at the bottom-left of this page for a faster response.</p>
+    </div>
+  </div>
+
+  <!-- RIGHT: FORM -->
+  <div class="contact-form-wrap">
+    <div class="contact-form-title">Request a Consultation</div>
+    <p class="contact-form-sub">Fill in your details below. On submission, you'll receive a confirmation email and our team will reach out to you shortly.</p>
+
+    <div id="contactForm">
+      <div class="form-row">
+        <div class="form-field"><label>First Name <span class="req">*</span></label><input type="text" id="firstName" placeholder="e.g. Merline" required></div>
+        <div class="form-field"><label>Last Name <span class="req">*</span></label><input type="text" id="lastName" placeholder="e.g. Fernandes" required></div>
+      </div>
+      <div class="form-row">
+        <div class="form-field"><label>Email Address <span class="req">*</span></label><input type="email" id="emailAddr" placeholder="you@company.com" required></div>
+        <div class="form-field"><label>Phone Number</label><input type="tel" id="phoneNum" placeholder="+971 xx xxx xxxx"></div>
+      </div>
+      <div class="form-field"><label>Company / Organisation</label><input type="text" id="companyName" placeholder="Your company name (optional)"></div>
+      <div class="form-field">
+        <label>Service of Interest <span class="req">*</span></label>
+        <select id="serviceInterest" required>
+          <option value="">Select a service…</option>
+          <option>General Trading</option>
+          <option>E-Commerce / Online Retail</option>
+          <option>Compliance Consultancy</option>
+          <option>Accounting, Bookkeeping &amp; Tax</option>
+          <option>Corporate Services</option>
+          <option>Multiple Services</option>
+          <option>Not Sure Yet — Need Guidance</option>
+        </select>
+      </div>
+      <div class="form-field"><label>Your Message <span class="req">*</span></label><textarea rows="4" id="userMessage" placeholder="Tell us briefly about your situation and what you're looking to achieve…" required></textarea></div>
+      <div class="form-field" style="flex-direction:row;align-items:flex-start;gap:0.75rem">
+        <input type="checkbox" id="privacyCheck" style="width:auto;margin-top:3px">
+        <label for="privacyCheck" style="font-size:0.75rem;color:var(--text-muted);text-transform:none;letter-spacing:0;cursor:pointer">I agree that Luizmary FZE LLC may contact me regarding my enquiry. My data will not be shared with third parties.</label>
+      </div>
+      <button class="btn-submit" id="submitBtn" onclick="submitForm()">
+        <svg viewBox="0 0 24 24" style="width:16px;height:16px;stroke:var(--navy);fill:none;stroke-width:2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+        Send Consultation Request
+      </button>
+      <div class="alert success" id="successAlert">✅ &nbsp;<strong>Your request has been sent!</strong> Check your inbox for a confirmation email. We'll be in touch within one business day.</div>
+      <div class="alert error" id="errorAlert">❌ &nbsp;<strong>Something went wrong.</strong> Please try again or email us directly at <a href="mailto:info@luizmaryfze.com" style="color:inherit;text-decoration:underline">info@luizmaryfze.com</a></div>
+    </div>
+
+    <p class="privacy-note">🔒 Your information is secure and will only be used to respond to your enquiry.</p>
+  </div>
+</div>
+
+<!-- BRANCHES -->
+<section class="branches-section">
+  <div class="branches-section-title">Our Offices &amp; Branches</div>
+  <p class="branches-section-sub">Luizmary FZE LLC operates from its registered UAE base, with affiliated partner offices supporting our international clients.</p>
+  <div class="branches-grid">
+    <!-- UAE HQ -->
+    <div class="branch-card">
+      <div class="branch-flag">🇦🇪</div>
+      <div class="branch-name">Luizmary FZE LLC — UAE (Head Office)</div>
+      <div class="branch-detail"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg><div class="branch-detail-text">Business Centre, Sharjah Publishing City Free Zone, Sharjah, United Arab Emirates</div></div>
+      <div class="branch-detail"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg><div class="branch-detail-text"><a href="mailto:info@luizmaryfze.com">info@luizmaryfze.com</a></div></div>
+      <div class="branch-hours-badge">Mon – Fri: 8:00 am – 7:00 pm (GST)</div>
+    </div>
+    <!-- India partner -->
+    <div class="branch-card">
+      <div class="branch-flag">🇮🇳</div>
+      <div class="branch-name">India — Partner Office</div>
+      <div class="branch-detail"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg><div class="branch-detail-text">7th Floor, 706 Shivalik Shilp, Iscon Cross Road, S G Highway, Ahmedabad, Gujarat – 380015, India</div></div>
+      <div class="branch-detail"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg><div class="branch-detail-text"><a href="tel:+918866520077">+91 88 6652 0077</a></div></div>
+      <div class="branch-hours-badge">Mon – Fri: 8:00 am – 7:00 pm (IST)</div>
+    </div>
+    <!-- UK partner -->
+    <div class="branch-card">
+      <div class="branch-flag">🇬🇧</div>
+      <div class="branch-name">UK — Partner Office</div>
+      <div class="branch-detail"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg><div class="branch-detail-text">Harrow Office, 79 College Road Regus Harrow, HA1 1BD, United Kingdom</div></div>
+      <div class="branch-detail"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg><div class="branch-detail-text"><a href="tel:+447404022740">+44 7404 022740</a></div></div>
+      <div class="branch-hours-badge">Mon – Fri: 8:00 am – 7:00 pm (GMT/BST)</div>
+    </div>
+  </div>
+</section>
+
+<!-- MAP -->
+<div class="map-section">
+  <div class="map-embed">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3606.2!2d55.4!3d25.3!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zSharp%20Publishing%20City%20Free%20Zone%2C%20Sharjah!5e0!3m2!1sen!2sae!4v1700000000000!5m2!1sen!2sae" width="100%" height="320" style="border:0;filter:grayscale(1) invert(0.9) opacity(0.5)" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-brand-name">Luizmary FZE LLC</div>
+      <div class="footer-brand-sub">Licensed · Sharjah Publishing City Free Zone · UAE</div>
+      <p class="footer-brand-desc">At Luizmary, we deliver end-to-end solutions designed for entrepreneurs and growing enterprises. From company formation and compliance to tax strategy, audit, and accounting — our team ensures every step is seamless, compliant, and built for growth.</p>
+      <div class="footer-social">
+        <a href="#" class="social-btn"><svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+        <a href="#" class="social-btn"><svg viewBox="0 0 24 24"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/></svg></a>
+        <a href="#" class="social-btn"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg></a>
+        <a href="#" class="social-btn"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+        <a href="#" class="social-btn"><svg viewBox="0 0 24 24"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 00-1.95 1.96A29 29 0 001 12a29 29 0 00.46 5.58A2.78 2.78 0 003.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 001.95-1.95A29 29 0 0023 12a29 29 0 00-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg></a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">Quick Links</div>
+      <ul><li><a href="luizmary.html#about">About Us</a></li><li><a href="services.html">Our Services</a></li><li><a href="contact.html">Contact Us</a></li><li><a href="contact.html">Book Appointment</a></li><li><a href="luizmary.html#license">Company Info</a></li></ul>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">Services</div>
+      <ul><li><a href="services.html#trading">General Trading</a></li><li><a href="services.html#ecommerce">E-Commerce</a></li><li><a href="services.html#compliance">Compliance Consultancy</a></li><li><a href="services.html#accounting">Accounting &amp; Tax</a></li><li><a href="services.html#corporate">Corporate Services</a></li></ul>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">Useful Links</div>
+      <ul><li><a href="luizmary.html#about">Company Overview</a></li><li><a href="contact.html">Book Appointment</a></li><li><a href="luizmary.html#license">Registration Info</a></li><li><a href="contact.html">Privacy Policy</a></li><li><a href="contact.html">Terms &amp; Conditions</a></li><li><a href="contact.html">Career</a></li></ul>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">Get in Touch</div>
+      <div class="footer-contact-item"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg><div class="footer-contact-text">Business Centre, Sharjah Publishing City Free Zone, Sharjah, UAE</div></div>
+      <div class="footer-contact-item"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg><div class="footer-contact-text"><a href="mailto:info@luizmaryfze.com">info@luizmaryfze.com</a></div></div>
+      <div class="footer-contact-item"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg><div class="footer-contact-text">Available on request</div></div>
+    </div>
+  </div>
+  <div class="footer-bottom"><div class="footer-copy">© 2025 Luizmary FZE LLC. All Rights Reserved.</div><div style="font-size:0.72rem;color:rgba(138,155,176,0.4)">Sharjah Publishing City Free Zone · UAE</div></div>
+  <div class="footer-disclaimer"><strong style="color:rgba(138,155,176,0.55)">Disclaimer:</strong> The data and services offered on this website by Luizmary FZE LLC are independent and not endorsed by, affiliated with, or otherwise connected to any government agencies. Luizmary FZE LLC is a Corporate Service Provider (CSP) licensed under the Sharjah Publishing City Free Zone authority, willing to conduct business — such as completing registration procedures, obtaining the necessary licenses from official authorities, and establishing partnerships with foreign companies.</div>
+</footer>
+
+<!-- WA WIDGET -->
+<div class="wa-widget">
+  <div class="wa-popup" id="waPopup">
+    <div class="wa-popup-header"><div class="wa-popup-title">Quick Consultation</div><button class="wa-close" onclick="toggleWa()">×</button></div>
+    <div id="waForm">
+      <input type="text" id="waName" placeholder="Your Name">
+      <input type="tel" id="waPhone" placeholder="Phone / WhatsApp Number">
+      <textarea id="waMessage" rows="3" placeholder="Briefly describe what you need…" style="resize:none"></textarea>
+      <button class="wa-send-btn" onclick="sendWaRequest()">Send via WhatsApp</button>
+    </div>
+    <div class="wa-success" id="waSuccess"><div class="wa-success-icon">✅</div><p>Sent! We'll contact you soon.</p></div>
+  </div>
+  <button class="wa-btn" onclick="toggleWa()"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></button>
+</div>
+
+<script>
+  // ── EmailJS ─────────────────────────────────────────────────────────────────
+  // SETUP INSTRUCTIONS:
+  // 1. Go to https://www.emailjs.com and create a free account
+  // 2. Create an Email Service (Gmail, Outlook, etc.) — note the Service ID
+  // 3. Create two Email Templates:
+  //    a) OWNER template (template_owner): receives the consultation details
+  //    b) USER confirmation template (template_confirm): sent to the user
+  // 4. Replace the placeholders below with your actual IDs:
+  const EMAILJS_PUBLIC_KEY  = 'YOUR_PUBLIC_KEY';      // e.g. 'user_abc123'
+  const EMAILJS_SERVICE_ID  = 'YOUR_SERVICE_ID';      // e.g. 'service_gmail'
+  const TEMPLATE_OWNER      = 'YOUR_OWNER_TEMPLATE_ID';   // e.g. 'template_owner'
+  const TEMPLATE_CONFIRM    = 'YOUR_CONFIRM_TEMPLATE_ID'; // e.g. 'template_confirm'
+  const OWNER_EMAIL         = 'info@luizmaryfze.com'; // replace with real owner email
+
+  (function(){emailjs.init({publicKey: EMAILJS_PUBLIC_KEY});})();
+
+  async function submitForm() {
+    const firstName    = document.getElementById('firstName').value.trim();
+    const lastName     = document.getElementById('lastName').value.trim();
+    const emailAddr    = document.getElementById('emailAddr').value.trim();
+    const phoneNum     = document.getElementById('phoneNum').value.trim();
+    const companyName  = document.getElementById('companyName').value.trim();
+    const serviceInt   = document.getElementById('serviceInterest').value;
+    const userMessage  = document.getElementById('userMessage').value.trim();
+    const privacyCheck = document.getElementById('privacyCheck').checked;
+
+    // Validation
+    if (!firstName || !lastName) { alert('Please enter your full name.'); return; }
+    if (!emailAddr || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailAddr)) { alert('Please enter a valid email address.'); return; }
+    if (!serviceInt) { alert('Please select a service of interest.'); return; }
+    if (!userMessage) { alert('Please enter a message.'); return; }
+    if (!privacyCheck) { alert('Please agree to the privacy notice to proceed.'); return; }
+
+    const btn = document.getElementById('submitBtn');
+    btn.disabled = true;
+    btn.textContent = 'Sending…';
+    document.getElementById('successAlert').classList.remove('show');
+    document.getElementById('errorAlert').classList.remove('show');
+
+    const templateParams = {
+      from_name:    firstName + ' ' + lastName,
+      from_email:   emailAddr,
+      phone:        phoneNum || 'Not provided',
+      company:      companyName || 'Not provided',
+      service:      serviceInt,
+      message:      userMessage,
+      to_email:     OWNER_EMAIL,
+      reply_to:     emailAddr,
+    };
+
+    try {
+      // Send to owner
+      await emailjs.send(EMAILJS_SERVICE_ID, TEMPLATE_OWNER, templateParams);
+      // Send confirmation to user
+      await emailjs.send(EMAILJS_SERVICE_ID, TEMPLATE_CONFIRM, {
+        ...templateParams,
+        to_email: emailAddr,
+        to_name:  firstName,
+      });
+      document.getElementById('successAlert').classList.add('show');
+      // Reset form
+      ['firstName','lastName','emailAddr','phoneNum','companyName','userMessage'].forEach(id=>document.getElementById(id).value='');
+      document.getElementById('serviceInterest').value = '';
+      document.getElementById('privacyCheck').checked = false;
+    } catch(err) {
+      console.error('EmailJS error:', err);
+      document.getElementById('errorAlert').classList.add('show');
+    } finally {
+      btn.disabled = false;
+      btn.innerHTML = '<svg viewBox="0 0 24 24" style="width:16px;height:16px;stroke:var(--navy);fill:none;stroke-width:2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg> Send Consultation Request';
+    }
+  }
+
+  // ── WhatsApp widget ──────────────────────────────────────────────────────────
+  function toggleWa(){document.getElementById('waPopup').classList.toggle('open');}
+  function sendWaRequest(){
+    const n=document.getElementById('waName').value.trim(),p=document.getElementById('waPhone').value.trim(),m=document.getElementById('waMessage').value.trim();
+    if(!n){alert('Please enter your name.');return;}
+    const txt=encodeURIComponent('*Consultation Request — Luizmary FZE LLC*\n\nName: '+n+'\nPhone: '+(p||'Not provided')+'\nMessage: '+(m||'No details provided'));
+    window.open('https://wa.me/971000000000?text='+txt,'_blank');
+    document.getElementById('waForm').style.display='none';
+    document.getElementById('waSuccess').style.display='block';
+    setTimeout(()=>{
+      document.getElementById('waPopup').classList.remove('open');
+      document.getElementById('waForm').style.display='block';
+      document.getElementById('waSuccess').style.display='none';
+      ['waName','waPhone','waMessage'].forEach(id=>document.getElementById(id).value='');
+    },3000);
+  }
+</script>
+</body>
+</html>
