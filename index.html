@@ -67,6 +67,78 @@
         }
 
         /* ── FIXED NAVIGATION BAR ─────────────────────────────────────────────── */
+        /* ── DROPDOWN NAVIGATION OVERLAYS ─────────────────────────────────────── */
+        .dropdown-container {
+            position: relative;
+        }
+
+        .dropdown-trigger {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .dropdown-trigger .chevron {
+            font-size: 0.55rem;
+            transition: transform 0.25s ease;
+            display: inline-block;
+        }
+
+        /* Dropdown Architecture Panel Box Layout */
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%) translateY(15px);
+            background: var(--navy-mid);
+            border: 1px solid var(--border);
+            list-style: none;
+            min-width: 240px;
+            padding: 0.75rem 0;
+            opacity: 0;
+            visibility: hidden;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s, visibility 0.3s;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            z-index: 1100;
+        }
+
+        .dropdown-menu li {
+            width: 100%;
+        }
+
+        .dropdown-menu li a {
+            display: block;
+            padding: 0.65rem 1.5rem;
+            color: var(--text-muted) !important;
+            font-size: 0.8rem;
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            letter-spacing: 0.03em;
+            text-transform: none;
+            transition: all 0.2s ease;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        /* Hover Transitions */
+        .dropdown-container:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .dropdown-container:hover .dropdown-trigger .chevron {
+            transform: rotate(180deg);
+            color: var(--gold);
+        }
+
+        .dropdown-menu li a:hover {
+            color: var(--gold) !important;
+            background: rgba(201, 168, 76, 0.06);
+            padding-left: 1.75rem;
+            /* Sophisticated nudge effect */
+        }
+
         nav {
             position: fixed;
             top: 0;
@@ -2783,7 +2855,20 @@
         <a onclick="loadPage('home')" class="nav-logo">Luizmary <span>FZE LLC</span></a>
         <ul class="nav-links">
             <li><a id="nav-link-home" onclick="loadPage('home')" class="active">Home</a></li>
-            <li><a id="nav-link-services" onclick="loadPage('services')">Our Services</a></li>
+
+            <li class="dropdown-container">
+                <a id="nav-link-services" onclick="loadPage('services')" class="dropdown-trigger">Our Services
+                    <span class="chevron">▼</span></a>
+                <ul class="dropdown-menu">
+                    <li><a onclick="loadPage('services-trading')">General Trading</a></li>
+                    <li><a onclick="loadPage('services-ecommerce')">E-Commerce & Retail</a></li>
+                    <li><a onclick="loadPage('services-amazon')">Amazon Seller Service (SPA)</a></li>
+                    <li><a onclick="loadPage('services-compliance')">Compliance Consultancy</a></li>
+                    <li><a onclick="loadPage('services-accounting')">Accounting & Tax</a></li>
+                    <li><a onclick="loadPage('services-corporate')">Corporate Services</a></li>
+                </ul>
+            </li>
+
             <li><a id="nav-link-contact" onclick="loadPage('contact')">Contact Us</a></li>
         </ul>
         <a onclick="loadPage('contact')" class="nav-cta">Book Consultation</a>
@@ -3549,6 +3634,176 @@
 
     </template>
 
+    <!-- services individual template -->
+
+    <template id="page-services-trading">
+        <div class="page-hero">
+            <div class="page-hero-eyebrow">Luizmary FZE LLC Capabilities</div>
+            <h1>General Trading <em>& Distribution</em></h1>
+            <p>Bespoke transactional engineering and logistic infrastructure setup designs inside the UAE.</p>
+            <div class="breadcrumb">
+                <a onclick="loadPage('home')">Home</a> <span>/</span> <a
+                    onclick="loadPage('services-trading')">Trading</a>
+            </div>
+        </div>
+        <section class="services-section">
+            <div class="service-block">
+                <div class="service-block-meta">
+                    <span class="service-tag">Trading Frameworks</span>
+                    <h2 class="service-block-title">Import & Export Structural Compliance</h2>
+                    <p class="service-block-desc">Processing implementations designed to maximize supply chain execution
+                        flexibility through various mainland and free-zone jurisdictions.</p>
+                    <ul class="service-sub-list">
+                        <li>Customs Code registration & clearance handling blueprints</li>
+                        <li>Multi-currency global logistics allocation metrics</li>
+                        <li>Cross-border product distribution structural mappings</li>
+                    </ul>
+                    <a onclick="loadPage('contact')" class="btn-primary">Structure Trading Entity</a>
+                </div>
+                <div class="service-block-visual">
+                    <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&q=80"
+                        alt="Global logistics asset setup processing">
+                </div>
+            </div>
+        </section>
+    </template>
+
+    <template id="page-services-ecommerce">
+        <div class="page-hero">
+            <div class="page-hero-eyebrow">Luizmary FZE LLC Capabilities</div>
+            <h1>E-Commerce <em>& Retail Architecture</em></h1>
+            <p>Custom governance protocols for digital stores and international transactional paths.</p>
+            <div class="breadcrumb">
+                <a onclick="loadPage('home')">Home</a> <span>/</span> <a
+                    onclick="loadPage('services-ecommerce')">E-Commerce</a>
+            </div>
+        </div>
+        <section class="services-section">
+            <div class="service-block reverse">
+                <div class="service-block-visual">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80"
+                        alt="Digital architecture integration mapping">
+                </div>
+                <div class="service-block-meta">
+                    <span class="service-tag">Digital Retail</span>
+                    <h2 class="service-block-title">Marketplace Optimization Frameworks</h2>
+                    <p class="service-block-desc">Custom compliance models configured for regional electronic
+                        marketplaces utilizing secure global gateways.</p>
+                    <ul class="service-sub-list">
+                        <li>Merchant account processing clearance support mapping</li>
+                        <li>International digital tax localization alignment systems</li>
+                        <li>Regional electronic asset processing protection matrices</li>
+                    </ul>
+                    <a onclick="loadPage('contact')" class="btn-primary">Launch Virtual Architecture</a>
+                </div>
+            </div>
+        </section>
+    </template>
+
+    <template id="services-amazon">
+        
+    </template>
+
+    <template id="page-services-compliance">
+        <div class="page-hero">
+            <div class="page-hero-eyebrow">Luizmary FZE LLC Capabilities</div>
+            <h1>Compliance <em>& AML Frameworks</em></h1>
+            <p>Robust operational controls mapped out to safeguard corporate setups against risk profiles.</p>
+            <div class="breadcrumb">
+                <a onclick="loadPage('home')">Home</a> <span>/</span> <a
+                    onclick="loadPage('services-compliance')">Compliance</a>
+            </div>
+        </div>
+        <section class="services-section">
+            <div class="service-block">
+                <div class="service-block-meta">
+                    <span class="service-tag">Regulatory Alignment</span>
+                    <h2 class="service-block-title">Enterprise Risk Mitigation Controls</h2>
+                    <p class="service-block-desc">Protect structural configurations against shifting corporate
+                        legislation updates inside the UAE market bounds.</p>
+                    <ul class="service-sub-list">
+                        <li>Economic Substance Regulations (ESR) filing configuration sets</li>
+                        <li>Ultimate Beneficial Owner (UBO) register tracking audits</li>
+                        <li>Anti-Money Laundering (AML) risk evaluation patterns</li>
+                    </ul>
+                    <div class="service-highlight-box">
+                        <p><strong>Notice:</strong> Maintaining modern local standard registers prevents legal
+                            disruptions or unexpected structural fines.</p>
+                    </div>
+                </div>
+                <div class="service-block-visual">
+                    <img src="https://images.unsplash.com/photo-1450133064473-71024230f91b?w=800&q=80"
+                        alt="Regulatory tracking session">
+                </div>
+            </div>
+        </section>
+    </template>
+
+    <template id="page-services-accounting">
+        <div class="page-hero">
+            <div class="page-hero-eyebrow">Luizmary FZE LLC Capabilities</div>
+            <h1>Accounting <em>& Corporate Tax</em></h1>
+            <p>Comprehensive ledger control designs ensuring adherence to the Federal Tax Authority.</p>
+            <div class="breadcrumb">
+                <a onclick="loadPage('home')">Home</a> <span>/</span> <a onclick="loadPage('services-accounting')">Tax &
+                    Accounting</a>
+            </div>
+        </div>
+        <section class="services-section">
+            <div class="service-block reverse">
+                <div class="service-block-visual">
+                    <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=800&q=80"
+                        alt="Financial statement review architecture">
+                </div>
+                <div class="service-block-meta">
+                    <span class="service-tag">Financial Architecture</span>
+                    <h2 class="service-block-title">Tax Advisory and Audit Prep Designs</h2>
+                    <p class="service-block-desc">Balancing asset logs seamlessly with IFRS regulations to make future
+                        tax periods stress-free.</p>
+                    <ul class="service-sub-list">
+                        <li>Corporate Tax entry registry updates and status checks</li>
+                        <li>Value Added Tax (VAT) evaluation loops and recovery schemes</li>
+                        <li>Regular accounting transaction bookkeeping layouts</li>
+                    </ul>
+                    <a onclick="loadPage('contact')" class="btn-primary">Initiate Audit Design</a>
+                </div>
+            </div>
+        </section>
+    </template>
+
+    <template id="page-services-corporate">
+        <div class="page-hero">
+            <div class="page-hero-eyebrow">Luizmary FZE LLC Capabilities</div>
+            <h1>Corporate <em>Entity Lifecycle Upkeep</em></h1>
+            <p>End-to-end administration options handling business registrations and modifications.</p>
+            <div class="breadcrumb">
+                <a onclick="loadPage('home')">Home</a> <span>/</span> <a
+                    onclick="loadPage('services-corporate')">Corporate Services</a>
+            </div>
+        </div>
+        <section class="services-section">
+            <div class="service-block">
+                <div class="service-block-meta">
+                    <span class="service-tag">Enterprise Architecture</span>
+                    <h2 class="service-block-title">License Modifications and Structural Upgrades</h2>
+                    <p class="service-block-desc">Streamlining executive pathways, license extensions, and share
+                        transfers safely across various Free Zone contexts.</p>
+                    <ul class="service-sub-list">
+                        <li>Share distribution reorganization plans and documentation</li>
+                        <li>Residency visa and establishment processing profiles</li>
+                        <li>Free Zone operational lifecycle monitoring workflows</li>
+                    </ul>
+                    <a onclick="loadPage('contact')" class="btn-primary">Manage Corporate Structure</a>
+                </div>
+                <div class="service-block-visual">
+                    <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=800&q=80"
+                        alt="Executive corporate meeting setup">
+                </div>
+            </div>
+        </section>
+    </template>
+
+
 
     <template id="page-services">
         <div class="page-hero">
@@ -3861,34 +4116,67 @@
         })();
 
         // ── CENTRALIZED SPA COMPONENT ROUTER ───────────────────────────────────
+        // function loadPage(pageId) {
+        //     const template = document.getElementById(`page-${pageId}`);
+        //     const mainViewport = document.getElementById('main-content');
+
+        //     if (template && mainViewport) {
+        //         // Purge previous element bindings cleanly from document context
+        //         mainViewport.innerHTML = '';
+
+        //         // Clone new view segment components deeply from hidden tracking templates
+        //         const viewClone = template.content.cloneNode(true);
+        //         mainViewport.appendChild(viewClone);
+
+        //         // Re-align Navigation active link status indicators safely
+        //         document.querySelectorAll('.nav-links a').forEach(link => link.classList.remove('active'));
+        //         const activeNavbarLink = document.getElementById(`nav-link-${pageId}`);
+        //         if (activeNavbarLink) activeNavbarLink.classList.add('active');
+
+        //         // Force rendering tree to re-align immediately to absolute header limits
+        //         window.scrollTo({ top: 0, behavior: 'instant' });
+
+        //         // Boot up specialized context-dependent JavaScript features based on the view
+        //         if (pageId === 'home') {
+        //             initializeHeroCarouselEngine();
+        //         }
+        //     } else {
+        //         console.error(`SPA Core Routing Error: View layout tracking ID target 'page-${pageId}' missing from template store.`);
+        //     }
+        // }
+
         function loadPage(pageId) {
+            // 1. Fetch targeted structural template references from the file
             const template = document.getElementById(`page-${pageId}`);
-            const mainViewport = document.getElementById('main-content');
+            const mainContent = document.getElementById('main-content');
 
-            if (template && mainViewport) {
-                // Purge previous element bindings cleanly from document context
-                mainViewport.innerHTML = '';
-
-                // Clone new view segment components deeply from hidden tracking templates
-                const viewClone = template.content.cloneNode(true);
-                mainViewport.appendChild(viewClone);
-
-                // Re-align Navigation active link status indicators safely
-                document.querySelectorAll('.nav-links a').forEach(link => link.classList.remove('active'));
-                const activeNavbarLink = document.getElementById(`nav-link-${pageId}`);
-                if (activeNavbarLink) activeNavbarLink.classList.add('active');
-
-                // Force rendering tree to re-align immediately to absolute header limits
-                window.scrollTo({ top: 0, behavior: 'instant' });
-
-                // Boot up specialized context-dependent JavaScript features based on the view
-                if (pageId === 'home') {
-                    initializeHeroCarouselEngine();
-                }
-            } else {
-                console.error(`SPA Core Routing Error: View layout tracking ID target 'page-${pageId}' missing from template store.`);
+            if (!template) {
+                console.error(`Template structure design "page-${pageId}" not found inside document context.`);
+                return;
             }
+
+            // 2. Clear out older HTML elements and clone the updated structural component safely
+            mainContent.innerHTML = '';
+            const clonedNode = template.content.cloneNode(true);
+            mainContent.appendChild(clonedNode);
+
+            // 3. Update navbar highlighting rules
+            document.querySelectorAll('.nav-links a').forEach(link => link.classList.remove('active'));
+
+            if (pageId.startsWith('services-')) {
+                // Highlight "Our Services" tab if viewing any specific sub-service page view
+                const servicesLink = document.getElementById('nav-link-services');
+                if (servicesLink) servicesLink.classList.add('active');
+            } else {
+                // Standard template highlight paths (home, contact, etc.)
+                const targetLink = document.getElementById(`nav-link-${pageId}`);
+                if (targetLink) targetLink.classList.add('active');
+            }
+
+            // 4. Return scroll positioning smoothly back to top layout boundaries
+            window.scrollTo({ top: 0, behavior: 'instant' });
         }
+
 
         // ── HERO CAROUSEL ENGINE (Exclusively active during Home screen states) ──
         let homeCarouselIntervalId = null;
