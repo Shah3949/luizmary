@@ -4380,35 +4380,6 @@
             emailjs.init({ publicKey: "YOUR_PUBLIC_KEY_HERE" });
         })();
 
-        // ── CENTRALIZED SPA COMPONENT ROUTER ───────────────────────────────────
-        // function loadPage(pageId) {
-        //     const template = document.getElementById(`page-${pageId}`);
-        //     const mainViewport = document.getElementById('main-content');
-
-        //     if (template && mainViewport) {
-        //         // Purge previous element bindings cleanly from document context
-        //         mainViewport.innerHTML = '';
-
-        //         // Clone new view segment components deeply from hidden tracking templates
-        //         const viewClone = template.content.cloneNode(true);
-        //         mainViewport.appendChild(viewClone);
-
-        //         // Re-align Navigation active link status indicators safely
-        //         document.querySelectorAll('.nav-links a').forEach(link => link.classList.remove('active'));
-        //         const activeNavbarLink = document.getElementById(`nav-link-${pageId}`);
-        //         if (activeNavbarLink) activeNavbarLink.classList.add('active');
-
-        //         // Force rendering tree to re-align immediately to absolute header limits
-        //         window.scrollTo({ top: 0, behavior: 'instant' });
-
-        //         // Boot up specialized context-dependent JavaScript features based on the view
-        //         if (pageId === 'home') {
-        //             initializeHeroCarouselEngine();
-        //         }
-        //     } else {
-        //         console.error(`SPA Core Routing Error: View layout tracking ID target 'page-${pageId}' missing from template store.`);
-        //     }
-        // }
 
         function loadPage(pageId) {
             // 1. Fetch targeted structural template references from the file
@@ -4427,22 +4398,28 @@
 
             // 3. Update navbar highlighting rules
             document.querySelectorAll('.nav-links a').forEach(link => link.classList.remove('active'));
-
             if (pageId.startsWith('services-')) {
-                // Highlight "Our Services" tab if viewing any specific sub-service page view
                 const servicesLink = document.getElementById('nav-link-services');
                 if (servicesLink) servicesLink.classList.add('active');
             } else {
-                // Standard template highlight paths (home, contact, etc.)
                 const targetLink = document.getElementById(`nav-link-${pageId}`);
                 if (targetLink) targetLink.classList.add('active');
+            }
+
+            // ── ADDED FIX FOR CAROUSEL ENGINE INITIALIZATION ──
+            if (pageId === 'home') {
+                initializeHeroCarouselEngine();
+            } else {
+                // Clear active interval cycles when migrating away from Home layout
+                if (homeCarouselIntervalId) {
+                    clearInterval(homeCarouselIntervalId);
+                    homeCarouselIntervalId = null;
+                }
             }
 
             // 4. Return scroll positioning smoothly back to top layout boundaries
             window.scrollTo({ top: 0, behavior: 'instant' });
         }
-
-
         // ── HERO CAROUSEL ENGINE (Exclusively active during Home screen states) ──
         let homeCarouselIntervalId = null;
 
