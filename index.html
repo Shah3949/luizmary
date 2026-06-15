@@ -2052,7 +2052,10 @@
 
         .mobile-nav-overlay>a,
         .mob-services-trigger {
-            display: block;
+            display: flex;
+            /* Changed from block to flex for perfect alignment */
+            align-items: center;
+            justify-content: space-between;
             padding: 0.95rem 5%;
             color: var(--text-muted);
             text-decoration: none;
@@ -2063,6 +2066,10 @@
             border-bottom: 1px solid rgba(201, 168, 76, 0.1);
             cursor: pointer;
             transition: color 0.2s, background 0.2s;
+
+            /* ADD THESE TO PREVENT HORIZONTAL OVERFLOW */
+            white-space: normal;
+            word-break: break-word;
         }
 
         .mobile-nav-overlay>a:hover,
@@ -2110,6 +2117,10 @@
             border-bottom: 1px solid rgba(201, 168, 76, 0.06);
             transition: color 0.2s, background 0.2s;
             cursor: pointer;
+
+            /* ADD THESE TO RETAIN TEXT INSIDE BOUNDS */
+            white-space: normal;
+            word-break: break-word;
         }
 
         .mob-services-submenu a:last-child {
@@ -2304,6 +2315,25 @@
 
         /* ── MOBILE: 768px ── */
         @media (max-width: 768px) {
+
+            body,
+            html {
+                overflow-x: hidden;
+                position: relative;
+                width: 100%;
+            }
+
+            /* Assures the fixed navbar stays accurately pinned to 100% of visible space */
+            nav {
+                width: 100%;
+                box-sizing: border-box;
+            }
+
+            .mobile-nav-overlay {
+                width: 100%;
+                box-sizing: border-box;
+            }
+
             section {
                 padding: 3.5rem 5%;
             }
