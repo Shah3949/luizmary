@@ -145,6 +145,8 @@
             left: 0;
             right: 0;
             z-index: 1000;
+            /* needed so absolute mobile overlay is anchored to nav */
+            overflow: visible;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -2028,52 +2030,117 @@
             transform: translateY(-7px) rotate(-45deg);
         }
 
+        /* ── MOBILE NAV DROPDOWN PANEL (compact, not full-page) ── */
         .mobile-nav-overlay {
             display: none;
-            position: fixed;
+            position: absolute;
             top: 72px;
             left: 0;
             right: 0;
-            bottom: 0;
-            background: rgba(13, 27, 42, 0.98);
+            background: rgba(13, 27, 42, 0.99);
             z-index: 999;
             flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 2rem;
+            align-items: stretch;
+            border-bottom: 1px solid var(--border);
             backdrop-filter: blur(16px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45);
         }
 
         .mobile-nav-overlay.open {
             display: flex;
         }
 
-        .mobile-nav-overlay a {
-            color: var(--white);
+        .mobile-nav-overlay>a,
+        .mob-services-trigger {
+            display: block;
+            padding: 0.95rem 5%;
+            color: var(--text-muted);
             text-decoration: none;
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.8rem;
-            font-weight: 600;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.88rem;
+            font-weight: 500;
             letter-spacing: 0.05em;
-            transition: color 0.2s;
+            border-bottom: 1px solid rgba(201, 168, 76, 0.1);
             cursor: pointer;
+            transition: color 0.2s, background 0.2s;
         }
 
-        .mobile-nav-overlay a:hover {
+        .mobile-nav-overlay>a:hover,
+        .mob-services-trigger:hover {
+            color: var(--gold);
+            background: rgba(201, 168, 76, 0.05);
+        }
+
+        .mob-services-trigger {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .mob-services-trigger .mob-chevron {
+            font-size: 0.55rem;
+            transition: transform 0.25s ease;
+        }
+
+        .mob-services-trigger.open .mob-chevron {
+            transform: rotate(180deg);
             color: var(--gold);
         }
 
+        .mob-services-submenu {
+            display: none;
+            flex-direction: column;
+            background: rgba(22, 36, 55, 0.8);
+            border-bottom: 1px solid rgba(201, 168, 76, 0.1);
+        }
+
+        .mob-services-submenu.open {
+            display: flex;
+        }
+
+        .mob-services-submenu a {
+            display: block;
+            padding: 0.75rem 5% 0.75rem 9%;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.82rem;
+            font-weight: 400;
+            letter-spacing: 0.03em;
+            border-bottom: 1px solid rgba(201, 168, 76, 0.06);
+            transition: color 0.2s, background 0.2s;
+            cursor: pointer;
+        }
+
+        .mob-services-submenu a:last-child {
+            border-bottom: none;
+        }
+
+        .mob-services-submenu a:hover {
+            color: var(--gold);
+            background: rgba(201, 168, 76, 0.05);
+        }
+
         .mobile-nav-overlay .mob-cta {
+            display: block;
+            margin: 1rem 5%;
+            padding: 0.75rem 1.4rem;
             background: var(--gold);
-            color: var(--navy);
-            padding: 0.8rem 2rem;
+            color: var(--navy) !important;
             font-family: 'Montserrat', sans-serif;
-            font-size: 0.85rem;
+            font-size: 0.78rem;
             font-weight: 700;
-            letter-spacing: 0.1em;
+            letter-spacing: 0.08em;
             text-transform: uppercase;
-            margin-top: 0.5rem;
-            font-size: 1rem;
+            text-align: center;
+            cursor: pointer;
+            transition: background 0.2s;
+            border: none;
+            text-decoration: none;
+        }
+
+        .mobile-nav-overlay .mob-cta:hover {
+            background: var(--gold-light);
         }
 
         /* ════════════════════════════════════════════════════
@@ -2540,7 +2607,31 @@
             <li><a id="nav-link-contact" onclick="loadPage('contact')">Contact Us</a></li>
         </ul>
         <a onclick="loadPage('contact')" class="nav-cta">Book Consultation</a>
+        <button class="hamburger" id="hamburgerBtn" aria-label="Toggle navigation" onclick="toggleMobileNav()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
     </nav>
+
+    <!-- Mobile Nav Panel (compact dropdown) -->
+    <div class="mobile-nav-overlay" id="mobileNavOverlay">
+        <a onclick="loadPage('home'); closeMobileNav()">Home</a>
+        <div class="mob-services-trigger" id="mobServicesTrigger" onclick="toggleMobServices()">
+            Our Services <span class="mob-chevron">&#9660;</span>
+        </div>
+        <div class="mob-services-submenu" id="mobServicesSubmenu">
+            <a onclick="loadPage('services'); closeMobileNav()">All Services</a>
+            <a onclick="loadPage('services-trading'); closeMobileNav()">General Trading</a>
+            <a onclick="loadPage('services-ecommerce'); closeMobileNav()">E-Commerce &amp; Retail</a>
+            <a onclick="loadPage('services-amazon'); closeMobileNav()">Amazon Seller (SPA)</a>
+            <a onclick="loadPage('services-compliance'); closeMobileNav()">Compliance Consultancy</a>
+            <a onclick="loadPage('services-accounting'); closeMobileNav()">Accounting &amp; Tax</a>
+            <a onclick="loadPage('services-corporate'); closeMobileNav()">Corporate Services</a>
+        </div>
+        <a onclick="loadPage('contact'); closeMobileNav()">Contact Us</a>
+        <a onclick="loadPage('contact'); closeMobileNav()" class="mob-cta">Book Consultation</a>
+    </div>
 
     <main id="main-content">
     </main>
@@ -4529,6 +4620,31 @@
                 document.getElementById('waPhone').value = '';
                 document.getElementById('waMessage').value = '';
             }, 4000);
+        }
+
+        // ── MOBILE NAV TOGGLE ───────────────────────────────────────────────────
+        function toggleMobileNav() {
+            const btn = document.getElementById('hamburgerBtn');
+            const overlay = document.getElementById('mobileNavOverlay');
+            btn.classList.toggle('open');
+            overlay.classList.toggle('open');
+        }
+
+        function closeMobileNav() {
+            document.getElementById('hamburgerBtn').classList.remove('open');
+            document.getElementById('mobileNavOverlay').classList.remove('open');
+            // Also collapse services submenu
+            const trigger = document.getElementById('mobServicesTrigger');
+            const submenu = document.getElementById('mobServicesSubmenu');
+            if (trigger) trigger.classList.remove('open');
+            if (submenu) submenu.classList.remove('open');
+        }
+
+        function toggleMobServices() {
+            const trigger = document.getElementById('mobServicesTrigger');
+            const submenu = document.getElementById('mobServicesSubmenu');
+            trigger.classList.toggle('open');
+            submenu.classList.toggle('open');
         }
 
         // ── COMPILER APPLICATION BOOT PROTOCOL ─────────────────────────────────
