@@ -14,6 +14,8 @@
 
     <style>
         /* ── UNIFIED MASTER VARIABLES & STYLING ────────────────────────────────── */
+
+
         :root {
             --gold: #C9A84C;
             --gold-light: #E2C97E;
@@ -2401,6 +2403,25 @@
 
             .service-card {
                 padding: 2rem 1.5rem 3.5rem;
+            }
+
+            .service-block {
+                gap: 2rem;
+            }
+
+            .service-block,
+            .service-block.reverse {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .service-block-visual img {
+                width: 100%;
+                height: auto;
+            }
+
+            .service-block-meta {
+                position: static;
             }
 
             /* WHY */
