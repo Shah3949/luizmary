@@ -727,6 +727,42 @@
             padding-top: 30px;
         }
 
+        .about-metadata-note {
+
+            display: flex;
+            justify-content: space-between;
+            /* Spans full width of the grid */
+            margin-top: 30px;
+            font-size: 25px;
+            color: #718096;
+            /* Muted note color */
+            font-style: italic;
+            border: 3px solid #c5a880;
+            border-radius: 6px;
+            margin-bottom: 12px;
+        }
+
+        .about-metadata-note .metadata-note-label {
+            width: 60%;
+            margin: 10px;
+        }
+
+        #ftaLogo {
+            width: 100%;
+
+        }
+
+        .about-metadata-icons {
+            display: flex;
+            gap: 20px;
+
+        }
+
+        .metadata-icon {
+            border: 2px solid #c5a880;
+            border-radius: 6px;
+        }
+
         .metadata-item {
             display: flex;
             flex-direction: column;
@@ -3498,6 +3534,28 @@
                             and a hands-on approach to helping clients navigate the UAE's regulatory landscape with
                             confidence.</p>
                     </div>
+                    <div class="about-metadata-icons">
+                        <div class="metadata-icon">
+                            <span class="metadata-label">Company Name</span>
+                            <span class="metadata-value">Bussiness Setup</span>
+                        </div>
+                        <div class="metadata-icon">
+                            <span class="metadata-label">Formation Type</span>
+                            <span class="metadata-value">Taxaation Service</span>
+                        </div>
+                        <div class="metadata-icon">
+                            <span class="metadata-label">Manager(s)</span>
+                            <span class="metadata-value">Audit &amp; Assurance</span>
+                        </div>
+                        <div class="metadata-icon">
+                            <span class="metadata-label">Jurisdiction</span>
+                            <span class="metadata-value">Accounting</span>
+                        </div>
+                        <div class="metadata-icon">
+                            <span class="metadata-label">Jurisdiction</span>
+                            <span class="metadata-value">Compliance</span>
+                        </div>
+                    </div>
 
                     <!-- Structured Data Grid matching the layout -->
                     <div class="about-metadata-grid">
@@ -3518,6 +3576,17 @@
                             <span class="metadata-value">Sharjah, UAE</span>
                         </div>
                     </div>
+                    <div class="about-metadata-note">
+                        <!-- <div class="metadata-note-label">FTA</div>
+                        <div class="metadata-note-desc">
+                            We are proudly registered with the Federal Tax Authority (FTA)
+                        </div> -->
+                        <img src="fta.png" alt="" id="ftaLogo" class="fta-logo">
+                    </div>
+                    <span style="color: var(--gold); align-items: center; text-align: center; font-size: large;"> We are
+                        proudly
+                        registered with the Federal
+                        Tax Authority (FTA)</span>
                 </div>
             </div>
         </section>
