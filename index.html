@@ -2009,6 +2009,14 @@
             border-top: 1px solid rgba(201, 168, 76, 0.08)
         }
 
+        /* authority logo */
+        .image-authority {
+            width: 120px;
+            height: auto;
+            object-fit: contain;
+            margin-top: 0.5rem;
+        }
+
         /* ── INTERNATIONAL PHONE INPUT GROUP ── */
         .phone-input-group {
             display: flex;
@@ -2954,6 +2962,117 @@
                 padding: 7rem 5% 3rem !important;
             }
         }
+
+        /* ── MODULE: INTERACTIVE CONTINUOUS TICKER ── */
+        .ticker-section {
+            padding: 2.5rem 0 !important;
+            background: rgb(245, 245, 245);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            position: relative;
+        }
+
+        /* Luxury edge overlays to fade items seamlessly into the view background */
+        .ticker-section::before,
+        .ticker-section::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            width: 100px;
+            height: 100%;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .ticker-section::before {
+            left: 0;
+            background: linear-gradient(to right, var(--navy-mid), transparent);
+        }
+
+        .ticker-section::after {
+            right: 0;
+            background: linear-gradient(to left, var(--navy-mid), transparent);
+        }
+
+        .ticker-container {
+            overflow: hidden;
+            width: 100%;
+            cursor: grab;
+            user-select: none;
+        }
+
+        .ticker-container:active {
+            cursor: grabbing;
+        }
+
+        .ticker-track {
+            display: flex;
+            width: max-content;
+            align-items: flex-start;
+            /* Keeps the top edge uniform */
+            gap: 70px;
+            /* Adjusts horizontal spacing between pairs */
+            animation: corporateTickerScroll 35s linear infinite;
+        }
+
+        /* Pause scroll animation when user hovers */
+        .ticker-container:hover .ticker-track {
+            animation-play-state: paused;
+        }
+
+        /* The vertical stack layout configuration */
+        .ticker-box {
+            display: flex;
+            flex-direction: column;
+            /* Forces the text to drop underneath the image */
+            align-items: center;
+            /* Keeps both logo and text perfectly centered */
+            justify-content: center;
+            gap: 12px;
+            /* Vertical space between image and text */
+            text-align: center;
+        }
+
+        /* Fixed uniform container to keep different image shapes perfectly proportioned */
+        .image-wrapper {
+            width: 130px;
+            /* Sets precise horizontal boundary */
+            height: 65px;
+            /* Sets precise height layout boundary */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .image-authority {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            /* Completely prevents logos stretching out of aspect ratio */
+            filter: brightness(1.05) contrast(1.02);
+        }
+
+        /* Luxury corporate typography sizing */
+        .ticker-item {
+            font-family: 'Cormorant Garamond', serif;
+            /* font-size: 1.15rem;
+            font-weight: 500; */
+            color: black;
+            letter-spacing: 0.03em;
+            white-space: nowrap;
+        }
+
+        /* Continuous infinite loop animation keyframes */
+        @keyframes corporateTickerScroll {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+                /* Shifts left perfectly by half the length of double sets */
+            }
+        }
     </style>
 </head>
 
@@ -3358,6 +3477,121 @@
             </div>
         </section>
 
+        <section class="ticker-section">
+            <div class="ticker-container" id="customTickerContainer">
+                <div class="ticker-track" id="customTickerTrack">
+
+                    <div class="ticker-box">
+                        <div class="image-wrapper">
+                            <img class="image-authority" src="assets/ajman free zone.png" alt="Ajman Free Zone">
+                        </div>
+                        <div class="ticker-item">Ajman Free Zone</div>
+                    </div>
+                    <div class="ticker-box">
+                        <div class="image-wrapper">
+                            <img class="image-authority" src="assets/federal tax authority.png"
+                                alt="Federal Tax Authority">
+                        </div>
+                        <div class="ticker-item">Federal Tax Authority</div>
+                    </div>
+                    <div class="ticker-box">
+                        <div class="image-wrapper">
+                            <img class="image-authority" src="assets/Shams Free Zone.png" alt="Shams Free Zone">
+                        </div>
+                        <div class="ticker-item">Shams Free Zone</div>
+                    </div>
+                    <div class="ticker-box">
+                        <div class="image-wrapper">
+                            <img class="image-authority" src="assets/dubai economy department.png"
+                                alt="Dubai Economy Department">
+                        </div>
+                        <div class="ticker-item">Dubai Economy Department</div>
+                    </div>
+                    <div class="ticker-box">
+                        <div class="image-wrapper">
+                            <img class="image-authority" src="assets/Meydan Free Zone.png" alt="Meydan Free Zone">
+                        </div>
+                        <div class="ticker-item">Meydan Free Zone</div>
+                    </div>
+                    <div class="ticker-box">
+                        <div class="image-wrapper">
+                            <img class="image-authority" src="assets/international free zone authority.png"
+                                alt="International Free Zone Authority">
+                        </div>
+                        <div class="ticker-item">International Free Zone Authority</div>
+                    </div>
+                    <div class="ticker-box">
+                        <div class="image-wrapper">
+                            <img class="image-authority" src="assets/Ras Al Khaimah Economic Zone.png"
+                                alt="Ras Al Khaimah Economic Zone">
+                        </div>
+                        <div class="ticker-item">Ras Al Khaimah Economic Zone</div>
+                    </div>
+                    <div class="ticker-box">
+                        <div class="image-wrapper">
+                            <img class="image-authority" src="assets/Sharjah Publishing City.png"
+                                alt="Sharjah Publishing City">
+                        </div>
+                        <div class="ticker-item">Sharjah Publishing City</div>
+                    </div>
+
+                    <div class="ticker-box">
+                        <div class="image-wrapper">
+                            <img class="image-authority" src="assets/ajman free zone.png" alt="Ajman Free Zone">
+                        </div>
+                        <div class="ticker-item">Ajman Free Zone</div>
+                    </div>
+                    <div class="ticker-box">
+                        <div class="image-wrapper">
+                            <img class="image-authority" src="assets/federal tax authority.png"
+                                alt="Federal Tax Authority">
+                        </div>
+                        <div class="ticker-item">Federal Tax Authority</div>
+                    </div>
+                    <div class="ticker-box">
+                        <div class="image-wrapper">
+                            <img class="image-authority" src="assets/Shams Free Zone.png" alt="Shams Free Zone">
+                        </div>
+                        <div class="ticker-item">Shams Free Zone</div>
+                    </div>
+                    <div class="ticker-box">
+                        <div class="image-wrapper">
+                            <img class="image-authority" src="assets/dubai economy department.png"
+                                alt="Dubai Economy Department">
+                        </div>
+                        <div class="ticker-item">Dubai Economy Department</div>
+                    </div>
+                    <div class="ticker-box">
+                        <div class="image-wrapper">
+                            <img class="image-authority" src="assets/Meydan Free Zone.png" alt="Meydan Free Zone">
+                        </div>
+                        <div class="ticker-item">Meydan Free Zone</div>
+                    </div>
+                    <div class="ticker-box">
+                        <div class="image-wrapper">
+                            <img class="image-authority" src="assets/international free zone authority.png"
+                                alt="International Free Zone Authority">
+                        </div>
+                        <div class="ticker-item">International Free Zone Authority</div>
+                    </div>
+                    <div class="ticker-box">
+                        <div class="image-wrapper">
+                            <img class="image-authority" src="assets/Ras Al Khaimah Economic Zone.png"
+                                alt="Ras Al Khaimah Economic Zone">
+                        </div>
+                        <div class="ticker-item">Ras Al Khaimah Economic Zone</div>
+                    </div>
+                    <div class="ticker-box">
+                        <div class="image-wrapper">
+                            <img class="image-authority" src="assets/Sharjah Publishing City.png"
+                                alt="Sharjah Publishing City">
+                        </div>
+                        <div class="ticker-item">Sharjah Publishing City</div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
         <section id="services">
             <div class="services-header">
                 <h2 class="section-title">Our Services</h2>
@@ -4637,20 +4871,32 @@
 
 
     <script>
-        const slides = document.querySelectorAll('.hero-slide'), ic = document.getElementById('indicators'); let cur = 0;
-        slides.forEach((_, i) => { const d = document.createElement('div'); d.className = 'indicator' + (i === 0 ? ' active' : ''); d.addEventListener('click', () => goTo(i)); ic.appendChild(d); });
-        function goTo(n) { slides[cur].classList.remove('active'); ic.children[cur].classList.remove('active'); cur = n; slides[cur].classList.add('active'); ic.children[cur].classList.add('active'); }
-        setInterval(() => goTo((cur + 1) % slides.length), 3500);
-        document.querySelectorAll('a[href^="#"]').forEach(a => { a.addEventListener('click', e => { e.preventDefault(); const t = document.querySelector(a.getAttribute('href')); if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' }); }); });
-        // ── INITIALIZE ENVIRONMENT SCRIPT CONFIGURATIONS ───────────────────────
+        // ── GLOBAL APPLICATION CONFIGURATION & STATE ───────────────────────────
+        let homeCarouselIntervalId = null;
+
+        // Initialize environment third-party packages securely on script lifecycle entry
         (function () {
-            // Initialize EmailJS public key on loading framework instance lifecycle
-            emailjs.init({ publicKey: "YOUR_PUBLIC_KEY_HERE" });
+            if (typeof emailjs !== 'undefined') {
+                emailjs.init({ publicKey: "YOUR_PUBLIC_KEY_HERE" });
+            }
         })();
 
+        // Smooth scroll event listeners for anchor elements
+        document.addEventListener("DOMContentLoaded", () => {
+            document.querySelectorAll('a[href^="#"]').forEach(a => {
+                a.addEventListener('click', e => {
+                    e.preventDefault();
+                    const target = document.querySelector(a.getAttribute('href'));
+                    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                });
+            });
 
+            // Force instant mount parameters loading default Home layout
+            loadPage('home');
+        });
+
+        // ── DYNAMIC SINGLE PAGE TEMPLATE ROUTER ───────────────────────────────
         function loadPage(pageId) {
-            // 1. Fetch targeted structural template references from the file
             const template = document.getElementById(`page-${pageId}`);
             const mainContent = document.getElementById('main-content');
 
@@ -4659,12 +4905,12 @@
                 return;
             }
 
-            // 2. Clear out older HTML elements and clone the updated structural component safely
+            // Clear out older HTML elements and clone the updated structural component safely
             mainContent.innerHTML = '';
             const clonedNode = template.content.cloneNode(true);
             mainContent.appendChild(clonedNode);
 
-            // 3. Update navbar highlighting rules
+            // Update navbar highlighting rules
             document.querySelectorAll('.nav-links a').forEach(link => link.classList.remove('active'));
             if (pageId.startsWith('services-')) {
                 const servicesLink = document.getElementById('nav-link-services');
@@ -4674,52 +4920,138 @@
                 if (targetLink) targetLink.classList.add('active');
             }
 
-            // ── ADDED FIX FOR CAROUSEL ENGINE INITIALIZATION ──
+            // CAROUSEL ENGINE INITIALIZATION CONTROL
             if (pageId === 'home') {
                 initializeHeroCarouselEngine();
             } else {
-                // Clear active interval cycles when migrating away from Home layout
+                // Completely clear active interval cycles when migrating away from Home layout
                 if (homeCarouselIntervalId) {
                     clearInterval(homeCarouselIntervalId);
                     homeCarouselIntervalId = null;
                 }
             }
 
-            // 4. Return scroll positioning smoothly back to top layout boundaries
+            // Return scroll positioning smoothly back to top layout boundaries
             window.scrollTo({ top: 0, behavior: 'instant' });
         }
-        // ── HERO CAROUSEL ENGINE (Exclusively active during Home screen states) ──
-        let homeCarouselIntervalId = null;
 
+        // ── HERO CAROUSEL ENGINE (Exclusively active during Home screen states) ──
         function initializeHeroCarouselEngine() {
-            // Safely clear any previously running interval cycles before starting a new one
             if (homeCarouselIntervalId) clearInterval(homeCarouselIntervalId);
 
             const slides = document.querySelectorAll('.hero-slide');
-            const indicators = document.querySelectorAll('.indicator');
+            const indicatorsContainer = document.getElementById('indicators');
+
+            if (!slides.length || !indicatorsContainer) return;
+
+            // Clear pre-existing indicator dots to prevent duplicates on multi-renders
+            indicatorsContainer.innerHTML = '';
             let currentIdx = 0;
 
-            if (!slides.length || !indicators.length) return;
+            // Dynamically build the indicators based on the exact cloned DOM elements found
+            slides.forEach((_, idx) => {
+                const dot = document.createElement('div');
+                dot.className = 'indicator' + (idx === 0 ? ' active' : '');
+                dot.addEventListener('click', () => shiftToSlide(idx));
+                indicatorsContainer.appendChild(dot);
+            });
+
+            const indicators = indicatorsContainer.children;
 
             function shiftToSlide(targetIdx) {
+                if (!slides[currentIdx] || !indicators[currentIdx]) return;
+
                 slides[currentIdx].classList.remove('active');
                 indicators[currentIdx].classList.remove('active');
+
                 currentIdx = targetIdx;
+
                 slides[currentIdx].classList.add('active');
                 indicators[currentIdx].classList.add('active');
             }
 
-            // Wire indicator click events manually for instant viewport control overrides
-            indicators.forEach((ind, idx) => {
-                ind.addEventListener('click', () => shiftToSlide(idx));
-            });
-
-            // Setup background tracking loops
+            // Setup background auto-rotation tracking loop (4000ms cycle)
             homeCarouselIntervalId = setInterval(() => {
                 shiftToSlide((currentIdx + 1) % slides.length);
             }, 4000);
         }
+        // ── INTERACTIVE DRAG-TO-SCROLL TICKER SCRIPT ───────────────────────────
+        (function initCorporateTicker() {
+            const container = document.getElementById('customTickerContainer');
+            const track = document.getElementById('customTickerTrack');
 
+            if (!container || !track) return;
+
+            let isDown = false;
+            let startX;
+            let currentTranslate = 0;
+
+            const getHalfWidth = () => track.offsetWidth / 2;
+
+            // Trigger Drag Start
+            function dragStart(e) {
+                isDown = true;
+                track.style.animationPlayState = 'paused';
+
+                // Grab current computed transformation translation matrix
+                const computedStyle = window.getComputedStyle(track);
+                const matrix = new WebKitCSSMatrix(computedStyle.transform);
+                currentTranslate = matrix.m41; // Captures current visual X Coordinate
+
+                const pageX = e.type.includes('touch') ? e.touches[0].pageX : e.pageX;
+                startX = pageX - currentTranslate;
+            }
+
+            // Trigger Drag Movement
+            function dragMove(e) {
+                if (!isDown) return;
+                e.preventDefault();
+
+                const pageX = e.type.includes('touch') ? e.touches[0].pageX : e.pageX;
+                let walk = pageX - startX;
+                const halfWidth = getHalfWidth();
+
+                // Safe Infinite Boundaries processing loop while actively dragging
+                if (walk > 0) {
+                    walk = -halfWidth;
+                    startX = pageX - walk;
+                } else if (walk < -halfWidth) {
+                    walk = 0;
+                    startX = pageX - walk;
+                }
+
+                track.style.transform = `translateX(${walk}px)`;
+            }
+
+            // Terminate Drag State & Sync Timeline back to CSS Keyframes smoothly
+            function dragEnd() {
+                if (!isDown) return;
+                isDown = false;
+
+                const computedStyle = window.getComputedStyle(track);
+                const matrix = new WebKitCSSMatrix(computedStyle.transform);
+                const finalTranslate = matrix.m41;
+                const halfWidth = getHalfWidth();
+
+                // Dynamic animation restart calculation prevents visual jumping
+                track.style.animation = 'none';
+                track.offsetHeight; // Forces visual browser layout recalculation 
+                track.style.animation = `corporateTickerScroll 30s linear infinite`;
+
+                track.style.animationPlayState = 'running';
+            }
+
+            // Desktop Mouse Events listeners
+            container.addEventListener('mousedown', dragStart);
+            container.addEventListener('mousemove', dragMove);
+            container.addEventListener('mouseup', dragEnd);
+            container.addEventListener('mouseleave', dragEnd);
+
+            // Mobile/Tablet Touch Events listeners
+            container.addEventListener('touchstart', dragStart, { passive: true });
+            container.addEventListener('touchmove', dragMove, { passive: false });
+            container.addEventListener('touchend', dragEnd);
+        })();
         // ── SECURE INTAKE FORM TRANSMISSION HANDLER (Contact View Event) ──────
         async function handleFormSubmission(event) {
             event.preventDefault();
@@ -4728,20 +5060,18 @@
             const submitButton = document.getElementById('submitBtn');
             const successDisplay = document.getElementById('successAlert');
             const errorDisplay = document.getElementById('errorAlert');
-            // Replace old single value query with this inside your form submission function
+
             const countryCode = document.getElementById('hero-country-code').value;
             const partialPhone = document.getElementById('hero-phone').value;
             const fullPhoneNumber = `${countryCode} ${partialPhone.trim()}`;
 
-            // Ready to send off via EmailJS payload parameter keys!
-            console.log("Combined Formatted Phone Vector Target:", fullPhoneNumber);
-
             // Clear alert banners before starting transmission
-            successDisplay.classList.remove('show');
-            errorDisplay.classList.remove('show');
+            if (successDisplay) successDisplay.classList.remove('show');
+            if (errorDisplay) errorDisplay.classList.remove('show');
 
             // Lock submit operations to block race conditions
             submitButton.disabled = true;
+            const originalBtnContent = submitButton.innerHTML;
             submitButton.innerHTML = "Securing Payload Line...";
 
             const dataPayload = {
@@ -4753,16 +5083,15 @@
             };
 
             try {
-                // Execute dynamic transaction call using EmailJS secure SDK pipelines
                 await emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', dataPayload);
-                successDisplay.classList.add('show');
+                if (successDisplay) successDisplay.classList.add('show');
                 formElement.reset();
             } catch (exceptionErr) {
                 console.error('EmailJS SDK Transaction Exception Alert:', exceptionErr);
-                errorDisplay.classList.add('show');
+                if (errorDisplay) errorDisplay.classList.add('show');
             } finally {
                 submitButton.disabled = false;
-                submitButton.innerHTML = `<svg viewBox="0 0 24 24" style="width:16px;height:16px;stroke:var(--navy);fill:none;stroke-width:2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg> Send Consultation Request`;
+                submitButton.innerHTML = originalBtnContent;
             }
         }
 
@@ -4781,7 +5110,6 @@
                 return;
             }
 
-            // Sanitize and parameterize text context values for international standards
             const compiledMessage = encodeURIComponent(
                 `*New Consultation Request — Luizmary Associates*\n\n` +
                 `Name: ${nameVal}\n` +
@@ -4789,7 +5117,6 @@
                 `Message: ${messageVal || 'No message details provided.'}`
             );
 
-            // Direct routing execution link trigger targeting international client desk setups
             window.open(`https://wa.me/971000000000?text=${compiledMessage}`, '_blank');
 
             document.getElementById('waForm').style.display = 'none';
@@ -4797,7 +5124,6 @@
 
             setTimeout(() => {
                 document.getElementById('waPopup').classList.remove('open');
-                // Reset inputs back to initial state safely inside runtime parameters
                 document.getElementById('waForm').style.display = 'block';
                 document.getElementById('waSuccess').style.display = 'none';
                 document.getElementById('waName').value = '';
@@ -4808,16 +5134,14 @@
 
         // ── MOBILE NAV TOGGLE ───────────────────────────────────────────────────
         function toggleMobileNav() {
-            const btn = document.getElementById('hamburgerBtn');
-            const overlay = document.getElementById('mobileNavOverlay');
-            btn.classList.toggle('open');
-            overlay.classList.toggle('open');
+            document.getElementById('hamburgerBtn').classList.toggle('open');
+            document.getElementById('mobileNavOverlay').classList.toggle('open');
         }
 
         function closeMobileNav() {
             document.getElementById('hamburgerBtn').classList.remove('open');
             document.getElementById('mobileNavOverlay').classList.remove('open');
-            // Also collapse services submenu
+
             const trigger = document.getElementById('mobServicesTrigger');
             const submenu = document.getElementById('mobServicesSubmenu');
             if (trigger) trigger.classList.remove('open');
@@ -4827,15 +5151,10 @@
         function toggleMobServices() {
             const trigger = document.getElementById('mobServicesTrigger');
             const submenu = document.getElementById('mobServicesSubmenu');
-            trigger.classList.toggle('open');
-            submenu.classList.toggle('open');
+            if (trigger) trigger.classList.toggle('open');
+            if (submenu) submenu.classList.toggle('open');
         }
 
-        // ── COMPILER APPLICATION BOOT PROTOCOL ─────────────────────────────────
-        document.addEventListener("DOMContentLoaded", () => {
-            // Force instant mount parameters loading default Home layout
-            loadPage('home');
-        });
     </script>
 
 </body>
