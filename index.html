@@ -1833,104 +1833,7 @@
             color: var(--gold);
         }
 
-        /* ── FOOTER STYLING ─────────────────────────────────────────────────────
-        footer {
-            background: #060D14;
-            padding: 5rem 8% 2rem;
-            border-top: 1px solid var(--border);
-        }
 
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 1.5fr repeat(3, 1fr);
-            gap: 4rem;
-            margin-bottom: 4rem;
-        }
-
-        .footer-brand .footer-logo {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--gold);
-            text-decoration: none;
-        }
-
-        .footer-brand .footer-logo span {
-            display: block;
-            font-size: 0.6rem;
-            font-family: 'Inter', sans-serif;
-            color: var(--text-muted);
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            margin-top: 0.2rem;
-        }
-
-        .footer-desc {
-            font-size: 0.88rem;
-            color: var(--text-muted);
-            line-height: 1.65;
-            margin-top: 1.2rem;
-        }
-
-        .footer-col h4 {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.75rem;
-            font-weight: 600;
-            color: var(--gold);
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            margin-bottom: 1.5rem;
-        }
-
-        .footer-links {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 0.8rem;
-        }
-
-        .footer-links a {
-            color: rgba(255, 255, 255, 0.65);
-            text-decoration: none;
-            font-size: 0.88rem;
-            transition: color 0.2s;
-            cursor: pointer;
-        }
-
-        .footer-links a:hover {
-            color: var(--gold);
-        }
-
-        .footer-bottom {
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-
-        .copy {
-            font-size: 0.82rem;
-            color: var(--text-muted);
-        }
-
-        .footer-legal {
-            display: flex;
-            gap: 1.5rem;
-        }
-
-        .footer-legal a {
-            font-size: 0.82rem;
-            color: var(--text-muted);
-            text-decoration: none;
-            transition: color 0.2s;
-        }
-
-        .footer-legal a:hover {
-            color: var(--gold);
-        } */
         /* FOOTER */
         footer {
             background: #0a1520;
@@ -3156,21 +3059,27 @@
                 <div class="footer-col-title">Quick Links</div>
                 <ul>
                     <li><a href="#about">About Us</a></li>
-                    <li><a href="services.html">Our Services</a></li>
-                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a style="cursor: pointer;" onclick="loadPage('services')">Our Services</a></li>
+                    <li><a style="cursor: pointer;" onclick="loadPage('contact')">Contact Us</a></li>
                     <li><a href="#process">Our Process</a></li>
-                    <li><a href="contact.html">Book Appointment</a></li>
-                    <li><a href="#license">Company Info</a></li>
+                    <li><a href="#hero">Book Appointment</a></li>
                 </ul>
             </div>
             <div class="footer-col">
                 <div class="footer-col-title">Services</div>
                 <ul>
-                    <li><a href="services.html#trading">Company Setup</a></li>
-                    <li><a href="services.html#ecommerce">E-Commerce &amp; Retail</a></li>
-                    <li><a href="services.html#compliance">Compliance Consultancy</a></li>
-                    <li><a href="services.html#accounting">Accounting &amp; Tax</a></li>
-                    <li><a href="services.html#corporate">Corporate Services</a></li>
+                    <li><a style="cursor:pointer;" onclick="loadPage('services-trading'); ">Company Setup</a></li>
+                    <li><a style="cursor:pointer;" onclick="loadPage('services-ecommerce'); ">E-Commerce &amp;
+                            Retail</a></li>
+                    <li><a style="cursor:pointer;" onclick="loadPage('services-amazon'); ">Amazon Seller Services
+                            (SPA)</a></li>
+                    <li><a style="cursor:pointer;" onclick="loadPage('services-compliance'); ">Compliance
+                            Consultancy</a></li>
+                    <li><a style="cursor:pointer;" onclick="loadPage('services-accounting'); ">Accounting &amp; Tax</a>
+                    </li>
+                    <li><a style="cursor:pointer;" onclick="loadPage('services'); ">All Services</a></li>
+                    <li><a style="cursor:pointer;" onclick="loadPage('services-corporate'); ">Corporate Services</a>
+                    </li>
                 </ul>
             </div>
             <div class="footer-col">
@@ -3207,7 +3116,7 @@
                         <path
                             d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z" />
                     </svg>
-                    <div class="footer-contact-text">Available on request</div>
+                    <div class="footer-contact-text">+9 71501454198</div>
                 </div>
             </div>
         </div>
@@ -3638,7 +3547,7 @@
                 <!-- Header Text -->
                 <h2
                     style="font-family: 'Cormorant Garamond', serif; font-size: 2.4rem; color: var(--gold); margin: 0 0 1rem 0; font-weight: 600; letter-spacing: 1px;">
-                    Why Partner with Luizmary?
+                    Why Choose Us?
                 </h2>
 
                 <!-- Short Pitch Paragraph -->
@@ -3662,8 +3571,8 @@
                                     style="font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; color: var(--white); margin: 0 0 0.4rem 0; font-weight: 600;">
                                     Fully Licensed Framework</h4>
                                 <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; margin: 0;">
-                                    Proudly established and licensed in the prestigious Sharjah Publishing City Free
-                                    Zone.</p>
+                                    <b style="color: var(--gold-accent);">FTA Registered</b> Tax Agents and Auditors
+                                </p>
                             </div>
                         </div>
 
@@ -3729,94 +3638,6 @@
         </section>
 
 
-
-        <section id="why">
-            <div class="section-eyebrow">Our Approach</div>
-            <div class="why-grid">
-                <div class="why-features">
-                    <h2 class="section-title">Built on Expertise, Driven by Results</h2>
-                    <div class="gold-rule"></div>
-                    <div class="why-feature">
-                        <div class="why-num">01</div>
-                        <div>
-                            <div class="why-feature-title">UAE-Licensed &amp; Fully Compliant</div>
-                            <div class="why-feature-text">Registered under , we operate
-                                within the full
-                                legal framework of the UAE — ensuring your business is protected from day one.</div>
-                        </div>
-                    </div>
-                    <div class="why-feature">
-                        <div class="why-num">02</div>
-                        <div>
-                            <div class="why-feature-title">Experienced, Hands-On Leadership</div>
-                            <div class="why-feature-text">Our managers bring direct, senior-level involvement to every
-                                client engagement
-                                — not delegation to junior staff.</div>
-                        </div>
-                    </div>
-                    <div class="why-feature">
-                        <div class="why-num">03</div>
-                        <div>
-                            <div class="why-feature-title">Integrated Service Model</div>
-                            <div class="why-feature-text">From trading to accounting to compliance, our
-                                multi-disciplinary service
-                                offering means comprehensive coverage under one trusted roof.</div>
-                        </div>
-                    </div>
-                    <div class="why-feature">
-                        <div class="why-num">04</div>
-                        <div>
-                            <div class="why-feature-title">Transparent &amp; Client-Focused</div>
-                            <div class="why-feature-text">We work with clear communication, defined deliverables, and
-                                honest counsel —
-                                no hidden fees, no surprises.</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="why-visual"><img class="why-img"
-                        src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=80"
-                        alt="Professional consultancy team at work"></div>
-            </div>
-        </section>
-
-        <section id="license">
-            <div class="section-eyebrow">Company Details</div>
-            <h2 class="section-title">Official Registration Information</h2>
-            <p class="section-lead">Luizmary Associates is a licensed entity under the
-                authority,
-                UAE.</p>
-            <div class="license-grid">
-                <div class="license-item">
-                    <div class="license-label">Company Name</div>
-                    <div class="license-value">Luizmary Associates</div>
-                </div>
-                <div class="license-item">
-                    <div class="license-label">Formation Type</div>
-                    <div class="license-value">Free Zone Establishment (FZE)</div>
-                </div>
-                <div class="license-item">
-                    <div class="license-label">Jurisdiction</div>
-                    <div class="license-value"></div>
-                </div>
-                <div class="license-item">
-                    <div class="license-label">Company Address</div>
-                    <div class="license-value">Business Centre, , Sharjah, United Arab
-                        Emirates
-                    </div>
-                </div>
-                <div class="license-item">
-                    <div class="license-label">Manager(s)</div>
-                    <div class="license-value">Merline Minin Fernandes Minin<br>Daigo Fernandes</div>
-                </div>
-                <div class="license-item">
-                    <div class="license-label">Licensed Activities</div>
-                    <div class="license-value">Company Setup · E-Commerce · Compliance Consultancy · Accounting &amp;
-                        Tax ·
-                        Corporate Services</div>
-                </div>
-            </div>
-        </section>
-
         <section id="process">
             <div style="text-align:center;max-width:600px;margin:0 auto">
                 <div class="section-eyebrow" style="justify-content:center">How We Work</div>
@@ -3835,10 +3656,11 @@
                 </div>
                 <div class="process-step">
                     <div class="step-circle">2</div>
-                    <div class="step-title">Tailored Proposal</div>
-                    <div class="step-desc">We prepare a clear proposal outlining the scope of services, timeline, and
-                        fixed fees —
-                        no ambiguity.</div>
+                    <div class="step-title">Customized Solution</div>
+                    <div class="step-desc">We prepare a clear
+                        roadmap outlining the scope of services, timeline, and fixed fees—ensuring complete
+                        transparency from the start.
+                        23.</div>
                 </div>
                 <div class="process-step">
                     <div class="step-circle">3</div>
@@ -3856,6 +3678,7 @@
                 </div>
             </div>
         </section>
+
 
         <div id="cta-strip">
             <div class="cta-strip-text">
