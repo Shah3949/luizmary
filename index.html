@@ -70,6 +70,32 @@
             }
         }
 
+        /* ── SCROLL FADE-IN EFFECTS ───────────────────────────────────────────── */
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+            will-change: opacity, transform;
+        }
+
+        .scroll-reveal.reveal-active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Staggering child elements inside a revealed container */
+        .scroll-reveal .service-card:nth-child(1) {
+            transition-delay: 0.1s;
+        }
+
+        .scroll-reveal .service-card:nth-child(2) {
+            transition-delay: 0.2s;
+        }
+
+        .scroll-reveal .service-card:nth-child(3) {
+            transition-delay: 0.3s;
+        }
+
         /* ── FIXED NAVIGATION BAR ─────────────────────────────────────────────── */
         /* ── DROPDOWN NAVIGATION OVERLAYS ─────────────────────────────────────── */
         .dropdown-container {
@@ -3075,12 +3101,29 @@
                 /* Shifts left perfectly by half the length of double sets */
             }
         }
+
+        /* Animation for items at the top of the page */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in-on-load {
+            animation: fadeInUp 1s ease-out forwards;
+        }
     </style>
 </head>
 
 <body>
 
-    <nav>
+    <nav class="scroll-reveal">
         <div class="nav-logo-container" onclick="loadPage('home')">
             <img src="logo.png" alt="Luizmary Associates Logo" class="nav-logo-img">
             <img src="logo2.png" alt="Luizmary Associates Logo" class="nav-logo-img-alt">
@@ -3296,7 +3339,7 @@
 
 
 
-    <template id="page-home">
+    <template id="page-home" class="fade-in-on-load">
         <section id="hero">
             <div class="hero-slides">
                 <div class="hero-slide active"></div>
@@ -4595,7 +4638,8 @@
                     <span class="service-tag">Structuring Core</span>
                     <h2 class="service-block-title">Corporate Formations & Strategic Structuring</h2>
                     <div class="gold-rule"></div>
-                    <p class="service-block-desc">Selecting the ideal corporate framework is the single most critical
+                    <p class="service-block-desc">Selecting the ideal corporate framework is the single most
+                        critical
                         decision for asset insulation and operational longevity in the UAE. We engineer precise
                         multi-jurisdictional pipelines tailored to your organizational target requirements.</p>
                     <a onclick="loadPage('contact')" class="btn-primary">Initiate Corporate Blueprint</a>
@@ -4606,14 +4650,17 @@
                             alt="Modern commercial skyscrapers in Dubai, UAE">
                     </div>
                     <ul class="service-sub-list" style="margin-top: 2rem;">
-                        <li><strong>Free Zone Formations (Shams, IFZA, DWTCA, DMCC):</strong> Enjoy 100% foreign equity
+                        <li><strong>Free Zone Formations (Shams, IFZA, DWTCA, DMCC):</strong> Enjoy 100% foreign
+                            equity
                             control, zero localized personal or business tax liabilities, and complete transactional
                             capital repatriation setups.</li>
                         <li><strong>Mainland Entity Architecture:</strong> Open pathways to trade dynamically across
-                            onshore UAE domestic markets and participate directly in lucrative government public tenders
+                            onshore UAE domestic markets and participate directly in lucrative government public
+                            tenders
                             without operational restrictions.</li>
                         <li><strong>Offshore Asset Containers (JAFZA, RAKICC):</strong> Build dynamic holding
-                            configurations to secure intellectual property ownership, isolate liabilities, and maintain
+                            configurations to secure intellectual property ownership, isolate liabilities, and
+                            maintain
                             private structural profiles.</li>
                     </ul>
                     <div class="service-highlight-box">
@@ -4636,17 +4683,22 @@
                     </div>
                     <ul class="service-sub-list" style="margin-top: 2rem;">
                         <li><strong>Economic Substance Regulation Compliance:</strong> Complete preparation,
-                            verification, and timely filing updates to verify operational presence requirements under
+                            verification, and timely filing updates to verify operational presence requirements
+                            under
                             localized UAE laws.</li>
-                        <li><strong>Anti-Money Laundering Frameworks:</strong> Complete verification design, customer
+                        <li><strong>Anti-Money Laundering Frameworks:</strong> Complete verification design,
+                            customer
                             onboarding flow structures, and internal risk mitigation protocols to pass rigorous
                             institutional monitoring.</li>
-                        <li><strong>Corporate Tax Onboarding:</strong> Seamless alignment with the newly launched 9% UAE
+                        <li><strong>Corporate Tax Onboarding:</strong> Seamless alignment with the newly launched 9%
+                            UAE
                             Federal Corporate Tax regulations, protecting your eligible exemptions safely.</li>
                     </ul>
                     <div class="service-highlight-box">
-                        <p><strong>Regulatory Context:</strong> Maintaining institutional compliance prevents friction
-                            with regional auditing bodies and guarantees uninterrupted global business functionality.
+                        <p><strong>Regulatory Context:</strong> Maintaining institutional compliance prevents
+                            friction
+                            with regional auditing bodies and guarantees uninterrupted global business
+                            functionality.
                         </p>
                     </div>
                 </div>
@@ -4655,7 +4707,8 @@
                     <h2 class="service-block-title">International Governance & AML Compliance</h2>
                     <div class="gold-rule"></div>
                     <p class="service-block-desc">Modern financial networks demand transparency. We keep your entity
-                        fully aligned with international regulatory requirements, completely protecting your operational
+                        fully aligned with international regulatory requirements, completely protecting your
+                        operational
                         standing from compliance risks.</p>
                     <a onclick="loadPage('contact')" class="btn-primary">Request Compliance Audit</a>
                 </div>
@@ -4670,7 +4723,8 @@
                     <span class="service-tag">Capital Infrastructure</span>
                     <h2 class="service-block-title">Corporate Banking Navigation & Setup</h2>
                     <div class="gold-rule"></div>
-                    <p class="service-block-desc">Opening an active commercial account in the region requires precision
+                    <p class="service-block-desc">Opening an active commercial account in the region requires
+                        precision
                         compliance modeling. We utilize long-standing corporate relationships with tier-1 banking
                         institutions to streamline your application pathways.</p>
                     <a onclick="loadPage('contact')" class="btn-primary">Initiate Banking Application</a>
@@ -4683,19 +4737,24 @@
                     <ul class="service-sub-list" style="margin-top: 2rem;">
                         <li><strong>Tier-1 Operational Accounts:</strong> Direct pipelines to leading local banks
                             (Emirates NBD, Mashreq, Wio) for robust multi-currency transactional processing.</li>
-                        <li><strong>Private Wealth Banking Access:</strong> Elite account configurations for specialized
+                        <li><strong>Private Wealth Banking Access:</strong> Elite account configurations for
+                            specialized
                             capital allocation, multi-market investment tracking, and confidential asset protection.
                         </li>
-                        <li><strong>Merchant Processing Gateways:</strong> Integration advisory to connect international
+                        <li><strong>Merchant Processing Gateways:</strong> Integration advisory to connect
+                            international
                             payment systems (Stripe, checkout.com) directly to your UAE commercial accounts.</li>
                     </ul>
                     <div class="service-highlight-box">
-                        <p><strong>Processing Notice:</strong> Our team coordinates document presentation requirements
+                        <p><strong>Processing Notice:</strong> Our team coordinates document presentation
+                            requirements
                             beforehand, significantly reducing standard corporate application delays.</p>
                     </div>
                 </div>
             </div>
         </div>
+        </div>
+
     </template>
 
 
@@ -4873,6 +4932,32 @@
 
 
     <script>
+        // ── SCROLL REVEAL (FADE IN) OBSERVER ────────────────────────────────────
+        document.addEventListener("DOMContentLoaded", function () {
+            const revealElements = document.querySelectorAll(".scroll-reveal");
+
+            const observerOptions = {
+                root: null,
+                // 1. Changing the margin to 0px ensures elements at the very top trigger immediately
+                rootMargin: "0px",
+                // 2. Reducing threshold to 0.05 or 0.1 allows the object to trigger as soon as even a tiny piece is on-screen
+                threshold: 0.05
+            };
+
+            const revealObserver = new IntersectionObserver(function (entries, observer) {
+                entries.forEach(entry => {
+                    // Check if element is intersecting OR if it is already positioned in viewport on landing
+                    if (entry.isIntersecting || entry.boundingClientRect.top < window.innerHeight) {
+                        entry.target.classList.add("reveal-active");
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            revealElements.forEach(element => {
+                revealObserver.observe(element);
+            });
+        });
         // ── GLOBAL APPLICATION CONFIGURATION & STATE ───────────────────────────
         let homeCarouselIntervalId = null;
 
