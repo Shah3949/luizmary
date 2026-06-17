@@ -23,6 +23,8 @@
             --navy: #0D1B2A;
             --navy-mid: #162437;
             --navy-light: #1E3148;
+            --soft-white: #e9ecef;
+            --gold-accent: #dfb76c;
             --cream: #F8F4EE;
             --white: #FFFFFF;
             --text-muted: #8A9BB0;
@@ -870,11 +872,21 @@
             background: var(--gold);
             transform: scaleX(0);
             transform-origin: left;
-            transition: transform 0.35s ease
+            transition: transform 0.40s ease
         }
 
         .service-card:hover {
             background: var(--navy-light)
+        }
+
+        /* Changes service card text color on hover */
+        .service-card:hover .service-name,
+        .service-card:hover .service-short {
+            color: var(--gold-accent);
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1)
         }
 
         .service-card:hover::before {
@@ -929,6 +941,7 @@
 
         .service-card:hover .service-expanded {
             max-height: 300px;
+            color: var(--gold-accent);
             opacity: 1
         }
 
@@ -954,7 +967,7 @@
 
         .service-expanded-inner li::before {
             content: '—';
-            color: var(--gold);
+            color: var(--gold-accent);
             font-size: 0.7rem
         }
 
@@ -973,6 +986,7 @@
         }
 
         .service-card:hover .service-arrow {
+            color: var(--gold-accent);
             border-color: var(--gold);
             background: var(--gold)
         }
@@ -985,6 +999,7 @@
         }
 
         .service-card:hover .service-arrow svg {
+            color: var(--gold-accent);
             stroke: var(--navy)
         }
 
@@ -1457,6 +1472,7 @@
 
         .service-card:hover .service-expanded {
             max-height: 300px;
+            color: var(--gold-accent);
             opacity: 1;
         }
 
@@ -1482,7 +1498,7 @@
 
         .service-expanded-inner li::before {
             content: '—';
-            color: var(--gold);
+            color: var(--gold-accent);
             font-size: 0.7rem;
         }
 
@@ -1501,6 +1517,7 @@
         }
 
         .service-card:hover .service-arrow {
+            color: var(--gold-accent);
             border-color: var(--gold);
             background: var(--gold);
         }
@@ -1513,6 +1530,7 @@
         }
 
         .service-card:hover .service-arrow svg {
+            color: var(--gold-accent);
             stroke: var(--navy);
         }
 
