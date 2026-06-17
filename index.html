@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Luizmary FZE LLC – Business & Compliance Consultancy | Sharjah, UAE</title>
+    <title>Luizmary Associates – Business & Compliance Consultancy | Sharjah, UAE</title>
 
     <link
         href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght=400;500;600;700&family=Inter:wght=300;400;500;600&family=Montserrat:wght@400;600;700&display=swap"
@@ -152,11 +152,23 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 0 5%;
+            padding: 0 3%;
             height: 72px;
             background: rgba(13, 27, 42, 0.97);
             backdrop-filter: blur(12px);
             border-bottom: 1px solid var(--border);
+        }
+
+        .nav-cta-container {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+        }
+
+        .nav-divider {
+            display: flex;
+            gap: 1.8rem;
+            align-items: center;
         }
 
         .nav-logo {
@@ -167,6 +179,24 @@
             letter-spacing: 0.02em;
             text-decoration: none;
             line-height: 1.1;
+        }
+
+        .nav-logo-container {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            cursor: pointer;
+        }
+
+        .nav-logo-img {
+            width: 50px;
+            height: 50px;
+            /* margin-right: 0.6rem; */
+        }
+
+        .nav-logo-img-alt {
+            width: 85px;
+            height: 35px;
         }
 
         .nav-logo span {
@@ -1838,6 +1868,61 @@
             border-top: 1px solid rgba(201, 168, 76, 0.08)
         }
 
+        /* ── INTERNATIONAL PHONE INPUT GROUP ── */
+        .phone-input-group {
+            display: flex;
+            gap: 0.5rem;
+            /* Space between the code picker and phone number */
+            width: 100%;
+        }
+
+        .country-select-wrapper {
+            position: relative;
+            flex: 0 0 105px;
+            /* Fixed functional compact width for the flag and code */
+        }
+
+        .country-select-wrapper select {
+            width: 100%;
+            padding: 0.6rem 1.8rem 0.6rem 0.6rem !important;
+            /* Extra room on right for custom arrow */
+            appearance: none;
+            /* Strip native OS styling */
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            cursor: pointer;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            color: var(--white);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            border-radius: 4px;
+        }
+
+        /* Custom indicator pointer arrow inside select field box wrapper */
+        .country-select-wrapper .dropdown-arrow {
+            position: absolute;
+            right: 0.6rem;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 0.55rem;
+            color: var(--gold);
+            pointer-events: none;
+            /* Allows clicks to pass through straight to underlying select dropdown */
+        }
+
+        /* Ensure phone input expands dynamically to fill remaining form column space */
+        .phone-input-group input[type="tel"] {
+            flex: 1;
+        }
+
+        /* Active focus synchronization styling matching your luxury design theme */
+        .country-select-wrapper select:focus {
+            outline: none;
+            border-color: var(--gold);
+            background: rgba(255, 255, 255, 0.07);
+        }
+
         /* ── FLOATING WHATSAPP INTERFACES ─────────────────────────────────────── */
         .wa-float {
             position: fixed;
@@ -2632,37 +2717,131 @@
                 background: var(--navy-light);
             }
         }
+
+        /* ── HERO TWO-COLUMN SPLIT GRID IMPLEMENTATION ── */
+        @media (min-width: 1025px) {
+            #hero {
+                display: grid !important;
+                grid-template-columns: 1.2fr 0.8fr !important;
+                align-items: center !important;
+                padding: 0 8% !important;
+                gap: 4rem;
+            }
+
+            .hero-content {
+                padding: 0 !important;
+                max-width: 100% !important;
+            }
+        }
+
+        /* Minimal Hero Side Form Layout Component */
+        .hero-form-container {
+            position: relative;
+            z-index: 10;
+            background: rgba(22, 36, 55, 0.85);
+            /* var(--navy-mid) matches layout with background depth blur */
+            backdrop-filter: blur(8px);
+            border: 1px solid var(--border);
+            padding: 2rem;
+            width: 100%;
+            max-width: 400px;
+            justify-self: end;
+        }
+
+        .hero-form-container h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 0.3rem;
+        }
+
+        .hero-form-container p {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+        }
+
+        /* Compact field formatting optimizations */
+        .hero-form-container .form-field {
+            margin-bottom: 0.8rem;
+        }
+
+        .hero-form-container .form-field input,
+        .hero-form-container .form-field select {
+            padding: 0.6rem 0.8rem;
+            font-size: 0.82rem;
+        }
+
+        .hero-form-container .btn-submit {
+            padding: 0.8rem;
+            font-size: 0.8rem;
+            margin-top: 1rem;
+        }
+
+        /* Tablet & Mobile Fallback: Standardize stacking layout positioning underneath main header copy */
+        @media (max-width: 1024px) {
+            #hero {
+                height: auto !important;
+                min-height: 100vh;
+                padding: 8rem 6% 4rem !important;
+                display: flex;
+                flex-direction: column;
+                gap: 3rem;
+                align-items: flex-start;
+            }
+
+            .hero-form-container {
+                justify-self: center;
+                margin: 0 auto;
+                max-width: 100%;
+                background: var(--navy-mid);
+            }
+        }
+
+        @media (max-width: 768px) {
+            #hero {
+                padding: 7rem 5% 3rem !important;
+            }
+        }
     </style>
 </head>
 
 <body>
 
     <nav>
-        <a onclick="loadPage('home')" class="nav-logo">Luizmary <span>FZE LLC</span></a>
-        <ul class="nav-links">
-            <li><a id="nav-link-home" onclick="loadPage('home')" class="active">Home</a></li>
+        <div class="nav-logo-container" onclick="loadPage('home')">
+            <img src="logo.png" alt="Luizmary Associates Logo" class="nav-logo-img">
+            <img src="logo2.png" alt="Luizmary Associates Logo" class="nav-logo-img-alt">
+        </div>
 
-            <li class="dropdown-container">
-                <a id="nav-link-services" onclick="loadPage('services')" class="dropdown-trigger">Our Services
-                    <span class="chevron">▼</span></a>
-                <ul class="dropdown-menu">
-                    <li><a onclick="loadPage('services-trading')">General Trading</a></li>
-                    <li><a onclick="loadPage('services-ecommerce')">E-Commerce & Retail</a></li>
-                    <li><a onclick="loadPage('services-amazon')">Amazon Seller Service (SPA)</a></li>
-                    <li><a onclick="loadPage('services-compliance')">Compliance Consultancy</a></li>
-                    <li><a onclick="loadPage('services-accounting')">Accounting & Tax</a></li>
-                    <li><a onclick="loadPage('services-corporate')">Corporate Services</a></li>
-                </ul>
-            </li>
+        <div class="nav-divider">
+            <ul class="nav-links">
+                <li><a id="nav-link-home" onclick="loadPage('home')" class="active">Home</a></li>
 
-            <li><a id="nav-link-contact" onclick="loadPage('contact')">Contact Us</a></li>
-        </ul>
-        <a onclick="loadPage('contact')" class="nav-cta">Book Consultation</a>
-        <button class="hamburger" id="hamburgerBtn" aria-label="Toggle navigation" onclick="toggleMobileNav()">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
+                <li class="dropdown-container">
+                    <a id="nav-link-services" onclick="loadPage('services')" class="dropdown-trigger">Our Services
+                        <span class="chevron">▼</span></a>
+                    <ul class="dropdown-menu">
+                        <li><a onclick="loadPage('services-trading')">General Trading</a></li>
+                        <li><a onclick="loadPage('services-ecommerce')">E-Commerce & Retail</a></li>
+                        <li><a onclick="loadPage('services-amazon')">Amazon Seller Service (SPA)</a></li>
+                        <li><a onclick="loadPage('services-compliance')">Compliance Consultancy</a></li>
+                        <li><a onclick="loadPage('services-accounting')">Accounting & Tax</a></li>
+                        <li><a onclick="loadPage('services-corporate')">Corporate Services</a></li>
+                    </ul>
+                </li>
+
+                <li><a id="nav-link-contact" onclick="loadPage('contact')">Contact Us</a></li>
+            </ul>
+            <a onclick="loadPage('contact')" class="nav-cta">Book Consultation</a>
+            <button class="hamburger" id="hamburgerBtn" aria-label="Toggle navigation" onclick="toggleMobileNav()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+
     </nav>
 
     <!-- Mobile Nav Panel (compact dropdown) -->
@@ -2690,7 +2869,7 @@
     <!-- <footer>
         <div class="footer-grid">
             <div class="footer-brand">
-                <a onclick="loadPage('home')" class="footer-logo">Luizmary <span>FZE LLC</span></a>
+                <a onclick="loadPage('home')" class="footer-logo">Luizmary <span>Associates</span></a>
                 <p class="footer-desc">Bespoke corporate consulting, structuring, and ongoing regulatory alignment
                     frameworks engineered for visionary global enterprises expanding into the United Arab Emirates.</p>
             </div>
@@ -2719,7 +2898,7 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p class="copy">&copy; 2026 Luizmary FZE LLC. All rights reserved.</p>
+            <p class="copy">&copy; 2026 Luizmary Associates. All rights reserved.</p>
             <div class="footer-legal">
                 <a href="#">Privacy Policy</a>
                 <a href="#">Terms of Engagement</a>
@@ -2730,7 +2909,7 @@
     <footer>
         <div class="footer-top">
             <div>
-                <div class="footer-brand-name">Luizmary FZE LLC</div>
+                <div class="footer-brand-name">Luizmary Associates</div>
                 <div class="footer-brand-sub">Licensed · Sharjah Publishing City Free Zone · UAE</div>
                 <p class="footer-brand-desc">At Luizmary, we deliver end-to-end solutions designed for entrepreneurs and
                     growing
@@ -2825,13 +3004,14 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <div class="footer-copy">© 2025 Luizmary FZE LLC. All Rights Reserved.</div>
+            <div class="footer-copy">© 2025 Luizmary Associates. All Rights Reserved.</div>
             <div class="footer-reg">Sharjah Publishing City Free Zone · United Arab Emirates</div>
         </div>
         <div class="footer-disclaimer"><strong style="color:rgba(138,155,176,0.55)">Disclaimer:</strong> The data and
-            services offered on this website by Luizmary FZE LLC are independent and not endorsed by, affiliated with,
+            services offered on this website by Luizmary Associates are independent and not endorsed by, affiliated
+            with,
             or
-            otherwise connected to any government agencies. Luizmary FZE LLC is a Corporate Service Provider (CSP)
+            otherwise connected to any government agencies. Luizmary Associates is a Corporate Service Provider (CSP)
             licensed
             under the Sharjah Publishing City Free Zone authority, willing to conduct business — such as completing
             registration procedures, obtaining the necessary licenses from official authorities, and establishing
@@ -2853,7 +3033,7 @@
             <div class="wa-body">
                 <div id="waForm">
                     <div class="wa-msg-bubble">
-                        Hello, welcome to Luizmary FZE LLC. Please provide your basic info below to open an immediate
+                        Hello, welcome to Luizmary Associates. Please provide your basic info below to open an immediate
                         advisory dialogue over WhatsApp.
                     </div>
                     <div class="wa-field">
@@ -2895,7 +3075,7 @@
             <div class="hero-content">
                 <div class="hero-eyebrow">Premium Corporate Architecture</div>
                 <h1 class="hero-title">Engineering Sovereign <em>UAE Infrastructure</em> For Foreign Investment.</h1>
-                <p class="hero-sub">Luizmary FZE LLC designs highly compliant corporate vehicles, establishes offshore
+                <p class="hero-sub">Luizmary Associates designs highly compliant corporate vehicles, establishes offshore
                     and onshore banking systems, and processes operational licensing in Sharjah, Dubai, and Abu Dhabi.
                 </p>
                 <div class="hero-actions">
@@ -2944,7 +3124,7 @@
                     <div class="section-eyebrow">Elite Corporate Advisory</div>
                     <h2 class="section-title">The Gateway to Strategic Wealth Realization.</h2>
                     <div class="gold-rule"></div>
-                    <p>Luizmary FZE LLC provides high-tier transactional services, localized entity maintenance, and
+                    <p>Luizmary Associates provides high-tier transactional services, localized entity maintenance, and
                         strict international compliance tracking for global high-net-worth individuals, tech founders,
                         and asset managers looking to anchor operations in the United Arab Emirates.</p>
                     <p>Our approach bypasses bureaucratic friction, giving our clients direct paths to elite corporate
@@ -3064,17 +3244,80 @@
                 <div class="hero-slide"></div>
                 <div class="hero-slide"></div>
             </div>
+
+            <!-- Left Column: Branding Value Prop -->
             <div class="hero-content">
-                <div class="hero-eyebrow">Sharjah Publishing City Free Zone · UAE</div>
+                <div class="hero-eyebrow"></div>
                 <h1 class="hero-title">Your Trusted Partner for<br><em>Business & Compliance</em><br>in the UAE</h1>
                 <p class="hero-sub">From company formation and general trading to compliance consultancy, accounting,
-                    and
-                    corporate services — Luizmary FZE LLC delivers expert-led solutions in the heart of Sharjah.</p>
+                    and corporate services — Luizmary Associates delivers expert-led solutions in the heart of
+                    <b>UAE</b>.
+                </p>
                 <div class="hero-actions">
                     <a class="btn-primary" onclick="loadPage('contact')">Book a Consultation</a>
                     <a class="btn-outline" onclick="loadPage('services')">Explore Our Services</a>
                 </div>
             </div>
+
+            <!-- Right Column: Integrated Minimal Consultation Form Component -->
+            <div class="hero-form-container">
+                <h3>Quick Inquiry</h3>
+                <p class="hero-form-sub">Leave a message below and our advisers will contact you immediately.</p>
+
+                <form id="hero-contact-form" onsubmit="handleHeroSubmit(event)">
+                    <div class="form-field">
+                        <label for="hero-name">Full Name <span class="req">*</span></label>
+                        <input type="text" id="hero-name" required placeholder="John Doe">
+                    </div>
+                    <div class="form-field">
+                        <label for="hero-email">Email Address <span class="req">*</span></label>
+                        <input type="email" id="hero-email" required placeholder="john@example.com">
+                    </div>
+                    <div class="form-field">
+                        <label for="hero-email">Email Address <span class="req">*</span></label>
+                        <input type="email" id="hero-email" required placeholder="john@example.com">
+                    </div>
+                    <div class="form-field">
+                        <label for="hero-phone">Phone Number <span class="req">*</span></label>
+                        <div class="phone-input-group">
+                            <div class="country-select-wrapper">
+                                <select id="hero-country-code" required aria-label="Country Code">
+                                    <option value="+971" selected>🇦🇪 +971</option>
+                                    <option value="+1">🇺🇸 +1</option>
+                                    <option value="+44">🇬🇧 +44</option>
+                                    <option value="+91">🇮🇳 +91</option>
+                                    <option value="+61">🇦🇺 +61</option>
+                                    <option value="+966">🇸🇦 +966</option>
+                                    <option value="+965">🇰🇼 +965</option>
+                                    <option value="+973">🇧🇭 +973</option>
+                                    <option value="+968">🇴🇲 +968</option>
+                                </select>
+                                <span class="dropdown-arrow">▼</span>
+                            </div>
+                            <input type="tel" id="hero-phone" required placeholder="50 123 4567"
+                                pattern="[0-9\s\-]{6,14}">
+                        </div>
+                    </div>
+                    <div class="form-field">
+                        <label for="hero-service">Required Service</label>
+                        <select id="hero-service">
+                            <option value="general-trading">General Trading</option>
+                            <option value="ecommerce">E-Commerce & Retail</option>
+                            <option value="compliance">Compliance Consultancy</option>
+                            <option value="accounting">Accounting & Tax</option>
+                            <option value="corporate">Corporate Services</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="btn-submit" id="hero-submit-btn">
+                        <span>Send Request</span>
+                    </button>
+
+                    <div class="alert success" id="hero-alert-success">Inquiry sent successfully!</div>
+                    <div class="alert error" id="hero-alert-error">Failed to dispatch request. Try again.</div>
+                </form>
+            </div>
+
             <div class="slide-indicators" id="indicators">
                 <div class="indicator active"></div>
                 <div class="indicator"></div>
@@ -3110,14 +3353,14 @@
                         alt="Modern UAE business office">
                     <div class="about-badge">
                         <div class="about-badge-num">UAE</div>
-                        <div class="about-badge-text">Free Zone Est.</div>
                     </div>
                 </div>
                 <div class="about-text">
-                    <div class="section-eyebrow">About Luizmary FZE LLC</div>
+                    <div class="section-eyebrow">About Luizmary Associates</div>
                     <h2 class="section-title">Compliance-First. Commercially Sharp.</h2>
                     <div class="gold-rule"></div>
-                    <p>Luizmary FZE LLC is a licensed free zone establishment based in the Sharjah Publishing City Free
+                    <p>Luizmary Associates is a licensed free zone establishment based in the Sharjah Publishing City
+                        Free
                         Zone, UAE.
                         We serve businesses and entrepreneurs seeking reliable, professional support across general
                         trading,
@@ -3129,7 +3372,7 @@
                     <div class="about-details">
                         <div class="about-detail">
                             <div class="about-detail-label">Company Name</div>
-                            <div class="about-detail-value">Luizmary FZE LLC</div>
+                            <div class="about-detail-value">Luizmary Associates</div>
                         </div>
                         <div class="about-detail">
                             <div class="about-detail-label">Formation Type</div>
@@ -3473,13 +3716,13 @@
         <section id="license">
             <div class="section-eyebrow">Company Details</div>
             <h2 class="section-title">Official Registration Information</h2>
-            <p class="section-lead">Luizmary FZE LLC is a licensed entity under the Sharjah Publishing City Free Zone
+            <p class="section-lead">Luizmary Associates is a licensed entity under the Sharjah Publishing City Free Zone
                 authority,
                 UAE.</p>
             <div class="license-grid">
                 <div class="license-item">
                     <div class="license-label">Company Name</div>
-                    <div class="license-value">Luizmary FZE LLC</div>
+                    <div class="license-value">Luizmary Associates</div>
                 </div>
                 <div class="license-item">
                     <div class="license-label">Formation Type</div>
@@ -3562,7 +3805,7 @@
 
     <template id="page-services-trading">
         <div class="page-hero">
-            <div class="page-hero-eyebrow">Luizmary FZE LLC Capabilities</div>
+            <div class="page-hero-eyebrow">Luizmary Associates Capabilities</div>
             <h1>General Trading <em>& Distribution</em></h1>
             <p>Bespoke transactional engineering and logistic infrastructure setup designs inside the UAE.</p>
             <div class="breadcrumb">
@@ -3594,7 +3837,7 @@
 
     <template id="page-services-ecommerce">
         <div class="page-hero">
-            <div class="page-hero-eyebrow">Luizmary FZE LLC Capabilities</div>
+            <div class="page-hero-eyebrow">Luizmary Associates Capabilities</div>
             <h1>E-Commerce <em>& Retail Architecture</em></h1>
             <p>Custom governance protocols for digital stores and international transactional paths.</p>
             <div class="breadcrumb">
@@ -3627,7 +3870,7 @@
     <template id="page-services-amazon">
         <!-- PAGE HERO -->
         <div class="page-hero">
-            <div class="page-hero-eyebrow">Luizmary FZE LLC Capabilities</div>
+            <div class="page-hero-eyebrow">Luizmary Associates Capabilities</div>
             <h1>Amazon Seller <em>Services Provider</em></h1>
             <p>Authorized Amazon SPN partner — helping sellers launch, grow and dominate the marketplace with end-to-end
                 account management, listing optimization, and brand strategy.</p>
@@ -3647,7 +3890,8 @@
                     <div class="gold-rule"></div>
                     <p class="service-block-desc">The Amazon Service Provider Network (ASPN) is a curated network of
                         enrolled third-party service experts who help bridge the gap between seller potential and
-                        marketplace growth. As an authorized and trained Amazon SPN partner, Luizmary FZE LLC provides
+                        marketplace growth. As an authorized and trained Amazon SPN partner, Luizmary Associates
+                        provides
                         comprehensive solutions designed to take your brand from setup to scale — handling everything
                         from account creation and listing optimization to advertising and FBA logistics.</p>
                     <a onclick="loadPage('contact')" class="btn-primary">Start Your Amazon Journey →</a>
@@ -4113,7 +4357,7 @@
 
     <template id="page-services-compliance">
         <div class="page-hero">
-            <div class="page-hero-eyebrow">Luizmary FZE LLC Capabilities</div>
+            <div class="page-hero-eyebrow">Luizmary Associates Capabilities</div>
             <h1>Compliance <em>& AML Frameworks</em></h1>
             <p>Robust operational controls mapped out to safeguard corporate setups against risk profiles.</p>
             <div class="breadcrumb">
@@ -4148,7 +4392,7 @@
 
     <template id="page-services-accounting">
         <div class="page-hero">
-            <div class="page-hero-eyebrow">Luizmary FZE LLC Capabilities</div>
+            <div class="page-hero-eyebrow">Luizmary Associates Capabilities</div>
             <h1>Accounting <em>& Corporate Tax</em></h1>
             <p>Comprehensive ledger control designs ensuring adherence to the Federal Tax Authority.</p>
             <div class="breadcrumb">
@@ -4180,7 +4424,7 @@
 
     <template id="page-services-corporate">
         <div class="page-hero">
-            <div class="page-hero-eyebrow">Luizmary FZE LLC Capabilities</div>
+            <div class="page-hero-eyebrow">Luizmary Associates Capabilities</div>
             <h1>Corporate <em>Entity Lifecycle Upkeep</em></h1>
             <p>End-to-end administration options handling business registrations and modifications.</p>
             <div class="breadcrumb">
@@ -4216,7 +4460,8 @@
         <div class="page-hero">
             <div class="page-hero-eyebrow">Capabilities & Execution</div>
             <h1>Architecting Sovereign <em>UAE Infrastructure</em> For Modern Business.</h1>
-            <p>Luizmary FZE LLC designs highly compliant corporate vehicles, structures asset protection protocols, and
+            <p>Luizmary Associates designs highly compliant corporate vehicles, structures asset protection protocols,
+                and
                 coordinates fast-track licensing pipelines across premium UAE jurisdictions.</p>
             <div class="breadcrumb">
                 <a onclick="loadPage('home')">Home</a>
@@ -4602,6 +4847,13 @@
             const submitButton = document.getElementById('submitBtn');
             const successDisplay = document.getElementById('successAlert');
             const errorDisplay = document.getElementById('errorAlert');
+            // Replace old single value query with this inside your form submission function
+            const countryCode = document.getElementById('hero-country-code').value;
+            const partialPhone = document.getElementById('hero-phone').value;
+            const fullPhoneNumber = `${countryCode} ${partialPhone.trim()}`;
+
+            // Ready to send off via EmailJS payload parameter keys!
+            console.log("Combined Formatted Phone Vector Target:", fullPhoneNumber);
 
             // Clear alert banners before starting transmission
             successDisplay.classList.remove('show');
@@ -4614,7 +4866,7 @@
             const dataPayload = {
                 from_name: document.getElementById('clientName').value.trim(),
                 from_email: document.getElementById('clientEmail').value.trim(),
-                phone: document.getElementById('clientPhone').value.trim(),
+                phone: fullPhoneNumber,
                 jurisdiction: document.getElementById('targetJurisdiction').value,
                 message: document.getElementById('scopeDetails').value.trim()
             };
@@ -4650,7 +4902,7 @@
 
             // Sanitize and parameterize text context values for international standards
             const compiledMessage = encodeURIComponent(
-                `*New Consultation Request — Luizmary FZE LLC*\n\n` +
+                `*New Consultation Request — Luizmary Associates*\n\n` +
                 `Name: ${nameVal}\n` +
                 `Phone: ${phoneVal || 'Not provided'}\n` +
                 `Message: ${messageVal || 'No message details provided.'}`
