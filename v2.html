@@ -20,15 +20,25 @@
             --gold: #C9A84C;
             --gold-light: #E2C97E;
             --gold-dark: #9A7A2E;
-            --navy: #102133d1;
-            --navy-mid: #162437;
-            --navy-light: #1E3148;
-            --soft-white: #e9ecef;
-            --gold-accent: #dfb76c;
+
+            --navy: #FAF8F4;
+            /* main background */
+            --navy-mid: #FFFFFF;
+            /* cards */
+            --navy-light: #F3EFE8;
+            /* hover surfaces */
+
+            --soft-white: #111827;
+            --gold-accent: #B9923E;
+
             --cream: #F8F4EE;
-            --white: #FFFFFF;
-            --text-muted: #8A9BB0;
-            --border: rgba(201, 168, 76, 0.25);
+            --white: #111827;
+            /* main text */
+
+            --text-muted: #111827;
+
+            --border: rgba(201, 168, 76, 0.18);
+
             --green: #22c55e;
             --red: #ef4444;
         }
@@ -156,7 +166,7 @@
             justify-content: space-between;
             padding: 0 3%;
             height: 72px;
-            background: rgba(13, 27, 42, 0.97);
+            background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(12px);
             border-bottom: 1px solid var(--border);
         }
@@ -243,9 +253,8 @@
         }
 
         .nav-cta:hover {
-            background: var(--gold-dark);
+            background: var(--gold-light);
             transform: translateY(-1px);
-            color: black;
         }
 
         /* ── HERO SECTION & CAROUSEL ─────────────────────────────────────────── */
@@ -279,7 +288,9 @@
             content: '';
             position: absolute;
             inset: 0;
-            background: linear-gradient(105deg, rgba(13, 27, 42, 0.88) 45%, rgba(13, 27, 42, 0.4) 100%);
+            background: linear-gradient(105deg,
+                    rgba(250, 248, 244, 0.92) 45%,
+                    rgba(250, 248, 244, 0.55) 100%);
         }
 
         .hero-slide:nth-child(1) {
@@ -340,7 +351,7 @@
         }
 
         .hero-sub {
-            color: rgba(255, 255, 255, 0.72);
+            color: #4B5563;
             font-size: 1.05rem;
             line-height: 1.75;
             max-width: 540px;
@@ -371,9 +382,8 @@
         }
 
         .btn-primary:hover {
-            background: var(--gold-dark);
+            background: var(--gold-light);
             transform: translateY(-2px);
-            color: black;
         }
 
         .btn-outline {
@@ -1131,8 +1141,8 @@
 
         /* CTA STRIP */
         #cta-strip {
-            background: rgb(245, 245, 245);
-            padding: 3rem 6%;
+            background: var(--navy-mid);
+            padding: 4rem 8%;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -1145,7 +1155,7 @@
             font-family: 'Cormorant Garamond', serif;
             font-size: 2rem;
             font-weight: 600;
-            color: var(--navy)
+            color: var(--white)
         }
 
         .cta-strip-text p {
@@ -1838,7 +1848,7 @@
 
         /* FOOTER */
         footer {
-            background: #0a1520;
+            background: #F5F1EA;
             border-top: 1px solid var(--border);
             padding: 4rem 8% 0
         }
@@ -1869,7 +1879,7 @@
 
         .footer-brand-desc {
             font-size: 0.82rem;
-            color: var(--text-muted);
+            color: black;
             line-height: 1.75;
             margin-bottom: 1.5rem
         }
@@ -1941,7 +1951,7 @@
         }
 
         .footer-col ul a {
-            color: var(--text-muted);
+            color: black;
             text-decoration: none;
             font-size: 0.83rem;
             transition: color 0.2s
@@ -2389,7 +2399,7 @@
         }
 
         .mobile-nav-overlay .mob-cta:hover {
-            background: var(--gold-dark);
+            background: var(--gold-light);
         }
 
         /* ════════════════════════════════════════════════════
