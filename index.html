@@ -427,13 +427,33 @@
             border-top: 1px solid var(--border);
             border-bottom: 1px solid var(--border);
             padding: 1.8rem 8%;
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
             gap: 1rem;
         }
 
         .stat-item {
             text-align: center;
+        }
+
+        .stat {
+            display: flex;
+            gap: 1.9rem;
+            align-items: center;
+        }
+
+        .stat-head {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--white);
+
+        }
+
+        .stat-highlight {
+            color: var(--gold);
+
         }
 
         .stat-num {
@@ -2297,6 +2317,8 @@
             }
 
             /* STATS BAR */
+
+
             .stats-bar {
                 grid-template-columns: repeat(2, 1fr);
                 padding: 1.5rem 6%;
@@ -2456,8 +2478,15 @@
             }
 
             /* STATS BAR */
+            .stat {
+                flex-direction: column;
+                font-weight: 700;
+
+            }
+
             .stats-bar {
-                grid-template-columns: repeat(2, 1fr);
+                display: flex;
+                flex-direction: column;
                 gap: 1rem;
                 padding: 1.2rem 5%;
             }
@@ -2910,7 +2939,7 @@
         <div class="footer-top">
             <div>
                 <div class="footer-brand-name">Luizmary Associates</div>
-                <div class="footer-brand-sub">Licensed · Sharjah Publishing City Free Zone · UAE</div>
+                <div class="footer-brand-sub">Licensed · UAE</div>
                 <p class="footer-brand-desc">At Luizmary, we deliver end-to-end solutions designed for entrepreneurs and
                     growing
                     enterprises. From company formation and compliance to tax strategy, audit, and accounting — our team
@@ -2983,7 +3012,7 @@
                         <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
                         <circle cx="12" cy="10" r="3" />
                     </svg>
-                    <div class="footer-contact-text">Business Centre, Sharjah Publishing City Free Zone, Sharjah, UAE
+                    <div class="footer-contact-text">Business Centre, , Sharjah, UAE
                     </div>
                 </div>
                 <div class="footer-contact-item">
@@ -3005,7 +3034,7 @@
         </div>
         <div class="footer-bottom">
             <div class="footer-copy">© 2025 Luizmary Associates. All Rights Reserved.</div>
-            <div class="footer-reg">Sharjah Publishing City Free Zone · United Arab Emirates</div>
+            <div class="footer-reg"> · United Arab Emirates</div>
         </div>
         <div class="footer-disclaimer"><strong style="color:rgba(138,155,176,0.55)">Disclaimer:</strong> The data and
             services offered on this website by Luizmary Associates are independent and not endorsed by, affiliated
@@ -3013,7 +3042,7 @@
             or
             otherwise connected to any government agencies. Luizmary Associates is a Corporate Service Provider (CSP)
             licensed
-            under the Sharjah Publishing City Free Zone authority, willing to conduct business — such as completing
+            under the authority, willing to conduct business — such as completing
             registration procedures, obtaining the necessary licenses from official authorities, and establishing
             partnerships
             with foreign companies. It also provides secretarial and specialised services, including consulting,
@@ -3156,7 +3185,27 @@
             </div>
         </section>
 
+        <div class="stats-bar">
+            <div class="stat">
+                <div class="stat-head">Trusted by <span class="stat-highlight">500+</span> Businesses Across UAE</div>
+            </div>
 
+            <div class="stat">
+                <div class="stat-item">
+                    <div class="stat-num">500+</div>
+                    <div class="stat-label">Businesses</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-num">95%</div>
+                    <div class="stat-label">Retention</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-num">100%</div>
+                    <div class="stat-label">Success</div>
+                </div>
+            </div>
+
+        </div>
 
         <section id="about">
             <div class="section-eyebrow">Who We Are</div>
@@ -3194,7 +3243,7 @@
                         </div>
                         <div class="about-detail">
                             <div class="about-detail-label">Jurisdiction</div>
-                            <div class="about-detail-value">Sharjah Publishing City Free Zone</div>
+                            <div class="about-detail-value"></div>
                         </div>
                     </div>
                 </div>
@@ -3484,7 +3533,7 @@
                         <div class="why-num">01</div>
                         <div>
                             <div class="why-feature-title">UAE-Licensed &amp; Fully Compliant</div>
-                            <div class="why-feature-text">Registered under Sharjah Publishing City Free Zone, we operate
+                            <div class="why-feature-text">Registered under , we operate
                                 within the full
                                 legal framework of the UAE — ensuring your business is protected from day one.</div>
                         </div>
@@ -3526,7 +3575,7 @@
         <section id="license">
             <div class="section-eyebrow">Company Details</div>
             <h2 class="section-title">Official Registration Information</h2>
-            <p class="section-lead">Luizmary Associates is a licensed entity under the Sharjah Publishing City Free Zone
+            <p class="section-lead">Luizmary Associates is a licensed entity under the
                 authority,
                 UAE.</p>
             <div class="license-grid">
@@ -3540,11 +3589,11 @@
                 </div>
                 <div class="license-item">
                     <div class="license-label">Jurisdiction</div>
-                    <div class="license-value">Sharjah Publishing City Free Zone</div>
+                    <div class="license-value"></div>
                 </div>
                 <div class="license-item">
                     <div class="license-label">Company Address</div>
-                    <div class="license-value">Business Centre, Sharjah Publishing City Free Zone, Sharjah, United Arab
+                    <div class="license-value">Business Centre, , Sharjah, United Arab
                         Emirates
                     </div>
                 </div>
