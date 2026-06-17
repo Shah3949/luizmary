@@ -525,6 +525,233 @@
             background: var(--navy);
         }
 
+        /* About Section Styling updated from image_896259.jpg */
+        .about-section {
+            padding: 100px 0;
+            background-color: #0d1b2a;
+            /* Deep corporate dark navy background */
+            font-family: 'Cormorant Garamond', serif;
+            display: flex;
+            justify-content: center;
+        }
+
+        .about-container {
+            max-width: 1200px;
+            width: 90%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px 80px;
+            /* Separates the top header row from content columns */
+            align-items: start;
+        }
+
+        .section-pre-header {
+            grid-column: 1 / -1;
+            /* Spans across the full grid layout width */
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 10px;
+        }
+
+        .pre-header-line {
+            width: 24px;
+            height: 1.5px;
+            background-color: #c5a880;
+            /* Elegant gold accent matching image line */
+            display: inline-block;
+        }
+
+        .pre-header-text {
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #c5a880;
+        }
+
+        /* Left Image Styling */
+        .about-visual-wrapper {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            min-height: 500px;
+        }
+
+        .image-floating-badge {
+            position: absolute;
+            bottom: -20px;
+            /* Overlaps slightly over the bottom frame line like image_895e5c.png */
+            right: 30px;
+            background-color: #ffffff;
+            padding: 14px 20px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            z-index: 10;
+        }
+
+        /* Rounded Icon Frame Container */
+        .badge-icon-box {
+            width: 38px;
+            height: 38px;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #ffffff;
+            flex-shrink: 0;
+        }
+
+        .badge-svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* Typography Structure Inside Badge */
+        .badge-text-box {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .badge-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: #0d1b2a;
+            /* Sharp dark text contrast */
+            line-height: 1.2;
+            margin-bottom: 2px;
+            white-space: nowrap;
+        }
+
+        .badge-subtitle {
+            font-size: 11px;
+            font-weight: 500;
+            color: #718096;
+            /* Subtle muted tag */
+            line-height: 1;
+        }
+
+        /* Responsive Handling: Keeps badge inside boundaries on tablets */
+        @media (max-width: 992px) {
+            .image-floating-badge {
+                bottom: -10px;
+                right: 0px;
+            }
+        }
+
+        .about-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+
+        /* Right Content Styling */
+        .about-content-block {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .about-eyebrow {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #c5a880;
+            /* Muted Gold color from image_896259.jpg */
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .about-heading {
+            font-size: 42px;
+            line-height: 1.2;
+            color: #ffffff;
+            /* High contrast crisp white for readability */
+            font-weight: 700;
+            margin: 0 0 20px 0;
+        }
+
+        .about-accent-line {
+            width: 60px;
+            height: 3px;
+            background-color: #c5a880;
+            /* Gold accent line */
+            margin-bottom: 30px;
+        }
+
+        .about-description p {
+            font-size: 15px;
+            line-height: 1.7;
+            color: #a0aec0;
+            /* Light grayish-blue for readable body text on dark background */
+            margin-bottom: 20px;
+        }
+
+        /* Structured Metadata Grid */
+        .about-metadata-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-top: 20px;
+            border-top: 1px solid #1e2d3d;
+            /* Subtle dark divider line */
+            padding-top: 30px;
+        }
+
+        .metadata-item {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            border-left: 3px solid #c5a880;
+            /* The elegant gold accent bar on the left side */
+            padding-left: 14px;
+            /* Clear space between the bar and the text */
+        }
+
+        .metadata-label {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #718096;
+            /* Muted label color */
+            font-weight: 600;
+        }
+
+        .metadata-value {
+            font-size: 15px;
+            color: #e2e8f0;
+            /* Soft off-white for data values */
+            font-weight: 500;
+            line-height: 1.4;
+        }
+
+        /* Responsive Handling */
+        @media (max-width: 992px) {
+            .about-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .about-visual-wrapper {
+                min-height: 350px;
+            }
+
+            .about-heading {
+                font-size: 32px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .about-metadata-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
         .about-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -3207,43 +3434,71 @@
 
         </div>
 
-        <section id="about">
-            <div class="section-eyebrow">Who We Are</div>
-            <div class="about-grid">
-                <div class="about-visual">
-                    <img class="about-img" src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=800&q=80"
-                        alt="Modern UAE business office">
+        <section id="about" class="about-section">
+            <div class="about-container">
+                <div class="section-pre-header">
+                    <span class="pre-header-line"></span>
+                    <span class="pre-header-text">About Liuzmary</span>
                 </div>
-                <div class="about-text">
-                    <div class="section-eyebrow">About Luizmary Associates</div>
-                    <h2 class="section-title">Compliance-First. Commercially Sharp.</h2>
-                    <div class="gold-rule"></div>
-                    <p>Luizmary Associates is a licensed free zone establishment based in the Sharjah Publishing City
-                        Free
-                        Zone, UAE.
-                        We serve businesses and entrepreneurs seeking reliable, professional support across general
-                        trading,
-                        e-commerce, compliance, accounting, and corporate services.</p>
-                    <p>Our team, led by Merline Minin Fernandes Minin and Daigo Fernandes, brings deep regional
-                        expertise and a
-                        hands-on approach to helping clients navigate the UAE's regulatory landscape with confidence.
-                    </p>
-                    <div class="about-details">
-                        <div class="about-detail">
-                            <div class="about-detail-label">Company Name</div>
-                            <div class="about-detail-value">Luizmary Associates</div>
+                <!-- Left Column: The Visual Element -->
+                <!-- Left Column: The Visual Element with Floating Badge -->
+                <div class="about-visual-wrapper">
+                    <img class="about-image"
+                        src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=800&q=80"
+                        alt="Luizmary Associates Office">
+
+                    <!-- Floating Badge matching image_895e5c.png -->
+                    <div class="image-floating-badge">
+                        <div class="badge-icon-box">
+                            <!-- Modern SVG Ribbon/Award Icon -->
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#c5a880"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="badge-svg">
+                                <circle cx="12" cy="8" r="6"></circle>
+                                <path d="M15.47 14L19 22l-7-3-7 3 3.53-8"></path>
+                            </svg>
                         </div>
-                        <div class="about-detail">
-                            <div class="about-detail-label">Formation Type</div>
-                            <div class="about-detail-value">Free Zone Establishment</div>
+                        <div class="badge-text-box">
+                            <span class="badge-title">Authorized Channel Partner</span>
+                            <span class="badge-subtitle">UAE Freezones</span>
                         </div>
-                        <div class="about-detail">
-                            <div class="about-detail-label">Manager(s)</div>
-                            <div class="about-detail-value">Merline Minin Fernandes &amp; Daigo Fernandes</div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Content Block -->
+                <div class="about-content-block">
+                    <div class="about-accent-line"></div>
+                    <!-- <span class="about-eyebrow"> About Luizmary Associates</span> -->
+                    <h2 class="about-heading">Your Gateway to<br><span class="stat-highlight">UAE Business</span>
+                        Success</h2>
+                    <div class="about-accent-line"></div>
+
+                    <div class="about-description">
+                        <p>Luizmary Associates is a licensed free zone establishment based in the Sharjah Publishing
+                            City Free Zone, UAE. We serve businesses and entrepreneurs seeking reliable, professional
+                            support across general trading, e-commerce, compliance, accounting, and corporate services.
+                        </p>
+                        <p>Our team, led by Merline Minin Fernandes and Daigo Fernandes, brings deep regional expertise
+                            and a hands-on approach to helping clients navigate the UAE's regulatory landscape with
+                            confidence.</p>
+                    </div>
+
+                    <!-- Structured Data Grid matching the layout -->
+                    <div class="about-metadata-grid">
+                        <div class="metadata-item">
+                            <span class="metadata-label">Company Name</span>
+                            <span class="metadata-value">Luizmary Associates</span>
                         </div>
-                        <div class="about-detail">
-                            <div class="about-detail-label">Jurisdiction</div>
-                            <div class="about-detail-value"></div>
+                        <div class="metadata-item">
+                            <span class="metadata-label">Formation Type</span>
+                            <span class="metadata-value">Free Zone Establishment</span>
+                        </div>
+                        <div class="metadata-item">
+                            <span class="metadata-label">Manager(s)</span>
+                            <span class="metadata-value">Merline Minin Fernandes &amp; Daigo Fernandes</span>
+                        </div>
+                        <div class="metadata-item">
+                            <span class="metadata-label">Jurisdiction</span>
+                            <span class="metadata-value">Sharjah, UAE</span>
                         </div>
                     </div>
                 </div>
