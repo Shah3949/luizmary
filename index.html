@@ -973,34 +973,67 @@
 
         .service-arrow {
             position: absolute;
-            bottom: 1.5rem;
-            right: 1.5rem;
-            width: 28px;
-            height: 28px;
-            border: 1px solid var(--border);
-            border-radius: 50%;
-            display: flex;
+            bottom: 24px;
+            right: 24px;
+            display: inline-flex;
             align-items: center;
-            justify-content: center;
-            transition: border-color 0.3s, background 0.3s
+            justify-content: flex-end;
+            /* Remove any background, border, or hard width/height dimensions */
+            background: none !important;
+            border: none !important;
+            width: auto !important;
+            height: auto !important;
+            cursor: pointer;
         }
 
         .service-card:hover .service-arrow {
             color: var(--gold-accent);
-            border-color: var(--gold);
-            background: var(--gold)
+            border-color: var(--gold-accent);
+            background: var(--gold-accent)
         }
 
         .service-arrow svg {
-            width: 12px;
-            height: 12px;
-            stroke: var(--text-muted);
-            transition: stroke 0.3s
+            width: 20px;
+            height: 20px;
+            stroke: var(--gold-accent, #dfb76c);
+            stroke-width: 2;
+            fill: none;
+            transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+
+
+        /* ── INQUIRE NOW TEXT ON HOVER ── */
+        .service-arrow::before {
+            content: "Inquire now";
+            font-family: 'Inter', 'Montserrat', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--gold-accent, #dfb76c);
+            margin-right: 10px;
+            /* Gap between text and arrow */
+
+            /* Reveal States */
+            opacity: 0;
+            transform: translateX(15px);
+            /* Hidden shifted right */
+            transition: opacity 0.35s cubic-bezier(0.25, 1, 0.5, 1),
+                transform 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+            white-space: nowrap;
+            pointer-events: none;
+        }
+
+        /* Reveal text when the service card is hovered */
+        /* ── CARD HOVER ANIMATIONS ── */
+        .service-card:hover .service-arrow::before {
+            opacity: 1;
+            transform: translateX(0);
+            /* Slides smoothly to its natural spot */
         }
 
         .service-card:hover .service-arrow svg {
-            color: var(--gold-accent);
-            stroke: var(--navy)
+            transform: translateX(4px);
+            /* Clean micro-nudge for the arrow */
         }
 
         /* WHY */
@@ -1502,36 +1535,38 @@
             font-size: 0.7rem;
         }
 
+        /* Update these inside the Home Services Preview Grid section */
         .service-arrow {
             position: absolute;
-            bottom: 1.5rem;
-            right: 1.5rem;
-            width: 28px;
-            height: 28px;
-            border: 1px solid var(--border);
-            border-radius: 50%;
-            display: flex;
+            bottom: 24px;
+            right: 24px;
+            display: inline-flex;
             align-items: center;
-            justify-content: center;
-            transition: border-color 0.3s, background 0.3s;
+            justify-content: flex-end;
+            background: none;
+            border: none;
+            width: auto;
+            height: auto;
+            cursor: pointer;
         }
 
         .service-card:hover .service-arrow {
-            color: var(--gold-accent);
-            border-color: var(--gold);
-            background: var(--gold);
+            background: none;
         }
 
         .service-arrow svg {
-            width: 12px;
-            height: 12px;
+            width: 20px;
+            height: 20px;
             stroke: var(--text-muted);
-            transition: stroke 0.3s;
+            /* Muted by default */
+            stroke-width: 2;
+            fill: none;
+            transition: stroke 0.35s ease, transform 0.35s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
+        /* Turns the arrow golden on hover to match the text */
         .service-card:hover .service-arrow svg {
-            color: var(--gold-accent);
-            stroke: var(--navy);
+            stroke: var(--gold-accent);
         }
 
         #why {
@@ -3525,7 +3560,6 @@
 
         <section id="services">
             <div class="services-header">
-                <div class="section-eyebrow">What We Do</div>
                 <h2 class="section-title">Our Services</h2>
                 <p class="section-lead">Hover over any service card to explore the full scope of what we offer — from
                     trading
