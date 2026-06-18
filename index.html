@@ -3108,6 +3108,34 @@
             position: relative;
         }
 
+        .ticker-head {
+            font-family: 'Cormorant Garamond', serif;
+            color: var(--navy);
+            margin-bottom: 5%;
+            margin-left: 3%;
+        }
+
+        .ticker-head span {
+            font-size: 2rem;
+            font-weight: 600;
+        }
+
+        .ticker-head p {
+            color: #555555;
+            font-size: 1.12rem;
+            font-weight: 300;
+            font-family: 'Montserrat', 'Poppins', 'Open Sans', sans-serif;
+            max-width: 48rem;
+            display: block;
+            margin-block-start: 1em;
+            margin-block-end: 1em;
+            margin-inline-start: 0px;
+            margin-inline-end: 0px;
+            unicode-bidi: isolate;
+            margin: 1rem;
+
+        }
+
         /* Luxury edge overlays to fade items seamlessly into the view background */
         .ticker-section::before,
         .ticker-section::after {
@@ -3122,12 +3150,12 @@
 
         .ticker-section::before {
             left: 0;
-            background: linear-gradient(to right, var(--navy-mid), transparent);
+            /* background: linear-gradient(to right, var(--navy-mid), transparent); */
         }
 
         .ticker-section::after {
             right: 0;
-            background: linear-gradient(to left, var(--navy-mid), transparent);
+            /* background: linear-gradient(to left, var(--navy-mid), transparent); */
         }
 
         .ticker-container {
@@ -3678,6 +3706,20 @@
         </section>
 
         <section class="ticker-section">
+            <div class="section-pre-header" style="margin-left: 30px; margin-bottom: 30px;">
+                <span class="pre-header-line"></span>
+                <span class="pre-header-text">Establishment we work with</span>
+            </div>
+            <div class="ticker-head">
+                <span> We work closely with all <span style="color: var(--gold);"><i>relevant
+                            Authorities</i></span></span>
+                <p>With our team, we ensure seamless operations and compliance, paving the way for your business success
+                    in
+                    UAE
+
+                </p>
+            </div>
+
             <div class="ticker-container" id="customTickerContainer">
                 <div class="ticker-track" id="customTickerTrack">
 
