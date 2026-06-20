@@ -3484,6 +3484,407 @@
                 padding-right: 6%;
             }
         }
+
+        /* ── BLOG POST ENHANCEMENTS: progress bar, share bar, related articles ─── */
+        .reading-progress-track {
+            position: fixed;
+            top: 72px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: rgba(255, 255, 255, 0.06);
+            z-index: 999;
+        }
+
+        .reading-progress-fill {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, var(--gold-dark), var(--gold), var(--gold-light));
+            transition: width 0.1s linear;
+        }
+
+        .blog-share-bar {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 1.6rem 8% 0;
+            display: flex;
+            align-items: center;
+            gap: 0.9rem;
+            flex-wrap: wrap;
+        }
+
+        .blog-share-label {
+            font-size: 0.72rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            margin-right: 0.2rem;
+        }
+
+        .blog-share-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            border: 1px solid var(--border);
+            background: rgba(255, 255, 255, 0.02);
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .blog-share-btn svg {
+            width: 15px;
+            height: 15px;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 2;
+        }
+
+        .blog-share-btn:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+
+        .blog-share-btn.copied {
+            border-color: var(--green);
+            color: var(--green);
+        }
+
+        .blog-related {
+            max-width: 1100px;
+            margin: 1rem auto 0;
+            padding: 3rem 8% 4.5rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .blog-related-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 1.6rem;
+            text-align: center;
+        }
+
+        .blog-related-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.6rem;
+        }
+
+        @media (max-width: 768px) {
+            .blog-related-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .blog-share-bar {
+                padding-left: 6%;
+                padding-right: 6%;
+            }
+
+            .blog-related {
+                padding-left: 6%;
+                padding-right: 6%;
+            }
+        }
+
+        /* ══════════════════════════════════════════════════════════════════
+           BLOG POST — TWO-COLUMN LAYOUT (article + sticky sidebar)
+           ══════════════════════════════════════════════════════════════════ */
+        .blog-post-layout {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 4.5rem 8% 2rem;
+            display: grid;
+            grid-template-columns: minmax(0, 720px) 320px;
+            gap: 3.5rem;
+            align-items: start;
+        }
+
+        .blog-post-layout .blog-post-body {
+            max-width: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .blog-post-sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            position: sticky;
+            top: 96px;
+        }
+
+        .sidebar-box {
+            background: var(--navy-mid);
+            border: 1px solid var(--border);
+            padding: 1.6rem 1.5rem;
+        }
+
+        .sidebar-box-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 1.1rem;
+        }
+
+        /* In This Article — clickable TOC */
+        .toc-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.1rem;
+        }
+
+        .toc-list li a {
+            display: block;
+            color: var(--text-muted);
+            font-size: 0.86rem;
+            line-height: 1.5;
+            padding: 0.5rem 0;
+            border-left: 2px solid transparent;
+            padding-left: 0.8rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .toc-list li a:hover {
+            color: var(--gold-light);
+        }
+
+        .toc-list li a.active {
+            color: var(--gold);
+            border-left-color: var(--gold);
+            font-weight: 500;
+        }
+
+        /* Related box inside sidebar */
+        .sidebar-related-item {
+            display: flex;
+            gap: 0.8rem;
+            align-items: flex-start;
+            text-decoration: none;
+            color: var(--white);
+            cursor: pointer;
+            padding-bottom: 1rem;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .sidebar-related-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .sidebar-related-img {
+            width: 64px;
+            height: 64px;
+            flex-shrink: 0;
+            background-size: cover;
+            background-position: center;
+            border: 1px solid var(--border);
+        }
+
+        .sidebar-related-info h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            line-height: 1.35;
+            margin-bottom: 0.35rem;
+            transition: color 0.2s;
+        }
+
+        .sidebar-related-item:hover .sidebar-related-info h4 {
+            color: var(--gold-light);
+        }
+
+        .sidebar-related-info span {
+            font-size: 0.72rem;
+            color: var(--text-muted);
+        }
+
+        /* Need Help / CTA box inside sidebar */
+        .sidebar-cta-box {
+            background: var(--navy-light);
+            border: 1px solid var(--gold);
+        }
+
+        .sidebar-cta-box h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin-bottom: 0.6rem;
+            color: var(--gold-light);
+        }
+
+        .sidebar-cta-box p {
+            font-size: 0.84rem;
+            line-height: 1.6;
+            color: var(--text-muted);
+            margin-bottom: 1.2rem;
+        }
+
+        .sidebar-cta-box .btn-primary {
+            display: block;
+            text-align: center;
+            width: 100%;
+        }
+
+        @media (max-width: 1024px) {
+            .blog-post-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .blog-post-sidebar {
+                position: static;
+                grid-row: 1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .blog-post-layout {
+                padding-left: 6%;
+                padding-right: 6%;
+            }
+        }
+
+        /* ══════════════════════════════════════════════════════════════════
+           BLOG POST — DATA TABLE (costs/comparisons inside article body)
+           ══════════════════════════════════════════════════════════════════ */
+        .blog-post-body .data-table-wrap {
+            overflow-x: auto;
+            margin: 1rem 0 2rem;
+            border: 1px solid var(--border);
+        }
+
+        .blog-post-body table.data-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.92rem;
+        }
+
+        .blog-post-body table.data-table th {
+            text-align: left;
+            background: rgba(201, 168, 76, 0.08);
+            color: var(--gold);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.68rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            font-weight: 700;
+            padding: 0.9rem 1.2rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .blog-post-body table.data-table td {
+            padding: 0.9rem 1.2rem;
+            color: rgba(255, 255, 255, 0.78);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .blog-post-body table.data-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .blog-post-body table.data-table tfoot td {
+            font-weight: 600;
+            color: var(--white);
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        /* ══════════════════════════════════════════════════════════════════
+           BLOG POST — FAQ ACCORDION
+           ══════════════════════════════════════════════════════════════════ */
+        .faq-section {
+            margin-top: 1rem;
+        }
+
+        .faq-item {
+            border: 1px solid var(--border);
+            border-top: none;
+            background: var(--navy-mid);
+        }
+
+        .faq-item:first-of-type {
+            border-top: 1px solid var(--border);
+        }
+
+        .faq-question {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            width: 100%;
+            padding: 1.1rem 1.4rem;
+            background: none;
+            border: none;
+            text-align: left;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.96rem;
+            font-weight: 500;
+            color: var(--white);
+        }
+
+        .faq-question .faq-icon {
+            flex-shrink: 0;
+            width: 18px;
+            height: 18px;
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-question .faq-icon::before,
+        .faq-question .faq-icon::after {
+            content: '';
+            position: absolute;
+            background: var(--gold);
+            transition: opacity 0.25s ease;
+        }
+
+        .faq-question .faq-icon::before {
+            top: 50%;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            transform: translateY(-50%);
+        }
+
+        .faq-question .faq-icon::after {
+            top: 0;
+            left: 50%;
+            width: 2px;
+            height: 100%;
+            transform: translateX(-50%);
+        }
+
+        .faq-item.open .faq-icon::after {
+            opacity: 0;
+        }
+
+        .faq-item.open .faq-question {
+            color: var(--gold-light);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.35s ease;
+        }
+
+        .faq-answer-inner {
+            padding: 0 1.4rem 1.3rem;
+            color: rgba(255, 255, 255, 0.72);
+            font-size: 0.9rem;
+            line-height: 1.7;
+        }
     </style>
 </head>
 
@@ -4580,6 +4981,9 @@
            new template automatically because it looks up templates by id.
          ═══════════════════════════════════════════════════════════════════════ -->
     <template id="page-blog-post-1">
+        <div class="reading-progress-track">
+            <div class="reading-progress-fill" id="readingProgressFill"></div>
+        </div>
         <article>
             <div class="page-hero blog-post-hero"
                 style="--post-img:url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=1400&q=70')">
@@ -4590,7 +4994,7 @@
                     <span>·</span>
                     <span>12 Jun 2026</span>
                     <span>·</span>
-                    <span>5 min read</span>
+                    <span>7 min read</span>
                 </div>
                 <div class="breadcrumb">
                     <a onclick="loadPage('home')">Home</a>
@@ -4607,48 +5011,262 @@
                 </div>
             </div>
 
-            <div class="blog-post-body">
-                <p>Setting up a free zone company in the UAE is often presented as fast and simple — and in many
-                    cases it is. But founders who rush the decision tend to repeat the same avoidable mistakes,
-                    some of which only surface months later when a bank account application stalls or a licence
-                    renewal comes with unexpected conditions.</p>
+            <div class="blog-share-bar">
+                <span class="blog-share-label">Share</span>
+                <button class="blog-share-btn" title="Share on X"
+                    onclick="shareArticle('twitter', '5 Mistakes to Avoid When Setting Up a Free Zone Company')">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M4 4l16 16M20 4L4 20" />
+                    </svg>
+                </button>
+                <button class="blog-share-btn" title="Share on LinkedIn"
+                    onclick="shareArticle('linkedin', '5 Mistakes to Avoid When Setting Up a Free Zone Company')">
+                    <svg viewBox="0 0 24 24">
+                        <rect x="3" y="9" width="4" height="11" />
+                        <circle cx="5" cy="4.5" r="1.8" />
+                        <path d="M11 9v11M11 13c0-2.2 1.8-4 4-4s4 1.8 4 4v7" />
+                    </svg>
+                </button>
+                <button class="blog-share-btn" title="Share on WhatsApp"
+                    onclick="shareArticle('whatsapp', '5 Mistakes to Avoid When Setting Up a Free Zone Company')">
+                    <svg viewBox="0 0 24 24">
+                        <path
+                            d="M21 11.5a8.5 8.5 0 1 1-3.8-7.1M21 11.5 19 17l-5.5 1.5M16.5 9.5c0 .8-1.5 2-2.3 1.6-.8-.4-1.7-1.4-1.9-2.3-.1-.4.5-1 .9-1" />
+                    </svg>
+                </button>
+                <button class="blog-share-btn" title="Copy link" onclick="copyArticleLink(this)">
+                    <svg viewBox="0 0 24 24">
+                        <path
+                            d="M10 13a4 4 0 0 0 5.66 0l2-2a4 4 0 0 0-5.66-5.66l-1 1M14 11a4 4 0 0 0-5.66 0l-2 2a4 4 0 0 0 5.66 5.66l1-1" />
+                    </svg>
+                </button>
+            </div>
 
-                <h2>1. Picking a Jurisdiction Based on Price Alone</h2>
-                <p>The cheapest free zone licence isn't always the right one. Each free zone is built around
-                    specific activities, visa quotas and office requirements. A package that looks like a bargain
-                    can become expensive once you factor in upgrade fees for activities or visas it wasn't
-                    designed to support.</p>
+            <div class="blog-post-layout">
+                <div class="blog-post-body">
+                    <p id="overview">Setting up a free zone company in the UAE is often presented as fast and simple —
+                        and in many
+                        cases it is. But founders who rush the decision tend to repeat the same avoidable mistakes,
+                        some of which only surface months later when a bank account application stalls or a licence
+                        renewal comes with unexpected conditions. The free zone model was built to make ownership and
+                        setup easier, not to remove the need for planning — and the gap between those two ideas is
+                        where most of the costly missteps happen.</p>
 
-                <h2>2. Underestimating Bank Account Timelines</h2>
-                <p>Corporate bank account approval is rarely instant, and some structures are scrutinised more
-                    closely than others. Founders who assume banking will be a formality often delay their actual
-                    launch by weeks.</p>
+                    <h2 id="mistake-1">1. Picking a Jurisdiction Based on Price Alone</h2>
+                    <p>The cheapest free zone licence isn't always the right one. Each free zone is built around
+                        specific activities, visa quotas and office requirements. A package that looks like a bargain
+                        can become expensive once you factor in upgrade fees for activities or visas it wasn't
+                        designed to support. It's common to see founders sign up for an entry-level package, only to
+                        discover a few months in that their actual visa count or activity list requires an upgrade
+                        that costs more, cumulatively, than simply choosing the right tier from day one.</p>
+                    <p>A more reliable approach is to map out your three-year hiring and activity plan before
+                        comparing prices. A free zone that looks 20% more expensive upfront can easily work out
+                        cheaper once you account for the upgrades a lower-tier package would eventually force.</p>
 
-                <ul>
-                    <li><strong>Have your business plan and source-of-funds documentation ready in
-                            advance.</strong></li>
-                    <li><strong>Choose a free zone with a track record of smooth banking
-                            introductions.</strong></li>
-                    <li><strong>Avoid generic, overly broad trade licence activities</strong> — banks read them
-                        closely.</li>
-                </ul>
+                    <h2 id="mistake-2">2. Underestimating Bank Account Timelines</h2>
+                    <p>Corporate bank account approval is rarely instant, and some structures are scrutinised more
+                        closely than others. Founders who assume banking will be a formality often delay their actual
+                        launch by weeks — sometimes months, if the bank requests additional documentation or a
+                        compliance call partway through the process. Banks have become considerably more selective
+                        about the activities, ownership structures and source-of-funds profiles they're willing to
+                        onboard, and that selectivity varies meaningfully between institutions.</p>
 
-                <blockquote>The structure you choose on day one shapes every banking, tax and visa conversation
-                    you'll have for years afterward.</blockquote>
+                    <ul>
+                        <li><strong>Have your business plan and source-of-funds documentation ready in
+                                advance.</strong></li>
+                        <li><strong>Choose a free zone with a track record of smooth banking
+                                introductions.</strong></li>
+                        <li><strong>Avoid generic, overly broad trade licence activities</strong> — banks read them
+                            closely.</li>
+                        <li><strong>Apply to more than one bank in parallel</strong> rather than waiting on a single
+                            decision before moving forward.</li>
+                    </ul>
 
-                <h2>3. Ignoring Economic Substance and Compliance Filings</h2>
-                <p>A free zone licence doesn't exempt a company from UAE regulatory filings. Missing Economic
-                    Substance Regulation deadlines or corporate tax registration windows can result in penalties
-                    that outweigh any savings from a lower-cost setup.</p>
+                    <blockquote>The structure you choose on day one shapes every banking, tax and visa conversation
+                        you'll have for years afterward.</blockquote>
 
-                <p>Getting the structure right from the outset is significantly cheaper than restructuring later.
-                    If you're weighing your options, it's worth speaking with an advisor before you commit to a
-                    jurisdiction.</p>
+                    <h2 id="mistake-3">3. Ignoring Economic Substance and Compliance Filings</h2>
+                    <p>A free zone licence doesn't exempt a company from UAE regulatory filings. Missing Economic
+                        Substance Regulation deadlines or corporate tax registration windows can result in penalties
+                        that outweigh any savings from a lower-cost setup. Some founders treat the licence issuance
+                        as the finish line, when in reality it's closer to the starting point of an ongoing compliance
+                        relationship with the relevant authorities.</p>
+
+                    <h2 id="mistake-4">4. Choosing an Activity List That Doesn't Match the Real Business</h2>
+                    <p>It's tempting to select the broadest possible set of licensed activities "just in case." In
+                        practice, an overly generic or mismatched activity list raises questions during banking and
+                        visa processing, and can complicate renewals if the authority later asks for evidence that the
+                        business actually operates within its stated scope. A tightly defined, accurate activity list
+                        is almost always easier to manage than an expansive one.</p>
+
+                    <h2 id="mistake-5">5. Underestimating the Office and Visa Quota Relationship</h2>
+                    <p>Visa entitlements in most free zones are tied directly to the office or flexi-desk package
+                        purchased — not to the size of the business. Founders who plan to hire ahead of their visa
+                        quota often discover, after the fact, that an upgrade is required before a single additional
+                        employment visa can be processed, which can stall hiring plans at an inconvenient moment.</p>
+
+                    <div class="data-table-wrap">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Mistake</th>
+                                    <th>Typical Cost of Getting It Wrong</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Wrong jurisdiction chosen on price</td>
+                                    <td>AED 3,000 – 10,000 in upgrade fees</td>
+                                </tr>
+                                <tr>
+                                    <td>Delayed bank account planning</td>
+                                    <td>4 – 12 weeks of lost trading time</td>
+                                </tr>
+                                <tr>
+                                    <td>Missed compliance filings</td>
+                                    <td>Fines starting from AED 10,000</td>
+                                </tr>
+                                <tr>
+                                    <td>Mismatched activity list</td>
+                                    <td>Renewal delays, banking friction</td>
+                                </tr>
+                                <tr>
+                                    <td>Visa quota miscalculation</td>
+                                    <td>Office/desk upgrade required mid-year</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <p id="conclusion">Getting the structure right from the outset is significantly cheaper than
+                        restructuring later.
+                        If you're weighing your options, it's worth speaking with an advisor before you commit to a
+                        jurisdiction.</p>
+
+                    <h2 id="faqs">Frequently Asked Questions</h2>
+                    <div class="faq-section">
+                        <div class="faq-item">
+                            <button class="faq-question" onclick="toggleFaq(this)">
+                                <span>What's the single most expensive mistake founders make?</span>
+                                <span class="faq-icon"></span>
+                            </button>
+                            <div class="faq-answer">
+                                <div class="faq-answer-inner">Underestimating bank account timelines tends to be the
+                                    costliest, since it can delay the actual launch of trading by weeks or months —
+                                    time that translates directly into lost revenue.</div>
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <button class="faq-question" onclick="toggleFaq(this)">
+                                <span>Can I switch free zones after registering if I picked the wrong one?</span>
+                                <span class="faq-icon"></span>
+                            </button>
+                            <div class="faq-answer">
+                                <div class="faq-answer-inner">It's possible, but it usually means cancelling the
+                                    existing licence, reapplying in the new jurisdiction, and reissuing visas — so it's
+                                    far more time- and cost-efficient to choose correctly the first time.</div>
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <button class="faq-question" onclick="toggleFaq(this)">
+                                <span>Do all free zones require a business plan?</span>
+                                <span class="faq-icon"></span>
+                            </button>
+                            <div class="faq-answer">
+                                <div class="faq-answer-inner">No — requirements vary by free zone and activity type.
+                                    Some ask for a short business plan as part of licensing, while others don't.
+                                    Having one ready regardless tends to speed up both licensing and banking.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <aside class="blog-post-sidebar">
+                    <div class="sidebar-box">
+                        <div class="sidebar-box-title">In This Article</div>
+                        <ul class="toc-list">
+                            <li><a data-target="overview" onclick="scrollToSection('overview')">Overview</a></li>
+                            <li><a data-target="mistake-1" onclick="scrollToSection('mistake-1')">1. Picking a
+                                    Jurisdiction on Price</a></li>
+                            <li><a data-target="mistake-2" onclick="scrollToSection('mistake-2')">2. Bank Account
+                                    Timelines</a></li>
+                            <li><a data-target="mistake-3" onclick="scrollToSection('mistake-3')">3. Compliance
+                                    Filings</a></li>
+                            <li><a data-target="mistake-4" onclick="scrollToSection('mistake-4')">4. Activity List
+                                    Mismatch</a></li>
+                            <li><a data-target="mistake-5" onclick="scrollToSection('mistake-5')">5. Office & Visa
+                                    Quotas</a></li>
+                            <li><a data-target="faqs" onclick="scrollToSection('faqs')">Frequently Asked Questions</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="sidebar-box">
+                        <div class="sidebar-box-title">Related</div>
+                        <a class="sidebar-related-item" onclick="loadPage('blog-post-2')">
+                            <div class="sidebar-related-img"
+                                style="background-image:url('https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=200&q=70')">
+                            </div>
+                            <div class="sidebar-related-info">
+                                <h4>UAE Corporate Tax: What Every SME Needs to Know</h4>
+                                <span>6 min</span>
+                            </div>
+                        </a>
+                        <a class="sidebar-related-item" onclick="loadPage('blog-post-3')">
+                            <div class="sidebar-related-img"
+                                style="background-image:url('https://images.unsplash.com/photo-1556742502-ec7c0e9f34b1?w=200&q=70')">
+                            </div>
+                            <div class="sidebar-related-info">
+                                <h4>Mainland vs Free Zone: Which Structure Actually Fits You?</h4>
+                                <span>8 min</span>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="sidebar-box sidebar-cta-box">
+                        <h4>Need Help Setting Up?</h4>
+                        <p>Our advisors handle everything from jurisdiction selection to licensing and banking
+                            introductions.</p>
+                        <a class="btn-primary" onclick="goToQueryForm()">Free Consultation</a>
+                    </div>
+                </aside>
             </div>
 
             <div class="blog-post-cta">
                 <h3>Thinking about setting up in the UAE?</h3>
                 <a class="btn-primary" onclick="goToQueryForm()">Book a Free Consultation</a>
+            </div>
+
+            <div class="blog-related">
+                <h3 class="blog-related-title">Related Articles</h3>
+                <div class="blog-related-grid">
+                    <a class="blog-card" onclick="loadPage('blog-post-2')">
+                        <div class="blog-card-img"
+                            style="background-image:url('https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=800&q=70')">
+                        </div>
+                        <div class="blog-card-body">
+                            <span class="blog-card-tag">Tax & Compliance</span>
+                            <h3 class="blog-card-title">UAE Corporate Tax: What Every SME Needs to Know</h3>
+                            <div class="blog-card-meta">
+                                <span>03 Jun 2026</span>
+                                <span class="blog-card-read">Read Article →</span>
+                            </div>
+                        </div>
+                    </a>
+                    <a class="blog-card" onclick="loadPage('blog-post-3')">
+                        <div class="blog-card-img"
+                            style="background-image:url('https://images.unsplash.com/photo-1556742502-ec7c0e9f34b1?w=800&q=70')">
+                        </div>
+                        <div class="blog-card-body">
+                            <span class="blog-card-tag">Business Strategy</span>
+                            <h3 class="blog-card-title">Mainland vs Free Zone: Which Structure Actually Fits You?</h3>
+                            <div class="blog-card-meta">
+                                <span>26 May 2026</span>
+                                <span class="blog-card-read">Read Article →</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
             </div>
 
             <div class="blog-post-back">
@@ -4660,6 +5278,9 @@
 
 
     <template id="page-blog-post-2">
+        <div class="reading-progress-track">
+            <div class="reading-progress-fill" id="readingProgressFill"></div>
+        </div>
         <article>
             <div class="page-hero blog-post-hero"
                 style="--post-img:url('https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=1400&q=70')">
@@ -4669,75 +5290,6 @@
                     <span>By Luizmary Associates</span>
                     <span>·</span>
                     <span>03 Jun 2026</span>
-                    <span>·</span>
-                    <span>4 min read</span>
-                </div>
-                <div class="breadcrumb">
-                    <a onclick="loadPage('home')">Home</a>
-                    <svg viewBox="0 0 24 24"
-                        style="width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2;">
-                        <polyline points="9 18 15 12 9 6" />
-                    </svg>
-                    <a onclick="loadPage('blog')">Blog</a>
-                    <svg viewBox="0 0 24 24"
-                        style="width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2;">
-                        <polyline points="9 18 15 12 9 6" />
-                    </svg>
-                    <span>Article</span>
-                </div>
-            </div>
-
-            <div class="blog-post-body">
-                <p>Since the introduction of UAE Federal Corporate Tax, small and medium business owners have had
-                    to get comfortable with a regime that, while moderate by global standards, still carries real
-                    registration, filing and record-keeping obligations.</p>
-
-                <h2>Who Actually Needs to Register</h2>
-                <p>Most mainland and free zone entities are required to register for corporate tax, regardless of
-                    whether they ultimately owe anything. Missing the registration window itself can trigger a
-                    penalty, independent of your taxable income.</p>
-
-                <h2>Qualifying Free Zone Status</h2>
-                <p>Free zone companies that meet specific substance and income conditions may continue to benefit
-                    from a 0% rate on qualifying income. Losing that status — even unintentionally, through one
-                    non-qualifying transaction — can expose the entire year's profit to standard taxation.</p>
-
-                <ul>
-                    <li><strong>Maintain audited financial statements</strong> even if not strictly mandatory for
-                        your structure.</li>
-                    <li><strong>Track qualifying vs non-qualifying income separately</strong> from day one.</li>
-                    <li><strong>File before your deadline</strong> — extensions are not guaranteed.</li>
-                </ul>
-
-                <blockquote>Corporate tax compliance is no longer optional paperwork — it's part of how a UAE
-                    company stays in good standing.</blockquote>
-
-                <p>If you're unsure whether your current structure qualifies for free zone tax relief, a short
-                    review now can prevent a costly reassessment later.</p>
-            </div>
-
-            <div class="blog-post-cta">
-                <h3>Not sure where your company stands on corporate tax?</h3>
-                <a class="btn-primary" onclick="goToQueryForm()">Book a Free Consultation</a>
-            </div>
-
-            <div class="blog-post-back">
-                <a onclick="loadPage('blog')">← Back to All Articles</a>
-            </div>
-        </article>
-    </template>
-
-
-    <template id="page-blog-post-3">
-        <article>
-            <div class="page-hero blog-post-hero"
-                style="--post-img:url('https://images.unsplash.com/photo-1556742502-ec7c0e9f34b1?w=1400&q=70')">
-                <div class="page-hero-eyebrow">Business Strategy</div>
-                <h1>Mainland vs Free Zone: Which Structure Actually Fits You?</h1>
-                <div class="blog-post-meta">
-                    <span>By Luizmary Associates</span>
-                    <span>·</span>
-                    <span>26 May 2026</span>
                     <span>·</span>
                     <span>6 min read</span>
                 </div>
@@ -4756,29 +5308,285 @@
                 </div>
             </div>
 
+            <div class="blog-share-bar">
+                <span class="blog-share-label">Share</span>
+                <button class="blog-share-btn" title="Share on X"
+                    onclick="shareArticle('twitter', 'UAE Corporate Tax: What Every SME Needs to Know')">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M4 4l16 16M20 4L4 20" />
+                    </svg>
+                </button>
+                <button class="blog-share-btn" title="Share on LinkedIn"
+                    onclick="shareArticle('linkedin', 'UAE Corporate Tax: What Every SME Needs to Know')">
+                    <svg viewBox="0 0 24 24">
+                        <rect x="3" y="9" width="4" height="11" />
+                        <circle cx="5" cy="4.5" r="1.8" />
+                        <path d="M11 9v11M11 13c0-2.2 1.8-4 4-4s4 1.8 4 4v7" />
+                    </svg>
+                </button>
+                <button class="blog-share-btn" title="Share on WhatsApp"
+                    onclick="shareArticle('whatsapp', 'UAE Corporate Tax: What Every SME Needs to Know')">
+                    <svg viewBox="0 0 24 24">
+                        <path
+                            d="M21 11.5a8.5 8.5 0 1 1-3.8-7.1M21 11.5 19 17l-5.5 1.5M16.5 9.5c0 .8-1.5 2-2.3 1.6-.8-.4-1.7-1.4-1.9-2.3-.1-.4.5-1 .9-1" />
+                    </svg>
+                </button>
+                <button class="blog-share-btn" title="Copy link" onclick="copyArticleLink(this)">
+                    <svg viewBox="0 0 24 24">
+                        <path
+                            d="M10 13a4 4 0 0 0 5.66 0l2-2a4 4 0 0 0-5.66-5.66l-1 1M14 11a4 4 0 0 0-5.66 0l-2 2a4 4 0 0 0 5.66 5.66l1-1" />
+                    </svg>
+                </button>
+            </div>
+
+            <div class="blog-post-layout">
+                <div class="blog-post-body">
+                    <p id="overview">Since the introduction of UAE Federal Corporate Tax, small and medium business
+                        owners have had
+                        to get comfortable with a regime that, while moderate by global standards, still carries real
+                        registration, filing and record-keeping obligations. For many founders accustomed to the
+                        UAE's historically tax-light reputation, the shift has meant building an entirely new layer of
+                        annual discipline into how the business is run.</p>
+
+                    <h2 id="section-1">Who Actually Needs to Register</h2>
+                    <p>Most mainland and free zone entities are required to register for corporate tax, regardless of
+                        whether they ultimately owe anything. Missing the registration window itself can trigger a
+                        penalty, independent of your taxable income. Registration is a separate obligation from
+                        filing — a business can be fully registered and still face penalties later if it misses its
+                        actual return deadline.</p>
+
+                    <h2 id="section-2">How the 9% Rate Actually Applies</h2>
+                    <p>Taxable income up to a set threshold is taxed at 0%, with the standard 9% rate applying only to
+                        profit above that line. This tiered structure means many small businesses end up with a much
+                        lower effective rate than the headline 9% figure suggests — but only if the income, expenses
+                        and adjustments are calculated and documented correctly.</p>
+
+                    <h2 id="section-3">Qualifying Free Zone Status</h2>
+                    <p>Free zone companies that meet specific substance and income conditions may continue to benefit
+                        from a 0% rate on qualifying income. Losing that status — even unintentionally, through one
+                        non-qualifying transaction — can expose the entire year's profit to standard taxation. This is
+                        one of the most consequential and least understood aspects of the regime: a single transaction
+                        classified incorrectly can have a disproportionate financial impact.</p>
+
+                    <ul>
+                        <li><strong>Maintain audited financial statements</strong> even if not strictly mandatory for
+                            your structure.</li>
+                        <li><strong>Track qualifying vs non-qualifying income separately</strong> from day one.</li>
+                        <li><strong>File before your deadline</strong> — extensions are not guaranteed.</li>
+                        <li><strong>Review related-party transactions</strong> for transfer pricing exposure annually.
+                        </li>
+                    </ul>
+
+                    <blockquote>Corporate tax compliance is no longer optional paperwork — it's part of how a UAE
+                        company stays in good standing.</blockquote>
+
+                    <h2 id="section-4">Record-Keeping Is Now a Real Obligation</h2>
+                    <p>Businesses are expected to retain financial records and supporting documentation for several
+                        years after the relevant tax period, not just until the return is filed. In an audit or review
+                        scenario, the absence of clean records can be as damaging as an actual filing error, since the
+                        burden of proof sits with the business.</p>
+
+                    <p id="conclusion">If you're unsure whether your current structure qualifies for free zone tax
+                        relief, a short
+                        review now can prevent a costly reassessment later.</p>
+                </div>
+
+                <aside class="blog-post-sidebar">
+                    <div class="sidebar-box">
+                        <div class="sidebar-box-title">In This Article</div>
+                        <ul class="toc-list">
+                            <li><a data-target="overview" onclick="scrollToSection('overview')">Overview</a></li>
+                            <li><a data-target="section-1" onclick="scrollToSection('section-1')">Registration
+                                    Requirements</a></li>
+                            <li><a data-target="section-2" onclick="scrollToSection('section-2')">The 9% Tax Rate</a>
+                            </li>
+                            <li><a data-target="section-3" onclick="scrollToSection('section-3')">Free Zone Status</a>
+                            </li>
+                            <li><a data-target="section-4" onclick="scrollToSection('section-4')">Record-Keeping</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="sidebar-box">
+                        <div class="sidebar-box-title">Related</div>
+                        <a class="sidebar-related-item" onclick="loadPage('blog-post-1')">
+                            <div class="sidebar-related-img"
+                                style="background-image:url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=200&q=70')">
+                            </div>
+                            <div class="sidebar-related-info">
+                                <h4>5 Mistakes to Avoid When Setting Up a Free Zone Company</h4>
+                                <span>7 min</span>
+                            </div>
+                        </a>
+                        <a class="sidebar-related-item" onclick="loadPage('blog-post-3')">
+                            <div class="sidebar-related-img"
+                                style="background-image:url('https://images.unsplash.com/photo-1556742502-ec7c0e9f34b1?w=200&q=70')">
+                            </div>
+                            <div class="sidebar-related-info">
+                                <h4>Mainland vs Free Zone: Which Structure Actually Fits You?</h4>
+                                <span>8 min</span>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="sidebar-box sidebar-cta-box">
+                        <h4>Need Help Setting Up?</h4>
+                        <p>Our advisors handle everything from jurisdiction selection to licensing and banking
+                            introductions.</p>
+                        <a class="btn-primary" onclick="goToQueryForm()">Free Consultation</a>
+                    </div>
+                </aside>
+            </div>
+
+            <div class="blog-post-cta">
+                <h3>Thinking about setting up in the UAE?</h3>
+                <a class="btn-primary" onclick="goToQueryForm()">Book a Free Consultation</a>
+            </div>
+
+            <div class="blog-related">
+                <h3 class="blog-related-title">Related Articles</h3>
+                <div class="blog-related-grid">
+                    <a class="blog-card" onclick="loadPage('blog-post-1')">
+                        <div class="blog-card-img"
+                            style="background-image:url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=70')">
+                        </div>
+                        <div class="blog-card-body">
+                            <span class="blog-card-tag">Company Formation</span>
+                            <h3 class="blog-card-title">5 Mistakes to Avoid When Setting Up a Free Zone Company</h3>
+                            <div class="blog-card-meta">
+                                <span>12 Jun 2026</span>
+                                <span class="blog-card-read">Read Article →</span>
+                            </div>
+                        </div>
+                    </a>
+                    <a class="blog-card" onclick="loadPage('blog-post-3')">
+                        <div class="blog-card-img"
+                            style="background-image:url('https://images.unsplash.com/photo-1556742502-ec7c0e9f34b1?w=800&q=70')">
+                        </div>
+                        <div class="blog-card-body">
+                            <span class="blog-card-tag">Business Strategy</span>
+                            <h3 class="blog-card-title">Mainland vs Free Zone: Which Structure Actually Fits You?</h3>
+                            <div class="blog-card-meta">
+                                <span>26 May 2026</span>
+                                <span class="blog-card-read">Read Article →</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="blog-post-back">
+                <a onclick="loadPage('blog')">← Back to All Articles</a>
+            </div>
+        </article>
+    </template>
+
+
+    <template id="page-blog-post-3">
+        <div class="reading-progress-track">
+            <div class="reading-progress-fill" id="readingProgressFill"></div>
+        </div>
+        <article>
+            <div class="page-hero blog-post-hero"
+                style="--post-img:url('https://images.unsplash.com/photo-1556742502-ec7c0e9f34b1?w=1400&q=70')">
+                <div class="page-hero-eyebrow">Business Strategy</div>
+                <h1>Mainland vs Free Zone: Which Structure Actually Fits You?</h1>
+                <div class="blog-post-meta">
+                    <span>By Luizmary Associates</span>
+                    <span>·</span>
+                    <span>26 May 2026</span>
+                    <span>·</span>
+                    <span>7 min read</span>
+                </div>
+                <div class="breadcrumb">
+                    <a onclick="loadPage('home')">Home</a>
+                    <svg viewBox="0 0 24 24"
+                        style="width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2;">
+                        <polyline points="9 18 15 12 9 6" />
+                    </svg>
+                    <a onclick="loadPage('blog')">Blog</a>
+                    <svg viewBox="0 0 24 24"
+                        style="width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2;">
+                        <polyline points="9 18 15 12 9 6" />
+                    </svg>
+                    <span>Article</span>
+                </div>
+            </div>
+
+            <div class="blog-share-bar">
+                <span class="blog-share-label">Share</span>
+                <button class="blog-share-btn" title="Share on X"
+                    onclick="shareArticle('twitter', 'Mainland vs Free Zone: Which Structure Actually Fits You?')">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M4 4l16 16M20 4L4 20" />
+                    </svg>
+                </button>
+                <button class="blog-share-btn" title="Share on LinkedIn"
+                    onclick="shareArticle('linkedin', 'Mainland vs Free Zone: Which Structure Actually Fits You?')">
+                    <svg viewBox="0 0 24 24">
+                        <rect x="3" y="9" width="4" height="11" />
+                        <circle cx="5" cy="4.5" r="1.8" />
+                        <path d="M11 9v11M11 13c0-2.2 1.8-4 4-4s4 1.8 4 4v7" />
+                    </svg>
+                </button>
+                <button class="blog-share-btn" title="Share on WhatsApp"
+                    onclick="shareArticle('whatsapp', 'Mainland vs Free Zone: Which Structure Actually Fits You?')">
+                    <svg viewBox="0 0 24 24">
+                        <path
+                            d="M21 11.5a8.5 8.5 0 1 1-3.8-7.1M21 11.5 19 17l-5.5 1.5M16.5 9.5c0 .8-1.5 2-2.3 1.6-.8-.4-1.7-1.4-1.9-2.3-.1-.4.5-1 .9-1" />
+                    </svg>
+                </button>
+                <button class="blog-share-btn" title="Copy link" onclick="copyArticleLink(this)">
+                    <svg viewBox="0 0 24 24">
+                        <path
+                            d="M10 13a4 4 0 0 0 5.66 0l2-2a4 4 0 0 0-5.66-5.66l-1 1M14 11a4 4 0 0 0-5.66 0l-2 2a4 4 0 0 0 5.66 5.66l1-1" />
+                    </svg>
+                </button>
+            </div>
+
             <div class="blog-post-body">
                 <p>"Mainland or free zone?" is usually the first question a new founder asks, and usually the
                     wrong one to lead with. The better starting point is where your customers and suppliers
-                    actually are.</p>
+                    actually are. Once that's clear, the mainland-versus-free-zone decision tends to answer
+                    itself — the harder part is being honest about where the business is actually headed, not
+                    just where it stands on day one.</p>
 
                 <h2>When Mainland Makes Sense</h2>
                 <p>If you plan to trade directly within the UAE domestic market, bid on government tenders, or
                     open multiple branches across emirates, a mainland licence removes restrictions that a free
-                    zone setup would otherwise impose.</p>
+                    zone setup would otherwise impose. Mainland companies can also generally lease office space
+                    anywhere in their emirate without being tied to a single free zone's property portfolio,
+                    which matters for businesses planning a physical retail or service presence.</p>
 
                 <h2>When Free Zone Makes Sense</h2>
                 <p>For holding structures, international consulting, e-commerce, or businesses that don't need a
                     physical presence outside a single free zone, the lower setup cost and 100% foreign ownership
-                    typically outweigh the trade restrictions.</p>
+                    typically outweigh the trade restrictions. Free zones also tend to offer faster, more
+                    standardised setup processes, which appeals to founders who want to launch quickly and figure
+                    out scaling questions later.</p>
+
+                <h2>The Cost Comparison Most Founders Miss</h2>
+                <p>Headline licence fees rarely tell the full story. A mainland setup often carries higher upfront
+                    costs but fewer downstream restrictions, while a free zone setup can look cheaper initially
+                    only to require a costly migration later if the business outgrows the zone's trade
+                    permissions. Modelling the three-year cost — not just the first invoice — is the only way to
+                    compare the two fairly.</p>
 
                 <ul>
                     <li><strong>Map your actual customer base</strong> before comparing licence costs.</li>
                     <li><strong>Factor in long-term visa and office space needs</strong>, not just year one.</li>
                     <li><strong>Remember structures can be migrated later</strong> — but rarely without cost.</li>
+                    <li><strong>Check tender and government-contract eligibility</strong> if public sector work is
+                        part of the plan.</li>
                 </ul>
 
                 <blockquote>The right structure is the one that matches where your revenue actually comes from —
                     not the one with the lowest sticker price.</blockquote>
+
+                <h2>Hybrid Approaches Are Increasingly Common</h2>
+                <p>Some groups now operate a free zone holding entity alongside a mainland operating company,
+                    using each structure for what it does best. This isn't the right fit for every business, but
+                    it's worth knowing the option exists before assuming the choice has to be either-or.</p>
 
                 <p>Most founders only need to ask a handful of questions to land on the right answer. If you'd
                     like a second opinion on your specific situation, our team is happy to walk through it with
@@ -4788,6 +5596,38 @@
             <div class="blog-post-cta">
                 <h3>Still deciding between mainland and free zone?</h3>
                 <a class="btn-primary" onclick="goToQueryForm()">Book a Free Consultation</a>
+            </div>
+
+            <div class="blog-related">
+                <h3 class="blog-related-title">Related Articles</h3>
+                <div class="blog-related-grid">
+                    <a class="blog-card" onclick="loadPage('blog-post-1')">
+                        <div class="blog-card-img"
+                            style="background-image:url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=70')">
+                        </div>
+                        <div class="blog-card-body">
+                            <span class="blog-card-tag">Company Formation</span>
+                            <h3 class="blog-card-title">5 Mistakes to Avoid When Setting Up a Free Zone Company</h3>
+                            <div class="blog-card-meta">
+                                <span>12 Jun 2026</span>
+                                <span class="blog-card-read">Read Article →</span>
+                            </div>
+                        </div>
+                    </a>
+                    <a class="blog-card" onclick="loadPage('blog-post-2')">
+                        <div class="blog-card-img"
+                            style="background-image:url('https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=800&q=70')">
+                        </div>
+                        <div class="blog-card-body">
+                            <span class="blog-card-tag">Tax & Compliance</span>
+                            <h3 class="blog-card-title">UAE Corporate Tax: What Every SME Needs to Know</h3>
+                            <div class="blog-card-meta">
+                                <span>03 Jun 2026</span>
+                                <span class="blog-card-read">Read Article →</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
             </div>
 
             <div class="blog-post-back">
@@ -5846,6 +6686,129 @@
             }, 50);
         }
 
+        // ── BLOG POST: READING PROGRESS BAR ─────────────────────────────────────
+        let readingProgressScrollHandler = null;
+
+        function initializeReadingProgress() {
+            // Tear down any previous listener before attaching a fresh one,
+            // since loadPage() re-renders #main-content on every navigation.
+            if (readingProgressScrollHandler) {
+                window.removeEventListener('scroll', readingProgressScrollHandler);
+                readingProgressScrollHandler = null;
+            }
+
+            const fill = document.getElementById('readingProgressFill');
+            const article = document.querySelector('#main-content article');
+            if (!fill || !article) return;
+
+            readingProgressScrollHandler = () => {
+                const articleHeight = article.offsetHeight - window.innerHeight;
+                const scrolled = window.scrollY;
+                const pct = articleHeight > 0 ? Math.min(100, Math.max(0, (scrolled / articleHeight) * 100)) : 0;
+                fill.style.width = pct + '%';
+            };
+
+            window.addEventListener('scroll', readingProgressScrollHandler);
+            readingProgressScrollHandler();
+        }
+
+        // ── BLOG POST: SOCIAL SHARE ACTIONS ─────────────────────────────────────
+        function shareArticle(network, titleText) {
+            const pageUrl = window.location.href;
+            const encodedUrl = encodeURIComponent(pageUrl);
+            const encodedTitle = encodeURIComponent(titleText);
+            let shareUrl = '';
+
+            if (network === 'twitter') {
+                shareUrl = `https://twitter.com/intent/tweet?text=${encodedTitle}&url=${encodedUrl}`;
+            } else if (network === 'linkedin') {
+                shareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`;
+            } else if (network === 'whatsapp') {
+                shareUrl = `https://wa.me/?text=${encodedTitle}%20${encodedUrl}`;
+            }
+
+            if (shareUrl) window.open(shareUrl, '_blank', 'noopener,noreferrer');
+        }
+
+        function copyArticleLink(buttonEl) {
+            navigator.clipboard.writeText(window.location.href).then(() => {
+                if (!buttonEl) return;
+                buttonEl.classList.add('copied');
+                setTimeout(() => buttonEl.classList.remove('copied'), 1800);
+            }).catch(() => {
+                console.error('Clipboard copy failed — clipboard API unavailable.');
+            });
+        }
+
+        // ── BLOG POST: FAQ ACCORDION TOGGLE ─────────────────────────────────────
+        function toggleFaq(buttonEl) {
+            const item = buttonEl.closest('.faq-item');
+            const answer = item.querySelector('.faq-answer');
+            const wasOpen = item.classList.contains('open');
+
+            // Close any sibling FAQ items within the same section
+            const section = item.closest('.faq-section');
+            if (section) {
+                section.querySelectorAll('.faq-item.open').forEach((openItem) => {
+                    if (openItem !== item) {
+                        openItem.classList.remove('open');
+                        openItem.querySelector('.faq-answer').style.maxHeight = null;
+                    }
+                });
+            }
+
+            if (wasOpen) {
+                item.classList.remove('open');
+                answer.style.maxHeight = null;
+            } else {
+                item.classList.add('open');
+                answer.style.maxHeight = answer.scrollHeight + 'px';
+            }
+        }
+
+        // ── BLOG POST: "IN THIS ARTICLE" TOC SCROLLSPY ──────────────────────────
+        let tocScrollHandler = null;
+
+        function initializeTocScrollspy() {
+            if (tocScrollHandler) {
+                window.removeEventListener('scroll', tocScrollHandler);
+                tocScrollHandler = null;
+            }
+
+            const tocLinks = document.querySelectorAll('.toc-list a[data-target]');
+            if (!tocLinks.length) return;
+
+            const sections = Array.from(tocLinks)
+                .map((link) => document.getElementById(link.dataset.target))
+                .filter(Boolean);
+
+            tocScrollHandler = () => {
+                let currentId = sections[0] ? sections[0].id : null;
+                const triggerLine = window.scrollY + 140;
+
+                sections.forEach((sectionEl) => {
+                    if (sectionEl.offsetTop <= triggerLine) {
+                        currentId = sectionEl.id;
+                    }
+                });
+
+                tocLinks.forEach((link) => {
+                    link.classList.toggle('active', link.dataset.target === currentId);
+                });
+            };
+
+            window.addEventListener('scroll', tocScrollHandler);
+            tocScrollHandler();
+        }
+
+        function scrollToSection(targetId) {
+            const targetEl = document.getElementById(targetId);
+            if (targetEl) {
+                const offset = targetEl.getBoundingClientRect().top + window.scrollY - 96;
+                window.scrollTo({ top: offset, behavior: 'smooth' });
+            }
+        }
+
         // ── DYNAMIC SINGLE PAGE TEMPLATE ROUTER ───────────────────────────────
         function loadPage(pageId) {
             const template = document.getElementById(`page-${pageId}`);
@@ -5863,6 +6826,21 @@
 
             // Re-scan freshly injected nodes for the scroll fade-in effect
             initializeScrollRevealObserver();
+
+            // Reading progress bar + TOC scrollspy only apply to single article pages
+            if (pageId.startsWith('blog-post-')) {
+                initializeReadingProgress();
+                initializeTocScrollspy();
+            } else {
+                if (readingProgressScrollHandler) {
+                    window.removeEventListener('scroll', readingProgressScrollHandler);
+                    readingProgressScrollHandler = null;
+                }
+                if (tocScrollHandler) {
+                    window.removeEventListener('scroll', tocScrollHandler);
+                    tocScrollHandler = null;
+                }
+            }
 
             // Update navbar highlighting rules
             document.querySelectorAll('.nav-links a').forEach(link => link.classList.remove('active'));
