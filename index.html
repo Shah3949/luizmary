@@ -3489,7 +3489,7 @@
 
 <body>
 
-    <nav class="scroll-reveal">
+    <nav>
         <div class="nav-logo-container" onclick="loadPage('home')">
             <img src="logo.png" alt="Luizmary Associates Logo" class="nav-logo-img">
             <img src="logo2.png" alt="Luizmary Associates Logo" class="nav-logo-img-alt">
@@ -3786,7 +3786,8 @@
                         <span>Send Request</span>
                     </button>
 
-                    <div class="alert success" id="hero-alert-success">Inquiry sent successfully!</div>
+                    <div class="alert success" id="hero-alert-success">Thanks! We will be connecting soon — check your
+                        inbox for confirmation.</div>
                     <div class="alert error" id="hero-alert-error">Failed to dispatch request. Try again.</div>
                 </form>
             </div>
@@ -3821,7 +3822,7 @@
 
         </div>
 
-        <section id="about" class="about-section">
+        <section id="about" class="about-section scroll-reveal">
             <div class="about-container">
                 <div class="section-pre-header">
                     <span class="pre-header-line"></span>
@@ -4075,7 +4076,7 @@
                     and
                     corporate services.</p>
             </div>
-            <div class="services-grid">
+            <div class="services-grid scroll-reveal">
                 <div class="service-card">
                     <div class="service-icon"><svg viewBox="0 0 24 24">
                             <path d="M3 6l9-4 9 4v6c0 5-4 9-9 10C7 21 3 17 3 12V6z" />
@@ -4348,7 +4349,7 @@
                     transparent
                     approach designed around your goals.</p>
             </div>
-            <div class="process-steps">
+            <div class="process-steps scroll-reveal">
                 <div class="process-step">
                     <div class="step-circle">1</div>
                     <div class="step-title">Initial Consultation</div>
@@ -4393,7 +4394,7 @@
             </div>
 
             <div>
-                <div class="blog-grid">
+                <div class="blog-grid scroll-reveal">
 
                     <!-- ─────────────────────────────────────────────────────────
                      ✏️ CARD TEMPLATE — copy from <a class="blog-card" …> to </a>
@@ -4500,7 +4501,7 @@
         </div>
 
         <div class="blog-section">
-            <div class="blog-grid">
+            <div class="blog-grid scroll-reveal">
 
                 <!-- ─────────────────────────────────────────────────────────
                      ✏️ CARD TEMPLATE — copy from <a class="blog-card" …> to </a>
@@ -5648,7 +5649,7 @@
                 </div>
             </div>
 
-            <div class="contact-form-wrap">
+            <div class="contact-form-wrap scroll-reveal">
                 <h3 class="contact-form-title">Consultation Intake Form</h3>
                 <p class="contact-form-sub">Please outline your operational objectives below to guarantee route-matching
                     to the appropriate advisor.</p>
@@ -5699,8 +5700,8 @@
                     </button>
 
                     <div class="alert success" id="successAlert">
-                        <strong>Transmission Complete.</strong> Your corporate inquiry file has been assigned an agent.
-                        Expect outreach within 1 business day.
+                        <strong>Transmission Complete.</strong> Thank you for reaching out — we will be connecting
+                        soon. A confirmation email is on its way to your inbox.
                     </div>
                     <div class="alert error" id="errorAlert">
                         <strong>System Friction Alert.</strong> Failed to transmit form payload securely. Please contact
@@ -5718,7 +5719,7 @@
             <p class="branches-section-sub">Providing processing capabilities across the entire economic ecosystem of
                 the UAE.</p>
 
-            <div class="branches-grid">
+            <div class="branches-grid scroll-reveal">
                 <div class="branch-card">
                     <div class="branch-city">Sharjah HQ</div>
                     <div class="branch-type">Free Zone Operations Hub</div>
@@ -5767,38 +5768,57 @@
 
     <script>
         // ── SCROLL REVEAL (FADE IN) OBSERVER ────────────────────────────────────
-        document.addEventListener("DOMContentLoaded", function () {
-            const revealElements = document.querySelectorAll(".scroll-reveal");
+        // Watches elements with the .scroll-reveal class and adds .reveal-active
+        // once they enter the viewport while scrolling, triggering the fade/slide
+        // -in transition already defined in CSS. Re-run after every SPA page swap
+        // since loadPage() replaces #main-content's innerHTML with fresh nodes.
+        let scrollRevealObserver = null;
 
-            const observerOptions = {
-                root: null,
-                // 1. Changing the margin to 0px ensures elements at the very top trigger immediately
-                rootMargin: "0px",
-                // 2. Reducing threshold to 0.05 or 0.1 allows the object to trigger as soon as even a tiny piece is on-screen
-                threshold: 0.05
-            };
-
-            const revealObserver = new IntersectionObserver(function (entries, observer) {
-                entries.forEach(entry => {
-                    // Check if element is intersecting OR if it is already positioned in viewport on landing
-                    if (entry.isIntersecting || entry.boundingClientRect.top < window.innerHeight) {
-                        entry.target.classList.add("reveal-active");
-                        observer.unobserve(entry.target);
-                    }
+        function initializeScrollRevealObserver() {
+            // Reuse a single observer instance; just point it at whatever is
+            // currently in the DOM so we don't leak observers across page swaps.
+            if (!scrollRevealObserver) {
+                scrollRevealObserver = new IntersectionObserver((entries) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('reveal-active');
+                            // One-shot reveal: stop watching once it has appeared.
+                            scrollRevealObserver.unobserve(entry.target);
+                        }
+                    });
+                }, {
+                    threshold: 0.15,
+                    rootMargin: '0px 0px -40px 0px'
                 });
-            }, observerOptions);
+            }
 
-            revealElements.forEach(element => {
-                revealObserver.observe(element);
+            document.querySelectorAll('.scroll-reveal').forEach((el) => {
+                // Skip elements already revealed/observed to avoid duplicate triggers.
+                if (!el.classList.contains('reveal-active')) {
+                    scrollRevealObserver.observe(el);
+                }
             });
-        });
+        }
+
         // ── GLOBAL APPLICATION CONFIGURATION & STATE ───────────────────────────
         let homeCarouselIntervalId = null;
+
+        // ── EMAILJS CONFIGURATION ───────────────────────────────────────────────
+        // Fill these in from your EmailJS dashboard (https://dashboard.emailjs.com):
+        //   1. EMAILJS_PUBLIC_KEY   -> Account > General > Public Key
+        //   2. EMAILJS_SERVICE_ID   -> Email Services > your connected service ID
+        //   3. EMAILJS_TEMPLATE_COMPANY -> Template that sends the lead's details TO your company inbox
+        //   4. EMAILJS_TEMPLATE_CONFIRMATION -> Template that sends a "we'll be in touch" reply TO the sender
+        // See the setup notes left in chat for exact template field names to use.
+        const EMAILJS_PUBLIC_KEY = "YOUR_PUBLIC_KEY_HERE";
+        const EMAILJS_SERVICE_ID = "YOUR_SERVICE_ID_HERE";
+        const EMAILJS_TEMPLATE_COMPANY = "YOUR_COMPANY_NOTIFY_TEMPLATE_ID_HERE";
+        const EMAILJS_TEMPLATE_CONFIRMATION = "YOUR_SENDER_CONFIRMATION_TEMPLATE_ID_HERE";
 
         // Initialize environment third-party packages securely on script lifecycle entry
         (function () {
             if (typeof emailjs !== 'undefined') {
-                emailjs.init({ publicKey: "YOUR_PUBLIC_KEY_HERE" });
+                emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
             }
         })();
 
@@ -5830,6 +5850,9 @@
             mainContent.innerHTML = '';
             const clonedNode = template.content.cloneNode(true);
             mainContent.appendChild(clonedNode);
+
+            // Re-scan freshly injected nodes for the scroll fade-in effect
+            initializeScrollRevealObserver();
 
             // Update navbar highlighting rules
             document.querySelectorAll('.nav-links a').forEach(link => link.classList.remove('active'));
@@ -5982,9 +6005,11 @@
             const successDisplay = document.getElementById('successAlert');
             const errorDisplay = document.getElementById('errorAlert');
 
-            const countryCode = document.getElementById('hero-country-code').value;
-            const partialPhone = document.getElementById('hero-phone').value;
-            const fullPhoneNumber = `${countryCode} ${partialPhone.trim()}`;
+            const clientName = document.getElementById('clientName').value.trim();
+            const clientEmail = document.getElementById('clientEmail').value.trim();
+            const clientPhone = document.getElementById('clientPhone').value.trim();
+            const jurisdiction = document.getElementById('targetJurisdiction').value;
+            const scopeDetails = document.getElementById('scopeDetails').value.trim();
 
             // Clear alert banners before starting transmission
             if (successDisplay) successDisplay.classList.remove('show');
@@ -5995,16 +6020,85 @@
             const originalBtnContent = submitButton.innerHTML;
             submitButton.innerHTML = "Securing Payload Line...";
 
-            const dataPayload = {
-                from_name: document.getElementById('clientName').value.trim(),
-                from_email: document.getElementById('clientEmail').value.trim(),
-                phone: fullPhoneNumber,
-                jurisdiction: document.getElementById('targetJurisdiction').value,
-                message: document.getElementById('scopeDetails').value.trim()
+            // Payload sent to the COMPANY inbox notifying them of the new lead
+            const companyPayload = {
+                from_name: clientName,
+                from_email: clientEmail,
+                phone: clientPhone || 'Not provided',
+                jurisdiction: jurisdiction,
+                message: scopeDetails
+            };
+
+            // Payload sent back to the SENDER confirming receipt
+            const confirmationPayload = {
+                to_name: clientName,
+                to_email: clientEmail,
+                jurisdiction: jurisdiction,
+                message: scopeDetails
             };
 
             try {
-                await emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', dataPayload);
+                // Fire both emails together: one to the company, one back to the sender
+                await Promise.all([
+                    emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_COMPANY, companyPayload),
+                    emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_CONFIRMATION, confirmationPayload)
+                ]);
+                if (successDisplay) successDisplay.classList.add('show');
+                formElement.reset();
+            } catch (exceptionErr) {
+                console.error('EmailJS SDK Transaction Exception Alert:', exceptionErr);
+                if (errorDisplay) errorDisplay.classList.add('show');
+            } finally {
+                submitButton.disabled = false;
+                submitButton.innerHTML = originalBtnContent;
+            }
+        }
+
+        // ── HERO QUICK-INQUIRY FORM TRANSMISSION HANDLER ───────────────────────
+        async function handleHeroSubmit(event) {
+            event.preventDefault();
+
+            const formElement = document.getElementById('hero-contact-form');
+            const submitButton = document.getElementById('hero-submit-btn');
+            const successDisplay = document.getElementById('hero-alert-success');
+            const errorDisplay = document.getElementById('hero-alert-error');
+
+            const heroName = document.getElementById('hero-name').value.trim();
+            const heroEmail = document.getElementById('hero-email').value.trim();
+            const countryCode = document.getElementById('hero-country-code').value;
+            const partialPhone = document.getElementById('hero-phone').value.trim();
+            const fullPhoneNumber = `${countryCode} ${partialPhone}`;
+            const heroService = document.getElementById('hero-service').value;
+
+            if (successDisplay) successDisplay.classList.remove('show');
+            if (errorDisplay) errorDisplay.classList.remove('show');
+
+            submitButton.disabled = true;
+            const originalBtnContent = submitButton.innerHTML;
+            submitButton.innerHTML = "<span>Sending...</span>";
+
+            // Payload sent to the COMPANY inbox notifying them of the new lead
+            const companyPayload = {
+                from_name: heroName,
+                from_email: heroEmail,
+                phone: fullPhoneNumber,
+                jurisdiction: heroService,
+                message: `Quick inquiry — requested service: ${heroService}`
+            };
+
+            // Payload sent back to the SENDER confirming receipt
+            const confirmationPayload = {
+                to_name: heroName,
+                to_email: heroEmail,
+                jurisdiction: heroService,
+                message: `Quick inquiry — requested service: ${heroService}`
+            };
+
+            try {
+                await Promise.all([
+                    emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_COMPANY, companyPayload),
+                    emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_CONFIRMATION, confirmationPayload)
+                ]);
                 if (successDisplay) successDisplay.classList.add('show');
                 formElement.reset();
             } catch (exceptionErr) {
@@ -6038,7 +6132,7 @@
                 `Message: ${messageVal || 'No message details provided.'}`
             );
 
-            window.open(`https://wa.me/971000000000?text=${compiledMessage}`, '_blank');
+            window.open(`https://wa.me/+971501454198?text=${compiledMessage}`, '_blank');
 
             document.getElementById('waForm').style.display = 'none';
             document.getElementById('waSuccess').style.display = 'block';
