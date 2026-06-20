@@ -724,7 +724,7 @@
             margin-top: 20px;
             border-top: 1px solid #1e2d3d;
             /* Subtle dark divider line */
-            padding-top: 30px;
+            padding: 30px 0;
         }
 
         .about-metadata-note {
@@ -845,7 +845,7 @@
         }
 
         .metadata-label {
-            font-size: 1.4rem;
+            font-size: 3rem;
             text-transform: uppercase;
             letter-spacing: 1px;
             color: var(--gold);
@@ -4310,19 +4310,19 @@
                     <!-- Structured Data Grid matching the layout -->
                     <div class="about-metadata-grid">
                         <div class="metadata-item">
-                            <span class="metadata-label">500+</span>
-                            <span class="metadata-value">Businesses Eshtablished</span>
+                            <span class="metadata-label"><span class="count-num" data-target="500">0</span>+</span>
+                            <span class="metadata-value">Businesses Established</span>
                         </div>
                         <div class="metadata-item">
-                            <span class="metadata-label">98%</span>
+                            <span class="metadata-label"><span class="count-num" data-target="98">0</span>%</span>
                             <span class="metadata-value">Client Retention Rate</span>
                         </div>
                         <div class="metadata-item">
-                            <span class="metadata-label">15+</span>
+                            <span class="metadata-label"><span class="count-num" data-target="15">0</span>+</span>
                             <span class="metadata-value">Industries Served</span>
                         </div>
                         <div class="metadata-item">
-                            <span class="metadata-label">100%</span>
+                            <span class="metadata-label"><span class="count-num" data-target="100">0</span>%</span>
                             <span class="metadata-value">Compliance Focus</span>
                         </div>
                     </div>
@@ -6748,6 +6748,45 @@
 
             // Force instant mount parameters loading default Home layout
             loadPage('home');
+
+            // counting effect for about section card
+
+            const counters = document.querySelectorAll('.count-num');
+            const animationDuration = 1500; // Total duration of counting animation in milliseconds (1.5 seconds)
+
+            const startCounting = (counter) => {
+                const target = +counter.getAttribute('data-target');
+                const startTime = performance.now();
+
+                const updateCount = (currentTime) => {
+                    const elapsedTime = currentTime - startTime;
+                    const progress = Math.min(elapsedTime / animationDuration, 1);
+
+                    // Calculate current value based on linear progression
+                    const currentValue = Math.floor(progress * target);
+                    counter.innerText = currentValue;
+
+                    if (progress < 1) {
+                        requestAnimationFrame(updateCount);
+                    } else {
+                        counter.innerText = target; // Ensure it finishes precisely on the target number
+                    }
+                };
+
+                requestAnimationFrame(updateCount);
+            };
+
+            // Use IntersectionObserver to start counting when stats come into view
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        startCounting(entry.target);
+                        observer.unobserve(entry.target); // Stop tracking once animated
+                    }
+                });
+            }, { threshold: 0.2 }); // Triggers when 20% of the element is visible
+
+            counters.forEach(counter => observer.observe(counter));
         });
 
         // ── BOOK CONSULTATION SHORTCUT (routes to home page query form) ────────
