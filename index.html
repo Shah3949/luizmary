@@ -7305,7 +7305,7 @@
     </template> -->
 
 
-    <script>
+    <!-- <script>
         // ── SCROLL REVEAL (FADE IN) OBSERVER ────────────────────────────────────
         // Watches elements with the .scroll-reveal class and adds .reveal-active
         // once they enter the viewport while scrolling, triggering the fade/slide
@@ -7598,6 +7598,617 @@
                 if (homeCarouselIntervalId) {
                     clearInterval(homeCarouselIntervalId);
                     homeCarouselIntervalId = null;
+                }
+            }
+
+            // Return scroll positioning smoothly back to top layout boundaries
+            window.scrollTo({ top: 0, behavior: 'instant' });
+        }
+
+        // ── HERO CAROUSEL ENGINE (Exclusively active during Home screen states) ──
+        function initializeHeroCarouselEngine() {
+            if (homeCarouselIntervalId) clearInterval(homeCarouselIntervalId);
+
+            const slides = document.querySelectorAll('.hero-slide');
+            const indicatorsContainer = document.getElementById('indicators');
+
+            if (!slides.length || !indicatorsContainer) return;
+
+            // Clear pre-existing indicator dots to prevent duplicates on multi-renders
+            indicatorsContainer.innerHTML = '';
+            let currentIdx = 0;
+
+            // Dynamically build the indicators based on the exact cloned DOM elements found
+            slides.forEach((_, idx) => {
+                const dot = document.createElement('div');
+                dot.className = 'indicator' + (idx === 0 ? ' active' : '');
+                dot.addEventListener('click', () => shiftToSlide(idx));
+                indicatorsContainer.appendChild(dot);
+            });
+
+            const indicators = indicatorsContainer.children;
+
+            function shiftToSlide(targetIdx) {
+                if (!slides[currentIdx] || !indicators[currentIdx]) return;
+
+                slides[currentIdx].classList.remove('active');
+                indicators[currentIdx].classList.remove('active');
+
+                currentIdx = targetIdx;
+
+                slides[currentIdx].classList.add('active');
+                indicators[currentIdx].classList.add('active');
+            }
+
+            // Setup background auto-rotation tracking loop (4000ms cycle)
+            homeCarouselIntervalId = setInterval(() => {
+                shiftToSlide((currentIdx + 1) % slides.length);
+            }, 4000);
+        }
+        // ── INTERACTIVE DRAG-TO-SCROLL TICKER SCRIPT ───────────────────────────
+        (function initCorporateTicker() {
+            const container = document.getElementById('customTickerContainer');
+            const track = document.getElementById('customTickerTrack');
+
+            if (!container || !track) return;
+
+            let isDown = false;
+            let startX;
+            let currentTranslate = 0;
+
+            const getHalfWidth = () => track.offsetWidth / 2;
+
+            // Trigger Drag Start
+            function dragStart(e) {
+                isDown = true;
+                track.style.animationPlayState = 'paused';
+
+                // Grab current computed transformation translation matrix
+                const computedStyle = window.getComputedStyle(track);
+                const matrix = new WebKitCSSMatrix(computedStyle.transform);
+                currentTranslate = matrix.m41; // Captures current visual X Coordinate
+
+                const pageX = e.type.includes('touch') ? e.touches[0].pageX : e.pageX;
+                startX = pageX - currentTranslate;
+            }
+
+            // Trigger Drag Movement
+            function dragMove(e) {
+                if (!isDown) return;
+                e.preventDefault();
+
+                const pageX = e.type.includes('touch') ? e.touches[0].pageX : e.pageX;
+                let walk = pageX - startX;
+                const halfWidth = getHalfWidth();
+
+                // Safe Infinite Boundaries processing loop while actively dragging
+                if (walk > 0) {
+                    walk = -halfWidth;
+                    startX = pageX - walk;
+                } else if (walk < -halfWidth) {
+                    walk = 0;
+                    startX = pageX - walk;
+                }
+
+                track.style.transform = `translateX(${walk}px)`;
+            }
+
+            // Terminate Drag State & Sync Timeline back to CSS Keyframes smoothly
+            function dragEnd() {
+                if (!isDown) return;
+                isDown = false;
+
+                const computedStyle = window.getComputedStyle(track);
+                const matrix = new WebKitCSSMatrix(computedStyle.transform);
+                const finalTranslate = matrix.m41;
+                const halfWidth = getHalfWidth();
+
+                // Dynamic animation restart calculation prevents visual jumping
+                track.style.animation = 'none';
+                track.offsetHeight; // Forces visual browser layout recalculation 
+                track.style.animation = `corporateTickerScroll 30s linear infinite`;
+
+                track.style.animationPlayState = 'running';
+            }
+
+            // Desktop Mouse Events listeners
+            container.addEventListener('mousedown', dragStart);
+            container.addEventListener('mousemove', dragMove);
+            container.addEventListener('mouseup', dragEnd);
+            container.addEventListener('mouseleave', dragEnd);
+
+            // Mobile/Tablet Touch Events listeners
+            container.addEventListener('touchstart', dragStart, { passive: true });
+            container.addEventListener('touchmove', dragMove, { passive: false });
+            container.addEventListener('touchend', dragEnd);
+        })();
+        // ── SECURE INTAKE FORM TRANSMISSION HANDLER (Contact View Event) ──────
+        async function handleFormSubmission(event) {
+            event.preventDefault();
+
+            const formElement = document.getElementById('consultationForm');
+            const submitButton = document.getElementById('submitBtn');
+            const successDisplay = document.getElementById('successAlert');
+            const errorDisplay = document.getElementById('errorAlert');
+
+            const clientName = document.getElementById('clientName').value.trim();
+            const clientEmail = document.getElementById('clientEmail').value.trim();
+            const clientPhone = document.getElementById('clientPhone').value.trim();
+            const jurisdiction = document.getElementById('targetJurisdiction').value;
+            const scopeDetails = document.getElementById('scopeDetails').value.trim();
+
+            // Clear alert banners before starting transmission
+            if (successDisplay) successDisplay.classList.remove('show');
+            if (errorDisplay) errorDisplay.classList.remove('show');
+
+            // Lock submit operations to block race conditions
+            submitButton.disabled = true;
+            const originalBtnContent = submitButton.innerHTML;
+            submitButton.innerHTML = "Securing Payload Line...";
+
+            // Payload sent to the COMPANY inbox notifying them of the new lead
+            const companyPayload = {
+                from_name: clientName,
+                from_email: clientEmail,
+                phone: clientPhone || 'Not provided',
+                jurisdiction: jurisdiction,
+                message: scopeDetails
+            };
+
+            // Payload sent back to the SENDER confirming receipt
+            const confirmationPayload = {
+                to_name: clientName,
+                to_email: clientEmail,
+                jurisdiction: jurisdiction,
+                message: scopeDetails
+            };
+
+            try {
+                // Fire both emails together: one to the company, one back to the sender
+                await Promise.all([
+                    emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_COMPANY, companyPayload),
+                    emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_CONFIRMATION, confirmationPayload)
+                ]);
+                if (successDisplay) successDisplay.classList.add('show');
+                formElement.reset();
+            } catch (exceptionErr) {
+                console.error('EmailJS SDK Transaction Exception Alert:', exceptionErr);
+                if (errorDisplay) errorDisplay.classList.add('show');
+            } finally {
+                submitButton.disabled = false;
+                submitButton.innerHTML = originalBtnContent;
+            }
+        }
+
+        // ── HERO QUICK-INQUIRY FORM TRANSMISSION HANDLER ───────────────────────
+        async function handleHeroSubmit(event) {
+            event.preventDefault();
+
+            const formElement = document.getElementById('hero-contact-form');
+            const submitButton = document.getElementById('hero-submit-btn');
+            const successDisplay = document.getElementById('hero-alert-success');
+            const errorDisplay = document.getElementById('hero-alert-error');
+
+            const heroName = document.getElementById('hero-name').value.trim();
+            const heroEmail = document.getElementById('hero-email').value.trim();
+            const countryCode = document.getElementById('hero-country-code').value;
+            const partialPhone = document.getElementById('hero-phone').value.trim();
+            const fullPhoneNumber = `${countryCode} ${partialPhone}`;
+            const heroService = document.getElementById('hero-service').value;
+
+            if (successDisplay) successDisplay.classList.remove('show');
+            if (errorDisplay) errorDisplay.classList.remove('show');
+
+            submitButton.disabled = true;
+            const originalBtnContent = submitButton.innerHTML;
+            submitButton.innerHTML = "<span>Sending...</span>";
+
+            // Payload sent to the COMPANY inbox notifying them of the new lead
+            const companyPayload = {
+                from_name: heroName,
+                from_email: heroEmail,
+                phone: fullPhoneNumber,
+                jurisdiction: heroService,
+                message: `Quick inquiry — requested service: ${heroService}`
+            };
+
+            // Payload sent back to the SENDER confirming receipt
+            const confirmationPayload = {
+                to_name: heroName,
+                to_email: heroEmail,
+                jurisdiction: heroService,
+                message: `Quick inquiry — requested service: ${heroService}`
+            };
+
+            try {
+                await Promise.all([
+                    emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_COMPANY, companyPayload),
+                    emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_CONFIRMATION, confirmationPayload)
+                ]);
+                if (successDisplay) successDisplay.classList.add('show');
+                formElement.reset();
+            } catch (exceptionErr) {
+                console.error('EmailJS SDK Transaction Exception Alert:', exceptionErr);
+                if (errorDisplay) errorDisplay.classList.add('show');
+            } finally {
+                submitButton.disabled = false;
+                submitButton.innerHTML = originalBtnContent;
+            }
+        }
+
+        // ── FLOATING INTEGRATED SUPPORT CHANNELS (WhatsApp UI Actions) ─────────
+        function toggleWa() {
+            document.getElementById('waPopup').classList.toggle('open');
+        }
+
+        function sendWaRequest() {
+            const nameVal = document.getElementById('waName').value.trim();
+            const phoneVal = document.getElementById('waPhone').value.trim();
+            const messageVal = document.getElementById('waMessage').value.trim();
+
+            if (!nameVal) {
+                alert('Please provide your name to verify alignment configuration protocols.');
+                return;
+            }
+
+            const compiledMessage = encodeURIComponent(
+                `*New Consultation Request — Luizmary Associates*\n\n` +
+                `Name: ${nameVal}\n` +
+                `Phone: ${phoneVal || 'Not provided'}\n` +
+                `Message: ${messageVal || 'No message details provided.'}`
+            );
+
+            window.open(`https://wa.me/+971501454198?text=${compiledMessage}`, '_blank');
+
+            document.getElementById('waForm').style.display = 'none';
+            document.getElementById('waSuccess').style.display = 'block';
+
+            setTimeout(() => {
+                document.getElementById('waPopup').classList.remove('open');
+                document.getElementById('waForm').style.display = 'block';
+                document.getElementById('waSuccess').style.display = 'none';
+                document.getElementById('waName').value = '';
+                document.getElementById('waPhone').value = '';
+                document.getElementById('waMessage').value = '';
+            }, 4000);
+        }
+
+        // ── MOBILE NAV TOGGLE ───────────────────────────────────────────────────
+        function toggleMobileNav() {
+            document.getElementById('hamburgerBtn').classList.toggle('open');
+            document.getElementById('mobileNavOverlay').classList.toggle('open');
+        }
+
+        function closeMobileNav() {
+            document.getElementById('hamburgerBtn').classList.remove('open');
+            document.getElementById('mobileNavOverlay').classList.remove('open');
+
+            const trigger = document.getElementById('mobServicesTrigger');
+            const submenu = document.getElementById('mobServicesSubmenu');
+            if (trigger) trigger.classList.remove('open');
+            if (submenu) submenu.classList.remove('open');
+        }
+
+        function toggleMobServices() {
+            const trigger = document.getElementById('mobServicesTrigger');
+            const submenu = document.getElementById('mobServicesSubmenu');
+            if (trigger) trigger.classList.toggle('open');
+            if (submenu) submenu.classList.toggle('open');
+        }
+
+    </script> -->
+
+
+    <script>
+        // ── SCROLL REVEAL (FADE IN) OBSERVER ────────────────────────────────────
+        // Watches elements with the .scroll-reveal class and adds .reveal-active
+        // once they enter the viewport while scrolling, triggering the fade/slide
+        // -in transition already defined in CSS. Re-run after every SPA page swap
+        // since loadPage() replaces #main-content's innerHTML with fresh nodes.
+        let scrollRevealObserver = null;
+
+        function initializeScrollRevealObserver() {
+            // Reuse a single observer instance; just point it at whatever is
+            // currently in the DOM so we don't leak observers across page swaps.
+            if (!scrollRevealObserver) {
+                scrollRevealObserver = new IntersectionObserver((entries) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('reveal-active');
+                            // One-shot reveal: stop watching once it has appeared.
+                            scrollRevealObserver.unobserve(entry.target);
+                        }
+                    });
+                }, {
+                    threshold: 0.15,
+                    rootMargin: '0px 0px -40px 0px'
+                });
+            }
+
+            document.querySelectorAll('.scroll-reveal').forEach((el) => {
+                // Skip elements already revealed/observed to avoid duplicate triggers.
+                if (!el.classList.contains('reveal-active')) {
+                    scrollRevealObserver.observe(el);
+                }
+            });
+        }
+
+        // ── GLOBAL APPLICATION CONFIGURATION & STATE ───────────────────────────
+        let homeCarouselIntervalId = null;
+        let countersObserver = null; // Holds observer reference to prevent leaks
+
+        // ── EMAILJS CONFIGURATION ───────────────────────────────────────────────
+        // Fill these in from your EmailJS dashboard (https://dashboard.emailjs.com):
+        //   1. EMAILJS_PUBLIC_KEY   -> Account > General > Public Key
+        //   2. EMAILJS_SERVICE_ID   -> Email Services > your connected service ID
+        //   3. EMAILJS_TEMPLATE_COMPANY -> Template that sends the lead's details TO your company inbox
+        //   4. EMAILJS_TEMPLATE_CONFIRMATION -> Template that sends a "we'll be in touch" reply TO the sender
+        // See the setup notes left in chat for exact template field names to use.
+        const EMAILJS_PUBLIC_KEY = "YOUR_PUBLIC_KEY_HERE";
+        const EMAILJS_SERVICE_ID = "YOUR_SERVICE_ID_HERE";
+        const EMAILJS_TEMPLATE_COMPANY = "YOUR_COMPANY_NOTIFY_TEMPLATE_ID_HERE";
+        const EMAILJS_TEMPLATE_CONFIRMATION = "YOUR_SENDER_CONFIRMATION_TEMPLATE_ID_HERE";
+
+        // Initialize environment third-party packages securely on script lifecycle entry
+        (function () {
+            if (typeof emailjs !== 'undefined') {
+                emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
+            }
+        })();
+
+        // ── HOME PAGE STAT COUNTERS INITIALIZATION ──────────────────────────────
+        function initializeCounters() {
+            // Clean up any old active observer session to avoid multiple triggers
+            if (countersObserver) {
+                countersObserver.disconnect();
+                countersObserver = null;
+            }
+
+            const counters = document.querySelectorAll('.count-num');
+            if (!counters.length) return;
+
+            const animationDuration = 1500; // Total duration of counting animation in milliseconds (1.5 seconds)
+
+            const startCounting = (counter) => {
+                const target = +counter.getAttribute('data-target');
+                const startTime = performance.now();
+
+                const updateCount = (currentTime) => {
+                    const elapsedTime = currentTime - startTime;
+                    const progress = Math.min(elapsedTime / animationDuration, 1);
+
+                    // Calculate current value based on linear progression
+                    const currentValue = Math.floor(progress * target);
+                    counter.innerText = currentValue;
+
+                    if (progress < 1) {
+                        requestAnimationFrame(updateCount);
+                    } else {
+                        counter.innerText = target; // Ensure it finishes precisely on the target number
+                    }
+                };
+
+                requestAnimationFrame(updateCount);
+            };
+
+            // Use IntersectionObserver to start counting when stats come into view
+            countersObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        startCounting(entry.target);
+                        observer.unobserve(entry.target); // Stop tracking once animated
+                    }
+                });
+            }, { threshold: 0.2 }); // Triggers when 20% of the element is visible
+
+            counters.forEach(counter => countersObserver.observe(counter));
+        }
+
+        // Smooth scroll event listeners for anchor elements
+        document.addEventListener("DOMContentLoaded", () => {
+            document.querySelectorAll('a[href^="#"]').forEach(a => {
+                a.addEventListener('click', e => {
+                    e.preventDefault();
+                    const target = document.querySelector(a.getAttribute('href'));
+                    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                });
+            });
+
+            // Force instant mount parameters loading default Home layout
+            loadPage('home');
+        });
+
+        // ── BOOK CONSULTATION SHORTCUT (routes to home page query form) ────────
+        function goToQueryForm() {
+            loadPage('home');
+            // Wait a tick for the home template to mount, then scroll to the form
+            setTimeout(() => {
+                const formEl = document.getElementById('hero-contact-form');
+                if (formEl) formEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 50);
+        }
+
+        // ── BLOG POST: READING PROGRESS BAR ─────────────────────────────────────
+        let readingProgressScrollHandler = null;
+
+        function initializeReadingProgress() {
+            // Tear down any previous listener before attaching a fresh one,
+            // since loadPage() re-renders #main-content on every navigation.
+            if (readingProgressScrollHandler) {
+                window.removeEventListener('scroll', readingProgressScrollHandler);
+                readingProgressScrollHandler = null;
+            }
+
+            const fill = document.getElementById('readingProgressFill');
+            const article = document.querySelector('#main-content article');
+            if (!fill || !article) return;
+
+            readingProgressScrollHandler = () => {
+                const articleHeight = article.offsetHeight - window.innerHeight;
+                const scrolled = window.scrollY;
+                const pct = articleHeight > 0 ? Math.min(100, Math.max(0, (scrolled / articleHeight) * 100)) : 0;
+                fill.style.width = pct + '%';
+            };
+
+            window.addEventListener('scroll', readingProgressScrollHandler);
+            readingProgressScrollHandler();
+        }
+
+        // ── BLOG POST: SOCIAL SHARE ACTIONS ─────────────────────────────────────
+        function shareArticle(network, titleText) {
+            const pageUrl = window.location.href;
+            const encodedUrl = encodeURIComponent(pageUrl);
+            const encodedTitle = encodeURIComponent(titleText);
+            let shareUrl = '';
+
+            if (network === 'twitter') {
+                shareUrl = `https://twitter.com/intent/tweet?text=${encodedTitle}&url=${encodedUrl}`;
+            } else if (network === 'linkedin') {
+                shareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`;
+            } else if (network === 'whatsapp') {
+                shareUrl = `https://wa.me/?text=${encodedTitle}%20${encodedUrl}`;
+            }
+
+            if (shareUrl) window.open(shareUrl, '_blank', 'noopener,noreferrer');
+        }
+
+        // function copyArticleLink
+        function copyArticleLink(buttonEl) {
+            navigator.clipboard.writeText(window.location.href).then(() => {
+                if (!buttonEl) return;
+                buttonEl.classList.add('copied');
+                setTimeout(() => buttonEl.classList.remove('copied'), 1800);
+            }).catch(() => {
+                console.error('Clipboard copy failed — clipboard API unavailable.');
+            });
+        }
+
+        // ── BLOG POST: FAQ ACCORDION TOGGLE ─────────────────────────────────────
+        function toggleFaq(buttonEl) {
+            const item = buttonEl.closest('.faq-item');
+            const answer = item.querySelector('.faq-answer');
+            const wasOpen = item.classList.contains('open');
+
+            // Close any sibling FAQ items within the same section
+            const section = item.closest('.faq-section');
+            if (section) {
+                section.querySelectorAll('.faq-item.open').forEach((openItem) => {
+                    if (openItem !== item) {
+                        openItem.classList.remove('open');
+                        openItem.querySelector('.faq-answer').style.maxHeight = null;
+                    }
+                });
+            }
+
+            if (wasOpen) {
+                item.classList.remove('open');
+                answer.style.maxHeight = null;
+            } else {
+                item.classList.add('open');
+                answer.style.maxHeight = answer.scrollHeight + 'px';
+            }
+        }
+
+        // ── BLOG POST: "IN THIS ARTICLE" TOC SCROLLSPY ──────────────────────────
+        let tocScrollHandler = null;
+
+        function initializeTocScrollspy() {
+            if (tocScrollHandler) {
+                window.removeEventListener('scroll', tocScrollHandler);
+                tocScrollHandler = null;
+            }
+
+            const tocLinks = document.querySelectorAll('.toc-list a[data-target]');
+            if (!tocLinks.length) return;
+
+            const sections = Array.from(tocLinks)
+                .map((link) => document.getElementById(link.dataset.target))
+                .filter(Boolean);
+
+            tocScrollHandler = () => {
+                let currentId = sections[0] ? sections[0].id : null;
+                const triggerLine = window.scrollY + 140;
+
+                sections.forEach((sectionEl) => {
+                    if (sectionEl.offsetTop <= triggerLine) {
+                        currentId = sectionEl.id;
+                    }
+                });
+
+                tocLinks.forEach((link) => {
+                    link.classList.toggle('active', link.dataset.target === currentId);
+                });
+            };
+
+            window.addEventListener('scroll', tocScrollHandler);
+            tocScrollHandler();
+        }
+
+        function scrollToSection(targetId) {
+            const targetEl = document.getElementById(targetId);
+            if (targetEl) {
+                const offset = targetEl.getBoundingClientRect().top + window.scrollY - 96;
+                window.scrollTo({ top: offset, behavior: 'smooth' });
+            }
+        }
+
+        // ── DYNAMIC SINGLE PAGE TEMPLATE ROUTER ───────────────────────────────
+        function loadPage(pageId) {
+            const template = document.getElementById(`page-${pageId}`);
+            const mainContent = document.getElementById('main-content');
+
+            if (!template) {
+                console.error(`Template structure design "page-${pageId}" not found inside document context.`);
+                return;
+            }
+
+            // Clear out older HTML elements and clone the updated structural component safely
+            mainContent.innerHTML = '';
+            const clonedNode = template.content.cloneNode(true);
+            mainContent.appendChild(clonedNode);
+
+            // Re-scan freshly injected nodes for the scroll fade-in effect
+            initializeScrollRevealObserver();
+
+            // Reading progress bar + TOC scrollspy only apply to single article pages
+            if (pageId.startsWith('blog-post-')) {
+                initializeReadingProgress();
+                initializeTocScrollspy();
+            } else {
+                if (readingProgressScrollHandler) {
+                    window.removeEventListener('scroll', readingProgressScrollHandler);
+                    readingProgressScrollHandler = null;
+                }
+                if (tocScrollHandler) {
+                    window.removeEventListener('scroll', tocScrollHandler);
+                    tocScrollHandler = null;
+                }
+            }
+
+            // Update navbar highlighting rules
+            document.querySelectorAll('.nav-links a').forEach(link => link.classList.remove('active'));
+            if (pageId.startsWith('services-')) {
+                const servicesLink = document.getElementById('nav-link-services');
+                if (servicesLink) servicesLink.classList.add('active');
+            } else {
+                const targetLink = document.getElementById(`nav-link-${pageId}`);
+                if (targetLink) targetLink.classList.add('active');
+            }
+
+            // CAROUSEL ENGINE INITIALIZATION CONTROL
+            if (pageId === 'home') {
+                initializeHeroCarouselEngine();
+                initializeCounters(); // Re-initialize counters when migrating back to home layout nodes
+            } else {
+                // Completely clear active interval cycles when migrating away from Home layout
+                if (homeCarouselIntervalId) {
+                    clearInterval(homeCarouselIntervalId);
+                    homeCarouselIntervalId = null;
+                }
+                // Disconnect counters observer to save computation power on internal page layouts
+                if (countersObserver) {
+                    countersObserver.disconnect();
+                    countersObserver = null;
                 }
             }
 
