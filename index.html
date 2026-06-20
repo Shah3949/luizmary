@@ -3516,7 +3516,7 @@
 
                 <!-- <li><a id="nav-link-contact" onclick="loadPage('contact')">Contact Us</a></li> -->
             </ul>
-            <a onclick="loadPage('contact')" class="nav-cta">Book Consultation</a>
+            <a onclick="goToQueryForm()" class="nav-cta">Book Consultation</a>
             <button class="hamburger" id="hamburgerBtn" aria-label="Toggle navigation" onclick="toggleMobileNav()">
                 <span></span>
                 <span></span>
@@ -3543,7 +3543,7 @@
         </div>
         <a onclick="loadPage('blog'); closeMobileNav()">Blog</a>
         <a onclick="loadPage('contact'); closeMobileNav()">Contact Us</a>
-        <a onclick="loadPage('contact'); closeMobileNav()" class="mob-cta">Book Consultation</a>
+        <a onclick="goToQueryForm(); closeMobileNav()" class="mob-cta">Book Consultation</a>
     </div>
 
     <main id="main-content">
@@ -3727,7 +3727,7 @@
                     <b>UAE</b>.
                 </p>
                 <div class="hero-actions">
-                    <a class="btn-primary" onclick="loadPage('contact')">Book a Consultation</a>
+                    <a class="btn-primary" onclick="goToQueryForm()">Book a Consultation</a>
                     <a class="btn-outline" onclick="loadPage('services')">Explore Our Services</a>
                 </div>
             </div>
@@ -4461,7 +4461,7 @@
                 <h2>Ready to Take the Next Step?</h2>
                 <p>Get expert consultation tailored to your business goals — no obligation.</p>
             </div>
-            <a class="btn-primary" onclick="loadPage('contact')">Book a Free Consultation →</a>
+            <a class="btn-primary" onclick="goToQueryForm()">Book a Free Consultation →</a>
         </div>
 
     </template>
@@ -4648,7 +4648,7 @@
 
             <div class="blog-post-cta">
                 <h3>Thinking about setting up in the UAE?</h3>
-                <a class="btn-primary" onclick="loadPage('contact')">Book a Free Consultation</a>
+                <a class="btn-primary" onclick="goToQueryForm()">Book a Free Consultation</a>
             </div>
 
             <div class="blog-post-back">
@@ -4718,7 +4718,7 @@
 
             <div class="blog-post-cta">
                 <h3>Not sure where your company stands on corporate tax?</h3>
-                <a class="btn-primary" onclick="loadPage('contact')">Book a Free Consultation</a>
+                <a class="btn-primary" onclick="goToQueryForm()">Book a Free Consultation</a>
             </div>
 
             <div class="blog-post-back">
@@ -4787,7 +4787,7 @@
 
             <div class="blog-post-cta">
                 <h3>Still deciding between mainland and free zone?</h3>
-                <a class="btn-primary" onclick="loadPage('contact')">Book a Free Consultation</a>
+                <a class="btn-primary" onclick="goToQueryForm()">Book a Free Consultation</a>
             </div>
 
             <div class="blog-post-back">
@@ -5345,7 +5345,7 @@
                 <h2>Ready to Launch or Scale on Amazon?</h2>
                 <p>Get a tailored Amazon growth strategy from our authorized SPN specialists — no obligation.</p>
             </div>
-            <a class="btn-primary" onclick="loadPage('contact')">Book a Free Consultation →</a>
+            <a class="btn-primary" onclick="goToQueryForm()">Book a Free Consultation →</a>
         </div>
 
     </template>
@@ -5835,6 +5835,16 @@
             // Force instant mount parameters loading default Home layout
             loadPage('home');
         });
+
+        // ── BOOK CONSULTATION SHORTCUT (routes to home page query form) ────────
+        function goToQueryForm() {
+            loadPage('home');
+            // Wait a tick for the home template to mount, then scroll to the form
+            setTimeout(() => {
+                const formEl = document.getElementById('hero-contact-form');
+                if (formEl) formEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 50);
+        }
 
         // ── DYNAMIC SINGLE PAGE TEMPLATE ROUTER ───────────────────────────────
         function loadPage(pageId) {
