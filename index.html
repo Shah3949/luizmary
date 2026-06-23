@@ -180,8 +180,8 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 0 3%;
-            height: 72px;
+            padding: 0 2%;
+            height: 65px;
             background: rgba(13, 27, 42, 0.97);
             backdrop-filter: blur(12px);
             border-bottom: 1px solid var(--border);
@@ -211,7 +211,7 @@
         }
 
         .nav-logo-img {
-            width: 50px;
+            width: 90px;
             height: 50px;
             /* margin-right: 0.6rem; */
         }
@@ -329,6 +329,15 @@
             z-index: 2;
             padding: 0 8%;
             max-width: 780px;
+        }
+
+        .hero-logo-container {
+            padding: 20px 0;
+        }
+
+        .hero-logo-container .hero-logo {
+            width: 200px;
+            height: auto;
         }
 
         .hero-eyebrow {
@@ -2929,6 +2938,8 @@
                 padding: 0 4%;
             }
 
+
+
             .hero-title {
                 font-size: clamp(1.8rem, 8vw, 2.4rem);
             }
@@ -3899,8 +3910,8 @@
 
     <nav>
         <div class="nav-logo-container" onclick="loadPage('home')">
-            <img src="logo.png" alt="Luizmary Associates Logo" class="nav-logo-img">
-            <img src="logo2.png" alt="Luizmary Associates Logo" class="nav-logo-img-alt">
+            <img src="logo3.png" alt="Luizmary Associates Logo" class="nav-logo-img">
+            <!-- <img src="logo2.png" alt="Luizmary Associates Logo" class="nav-logo-img-alt"> -->
         </div>
 
         <div class="nav-divider">
@@ -4034,8 +4045,8 @@
             <div class="footer-col">
                 <div class="footer-col-title">Get in Touch</div>
                 <div class="footer-contact-item">
-                    <img src="logo2.png" alt="Luizmary Associates Logo" class="nav-logo-img-alt"
-                        style="width:100px;height:32px;">
+                    <img src="logo.png" alt="Luizmary Associates Logo" class="nav-logo-img-alt"
+                        style="width:110px;height:38px;">
                 </div>
                 <div class="footer-contact-item">
                     <svg viewBox="0 0 24 24">
@@ -4130,6 +4141,10 @@
             <div class="hero-content">
                 <div class="hero-eyebrow"></div>
                 <h1 class="hero-title">Your Trusted Partner for<br><em>Business & Compliance</em><br>in the UAE</h1>
+                <div class="hero-logo-container" onclick="loadPage('home')">
+                    <img src="logo.png" alt="Luizmary Associates Logo" class="hero-logo">
+                    <!-- <img src="logo2.png" alt="Luizmary Associates Logo" class="nav-logo-img-alt"> -->
+                </div>
                 <p class="hero-sub">From company formation and Company Setup to compliance consultancy, accounting,
                     and corporate services — Luizmary Associates delivers expert-led solutions in the heart of
                     <b>UAE</b>.
@@ -4154,10 +4169,7 @@
                         <label for="hero-email">Email Address <span class="req">*</span></label>
                         <input type="email" id="hero-email" required placeholder="john@example.com">
                     </div>
-                    <div class="form-field">
-                        <label for="hero-email">Email Address <span class="req">*</span></label>
-                        <input type="email" id="hero-email" required placeholder="john@example.com">
-                    </div>
+
                     <div class="form-field">
                         <label for="hero-phone">Phone Number <span class="req">*</span></label>
                         <div class="phone-input-group">
@@ -4338,7 +4350,7 @@
                         <div class="metadata-note-desc">
                             We are proudly registered with the Federal Tax Authority (FTA)
                         </div> -->
-                        <img src="fta.png" alt="" id="ftaLogo" class="fta-logo">
+                        <img src="fta.jpg" alt="" id="ftaLogo" class="fta-logo">
                     </div>
                     <span style="color: var(--gold); align-items: center; text-align: center; font-size: large;"> We are
                         proudly
@@ -4769,9 +4781,8 @@
                     <div class="step-circle">2</div>
                     <div class="step-title">Customized Solution</div>
                     <div class="step-desc">We prepare a clear
-                        roadmap outlining the scope of services, timeline, and fixed fees—ensuring complete
-                        transparency from the start.
-                        23.</div>
+                        roadmap outlining the scope of services, timeline, and fixed fees—ensuring complete transparency
+                        from the start.</div>
                 </div>
                 <div class="process-step">
                     <div class="step-circle">3</div>
