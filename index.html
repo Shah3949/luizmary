@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Luizmary Associates – Business & Compliance Consultancy | Sharjah, UAE</title>
+    <title>Luizmary Associates – Business Setup & Compliance Consultancy | Sharjah, UAE</title>
 
     <link
         href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght=400;500;600;700&family=Inter:wght=300;400;500;600&family=Montserrat:wght@400;600;700&display=swap"
@@ -217,8 +217,8 @@
         }
 
         .nav-logo-img-alt {
-            width: 90px;
-            height: 35px;
+            width: 120px;
+            height: 42px;
         }
 
         .nav-logo span {
@@ -292,8 +292,9 @@
 
         /* ── HERO SECTION & CAROUSEL ─────────────────────────────────────────── */
         #hero {
+            margin-top: 60px;
             position: relative;
-            height: 100vh;
+            height: 120vh;
             overflow: hidden;
             display: flex;
             align-items: center;
@@ -348,6 +349,8 @@
         }
 
         .hero-logo-container {
+            display: flex;
+            flex-direction: column;
             padding: 20px 0;
         }
 
@@ -355,6 +358,64 @@
             width: 200px;
             height: auto;
         }
+
+        .hero-logo-container .hero-logo1 {
+            width: 230px;
+            height: 67px;
+            border-radius: 3px;
+        }
+
+        .hero-logo-container .hero-logo2 {
+            width: 435px;
+            height: 67px;
+            border-radius: 3px;
+        }
+
+        @media (max-width: 768px) {
+            .hero-logo-container {
+                flex-wrap: wrap;
+                /* let logos drop to next line instead of overflowing */
+                justify-content: center;
+                gap: 12px;
+            }
+
+            .hero-logo-container .hero-logo {
+                width: 160px;
+            }
+
+            .hero-logo-container .hero-logo1 {
+                display: none;
+                width: 180px;
+                height: auto;
+                /* let height scale with width instead of staying fixed at 67px */
+            }
+
+            .hero-logo-container .hero-logo2 {
+                width: 100%;
+                /* never wider than its container */
+                max-width: 320px;
+                height: auto;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-logo-container {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+            }
+
+            .hero-logo-container .hero-logo1 {
+                width: 160px;
+            }
+
+            .hero-logo-container .hero-logo2 {
+                max-width: 280px;
+            }
+        }
+
 
         .hero-eyebrow {
             display: inline-flex;
@@ -450,7 +511,7 @@
 
         .slide-indicators {
             position: absolute;
-            bottom: 2.5rem;
+            bottom: 0.5rem;
             left: 8%;
             z-index: 3;
             display: flex;
@@ -1081,18 +1142,17 @@
             display: inline-flex;
             align-items: center;
             justify-content: flex-end;
-            /* Remove any background, border, or hard width/height dimensions */
-            background: none !important;
+            /* Remove any hard width/height dimensions */
+            background: none;
             border: none !important;
             width: auto !important;
             height: auto !important;
             cursor: pointer;
+            transition: background 0.25s ease, padding 0.25s ease, margin 0.25s ease;
         }
 
         .service-card:hover .service-arrow {
             color: var(--gold-accent);
-            border-color: var(--gold-accent);
-            background: var(--gold-accent)
         }
 
         .service-arrow svg {
@@ -1102,6 +1162,23 @@
             stroke-width: 2;
             fill: none;
             transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        /* ── ARROW/BUTTON-SPECIFIC HOVER (only when mouse is directly over "Inquire now") ── */
+        .service-arrow:hover {
+            background: rgba(223, 183, 108, 0.16);
+            border-radius: 999px;
+            padding: 6px 14px;
+            margin: -6px -14px;
+        }
+
+        .service-arrow:hover::before {
+            color: var(--navy, #0d1b2a);
+        }
+
+        .service-arrow:hover svg {
+            stroke: var(--gold-accent, #dfb76c);
+            transform: translateX(6px);
         }
 
 
@@ -1663,10 +1740,7 @@
             width: auto;
             height: auto;
             cursor: pointer;
-        }
-
-        .service-card:hover .service-arrow {
-            background: none;
+            transition: background 0.25s ease, padding 0.25s ease, margin 0.25s ease;
         }
 
         .service-arrow svg {
@@ -1679,9 +1753,22 @@
             transition: stroke 0.35s ease, transform 0.35s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
-        /* Turns the arrow golden on hover to match the text */
+        /* Turns the arrow golden when the card is hovered */
         .service-card:hover .service-arrow svg {
             stroke: var(--gold-accent);
+        }
+
+        /* Distinct highlight ONLY when the mouse is directly over the "Inquire now" button itself */
+        .service-arrow:hover {
+            background: rgba(223, 183, 108, 0.16);
+            border-radius: 999px;
+            padding: 6px 14px;
+            margin: -6px -14px;
+        }
+
+        .service-arrow:hover svg {
+            stroke: var(--gold-accent);
+            transform: translateX(6px);
         }
 
         #why {
@@ -2447,7 +2534,7 @@
         .mobile-nav-overlay {
             display: none;
             position: fixed;
-            top: 72px;
+            top: 64px;
             left: 0;
             right: 0;
             background: rgba(13, 27, 42, 0.99);
@@ -2591,6 +2678,7 @@
 
         /* ── TABLET: 1024px ── */
         @media (max-width: 1024px) {
+
             section {
                 padding: 4rem 6%;
             }
@@ -2756,6 +2844,7 @@
             /* HERO */
             #hero {
                 min-height: 100svh;
+                margin-top: 10px;
             }
 
             .hero-content {
@@ -3940,7 +4029,7 @@
     <nav>
         <div class="nav-logo-container" onclick="loadPage('home')">
             <img src="logo3.png" alt="Luizmary Associates Logo" class="nav-logo-img">
-            <!-- <img src="logo2.png" alt="Luizmary Associates Logo" class="nav-logo-img-alt"> -->
+            <img src="logo.png" alt="Luizmary Associates Logo" class="nav-logo-img-alt">
         </div>
 
         <div class="nav-divider">
@@ -3952,10 +4041,10 @@
                         <span class="chevron">▼</span></a>
                     <ul class="dropdown-menu">
                         <li><a onclick="loadPage('services-trading')">Company Setup</a></li>
-                        <li><a onclick="loadPage('services-ecommerce')">E-Commerce & Retail</a></li>
+                        <li><a onclick="loadPage('services-accounting')">Tax, Audit &amp; Accounting</a></li>
+                        <!-- <li><a onclick="loadPage('services-ecommerce')">E-Commerce & Retail</a></li> -->
                         <li><a onclick="loadPage('services-amazon')">Amazon Seller Service (SPA)</a></li>
                         <li><a onclick="loadPage('services-compliance')">Compliance Consultancy</a></li>
-                        <li><a onclick="loadPage('services-accounting')">Accounting & Tax</a></li>
                         <li><a onclick="loadPage('services-corporate')">Corporate Services</a></li>
                     </ul>
                 </li>
@@ -3983,10 +4072,10 @@
         <div class="mob-services-submenu" id="mobServicesSubmenu">
             <a onclick="loadPage('services'); closeMobileNav()">All Services</a>
             <a onclick="loadPage('services-trading'); closeMobileNav()">Company Setup</a>
-            <a onclick="loadPage('services-ecommerce'); closeMobileNav()">E-Commerce &amp; Retail</a>
+            <a onclick="loadPage('services-accounting'); closeMobileNav()">Tax, Audit &amp; Accounting</a>
+            <!-- <a onclick="loadPage('services-ecommerce'); closeMobileNav()">E-Commerce &amp; Retail</a> -->
             <a onclick="loadPage('services-amazon'); closeMobileNav()">Amazon Seller Services (SPA)</a>
             <a onclick="loadPage('services-compliance'); closeMobileNav()">Compliance Consultancy</a>
-            <a onclick="loadPage('services-accounting'); closeMobileNav()">Accounting &amp; Tax</a>
             <a onclick="loadPage('services-corporate'); closeMobileNav()">Corporate Services</a>
         </div>
         <a onclick="loadPage('blog'); closeMobileNav()">Blog</a>
@@ -4042,23 +4131,22 @@
                     <li><a href="#about">About Us</a></li>
                     <li><a style="cursor: pointer;" onclick="loadPage('services')">Our Services</a></li>
                     <li><a style="cursor: pointer;" onclick="loadPage('blog')">Blog</a></li>
-                    <li><a style="cursor: pointer;" onclick="loadPage('contact')">Contact Us</a></li>
                     <li><a href="#process">Our Process</a></li>
-                    <li><a href="#hero">Book Appointment</a></li>
+                    <li><a onclick="goToQueryForm()" style="cursor: pointer;">Book Appointment</a></li>
                 </ul>
             </div>
             <div class="footer-col">
                 <div class="footer-col-title">Services</div>
                 <ul>
                     <li><a style="cursor:pointer;" onclick="loadPage('services-trading'); ">Company Setup</a></li>
-                    <li><a style="cursor:pointer;" onclick="loadPage('services-ecommerce'); ">E-Commerce &amp;
-                            Retail</a></li>
+                    <li><a style="cursor:pointer;" onclick="loadPage('services-accounting'); ">Tax, Audit &amp;
+                            Accounting</a> </li>
+                    <!-- <li><a style="cursor:pointer;" onclick="loadPage('services-ecommerce'); ">E-Commerce &amp;
+                            Retail</a></li> -->
                     <li><a style="cursor:pointer;" onclick="loadPage('services-amazon'); ">Amazon Seller Services
                             (SPA)</a></li>
                     <li><a style="cursor:pointer;" onclick="loadPage('services-compliance'); ">Compliance
                             Consultancy</a></li>
-                    <li><a style="cursor:pointer;" onclick="loadPage('services-accounting'); ">Accounting &amp; Tax</a>
-                    </li>
                     <li><a style="cursor:pointer;" onclick="loadPage('services'); ">All Services</a></li>
                     <li><a style="cursor:pointer;" onclick="loadPage('services-corporate'); ">Corporate Services</a>
                     </li>
@@ -4117,7 +4205,7 @@
             <div class="wa-header">
                 <div class="wa-avatar">LM</div>
                 <div class="wa-header-info">
-                    <h4>Luizmary Consultancy</h4>
+                    <h4>LuizMary Associates</h4>
                     <p>Typically replies within minutes</p>
                 </div>
             </div>
@@ -4168,15 +4256,21 @@
 
             <!-- Left Column: Branding Value Prop -->
             <div class="hero-content">
-                <div class="hero-eyebrow"></div>
-                <h1 class="hero-title">Your Trusted Partner for<br><em>Business & Compliance</em><br>in the UAE</h1>
+                <h1 class="hero-title">Your Trusted Partner for<br><em>Business Setup & Compliance</em><br>in the UAE
+                </h1>
                 <div class="hero-logo-container" onclick="loadPage('home')">
-                    <img src="logo.png" alt="Luizmary Associates Logo" class="hero-logo">
+
+                    <div>
+                        <img src="fta.jpg" alt="" class="hero-logo2">
+                    </div>
+
                     <!-- <img src="logo2.png" alt="Luizmary Associates Logo" class="nav-logo-img-alt"> -->
                 </div>
                 <p class="hero-sub">From company formation and Company Setup to compliance consultancy, accounting,
                     and corporate services — Luizmary Associates delivers expert-led solutions in the heart of
-                    <b>UAE</b>.
+                    <b>UAE</b>.<br>
+                    <em style="color:var(--gold)">We have FTA Registered Tax agents and Auditors and ACCA certified
+                        accountants.</em>
                 </p>
                 <div class="hero-actions">
                     <a class="btn-primary" onclick="goToQueryForm()">Book a Consultation</a>
@@ -4223,10 +4317,11 @@
                     <div class="form-field">
                         <label for="hero-service">Required Service</label>
                         <select id="hero-service">
-                            <option value="general-trading">Company Setup</option>
-                            <option value="ecommerce">E-Commerce & Retail</option>
+                            <option value="company-setup">Company Setup</option>
+                            <option value="accounting">Tax, Audit &amp; Accounting</option>
+                            <!-- <option value="ecommerce">E-Commerce & Retail</option> -->
+                            <option value="amazon">Amazon Seller Service (SPA)</option>
                             <option value="compliance">Compliance Consultancy</option>
-                            <option value="accounting">Accounting & Tax</option>
                             <option value="corporate">Corporate Services</option>
                         </select>
                     </div>
@@ -4308,11 +4403,7 @@
                     <h2 class="about-heading">Your Gateway to<br><span class="stat-highlight">UAE Business</span>
                         Success</h2>
 
-                    <div class="about-description">
-                        <p>Our team, led by Merline Minin Fernandes and Daigo Fernandes, brings deep regional expertise
-                            and a hands-on approach to helping clients navigate the UAE's regulatory landscape with
-                            confidence.</p>
-                    </div>
+
                     <div class="service-badges-row">
                         <div class="service-badge">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
@@ -4527,13 +4618,16 @@
             </div>
             <div class="services-grid scroll-reveal">
                 <div class="service-card" onclick="loadPage('services-trading')">
-                    <div class="service-icon"><svg viewBox="0 0 24 24">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24">
                             <path d="M3 6l9-4 9 4v6c0 5-4 9-9 10C7 21 3 17 3 12V6z" />
-                        </svg></div>
+                        </svg>
+                    </div>
                     <div class="service-name">Company Setup</div>
-                    <div class="service-short">UAE business formation solutions covering Mainland & Free Zone company
-                        setups,
-                        licensing, and approvals for a seamless launch.</div>
+                    <div class="service-short">
+                        UAE business formation solutions covering Mainland & Free Zone company setups, licensing, and
+                        approvals for a seamless launch.
+                    </div>
                     <div class="service-expanded">
                         <div class="service-expanded-inner">
                             <ul>
@@ -4545,11 +4639,16 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="service-arrow"><svg viewBox="0 0 24 24">
+
+                    <div class="service-arrow"
+                        onclick="event.stopPropagation(); goToQueryForm(); document.getElementById('querySection').scrollIntoView({ behavior: 'smooth' });">
+                        <svg viewBox="0 0 24 24">
                             <path d="M5 12h14M12 5l7 7-7 7" />
-                        </svg></div>
+                        </svg>
+                    </div>
                 </div>
-                <div class="service-card" onclick="loadPage('services-ecommerce'); ">
+                <!-- <div class="service-card" onclick="loadPage('services-ecommerce'); ">
+
                     <div class="service-icon"><svg viewBox="0 0 24 24">
                             <rect x="2" y="3" width="20" height="14" rx="2" />
                             <path d="M8 21h8M12 17v4" />
@@ -4573,7 +4672,7 @@
                     <div class="service-arrow"><svg viewBox="0 0 24 24">
                             <path d="M5 12h14M12 5l7 7-7 7" />
                         </svg></div>
-                </div>
+                </div> -->
                 <div class="service-card" onclick="loadPage('services-compliance'); ">
                     <div class="service-icon"><svg viewBox="0 0 24 24">
                             <path d="M9 11l3 3L22 4" />
@@ -4593,7 +4692,8 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="service-arrow"><svg viewBox="0 0 24 24">
+                    <div class="service-arrow" onclick="event.stopPropagation(); goToQueryForm();"><svg
+                            viewBox="0 0 24 24">
                             <path d="M5 12h14M12 5l7 7-7 7" />
                         </svg></div>
                 </div>
@@ -4618,7 +4718,8 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="service-arrow"><svg viewBox="0 0 24 24">
+                    <div class="service-arrow" onclick="event.stopPropagation(); goToQueryForm();"><svg
+                            viewBox="0 0 24 24">
                             <path d="M5 12h14M12 5l7 7-7 7" />
                         </svg></div>
                 </div>
@@ -4643,7 +4744,8 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="service-arrow"><svg viewBox="0 0 24 24">
+                    <div class="service-arrow" onclick="event.stopPropagation(); goToQueryForm();"><svg
+                            viewBox="0 0 24 24">
                             <path d="M5 12h14M12 5l7 7-7 7" />
                         </svg></div>
                 </div>
@@ -4668,11 +4770,38 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="service-arrow"><svg viewBox="0 0 24 24">
+                    <div class="service-arrow" onclick="event.stopPropagation(); goToQueryForm();"><svg
+                            viewBox="0 0 24 24">
                             <path d="M5 12h14M12 5l7 7-7 7" />
                         </svg></div>
                 </div>
 
+                <div class="service-card" onclick="goToQueryForm();">
+                    <div class="service-icon"><svg viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="10" />
+                            <path d="M12 8v4l3 3" />
+                        </svg></div>
+                    <div class="service-name">Free Consultation</div>
+                    <div class="service-short">Not sure where to start? Book a free consultation with our experts to
+                        find the right setup, compliance, or financial solution for your business.</div>
+                    <div class="service-expanded">
+                        <div class="service-expanded-inner">
+                            <ul>
+                                <li>One-on-one business advisory call</li>
+                                <li>Personalized setup &amp; compliance roadmap</li>
+                                <li>No-obligation, no-cost session</li>
+                                <li>Direct access to UAE business experts</li>
+                                <li>Fast-track guidance on next steps</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="service-arrow"
+                        onclick="event.stopPropagation(); document.getElementById('querySection').scrollIntoView({ behavior: 'smooth' });">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M5 12h14M12 5l7 7-7 7" />
+                        </svg>
+                    </div>
+                </div>
             </div>
             <!-- Standalone "Why Luizmary?" Section -->
             <div style="background: linear-gradient(135deg, #0d1b2a, #1b263b); border: 1px solid var(--border); padding: 4.5rem 2rem; margin: 3rem 0; width: 100%; box-sizing: border-box; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: all 0.3s ease; position: relative;"
@@ -4780,6 +4909,44 @@
                             </div>
                         </div>
 
+                    </div>
+                    <!-- Full-Width Experience Highlight Banner -->
+                    <div
+                        style="width: 100%; max-width: 1100px; margin-top: 3rem; padding-top: 2.5rem; border-top: 1px solid rgba(255,255,255,0.08);">
+                        <div
+                            style="display: flex; align-items: center; justify-content: center; gap: 2rem; flex-wrap: wrap; background: rgba(201,168,76,0.06); border: 1px solid rgba(201,168,76,0.25); border-radius: 6px; padding: 2rem 2.5rem; text-align: left;">
+
+                            <div style="display:flex; gap: 1.5rem; flex: 0 0 auto;">
+                                <div
+                                    style="font-family: 'Cormorant Garamond', serif; font-size: 2.6rem; color: var(--gold); font-weight: 700; line-height: 1; text-align: center; min-width: 90px;">
+                                    10+<span
+                                        style="display:block; font-size: 0.65rem; color: var(--text-muted); font-weight: 400; letter-spacing: 1px; margin-top: 0.4rem;">YEARS
+                                        TAX</span>
+                                </div>
+                                <div style="width: 1px; background: rgba(255,255,255,0.1);"></div>
+                                <div
+                                    style="font-family: 'Cormorant Garamond', serif; font-size: 2.6rem; color: var(--gold); font-weight: 700; line-height: 1; text-align: center; min-width: 90px;">
+                                    15+<span
+                                        style="display:block; font-size: 0.65rem; color: var(--text-muted); font-weight: 400; letter-spacing: 1px; margin-top: 0.4rem;">YEARS
+                                        US TAX</span>
+                                </div>
+                            </div>
+
+                            <div style="flex: 1 1 320px; min-width: 280px;">
+                                <h4
+                                    style="font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; color: var(--white); margin: 0 0 0.4rem 0; font-weight: 600;">
+                                    Decades of Proven Tax Expertise
+                                </h4>
+                                <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.7; margin: 0;">
+                                    Our team brings over <b style="color: var(--gold-accent);">10 years of UAE tax
+                                        experience</b> and <b style="color: var(--gold-accent);">15 years specializing
+                                        in
+                                        US Taxation</b>, combined with deep expertise in VAT and Corporate Tax —
+                                    ensuring precise, compliant, and strategic financial guidance at every step.
+                                </p>
+                            </div>
+
+                        </div>
                     </div>
                 </div>
             </div>
@@ -6264,44 +6431,7 @@
             </div>
         </div>
 
-        <section class="services-section" style="padding-bottom: 0;">
-            <div class="section-header" style="text-align: center; margin-bottom: 50px;">
-                <span class="service-tag" style="display: block; margin-bottom: 10px;">Strategic Vectors</span>
-                <h2 style="font-family: 'Cormorant Garamond', serif; font-size: 2.8rem; color: #fff;">Trading
-                    Architecture Pillars</h2>
-            </div>
 
-            <div
-                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-bottom: 60px;">
-                <div
-                    style="background: var(--navy-mid); padding: 40px 30px; border: 1px solid #1e2d3d; border-radius: 4px;">
-                    <div
-                        style="color: var(--gold); font-size: 1.5rem; font-family: 'Cormorant Garamond', serif; font-weight: 600; margin-bottom: 15px;">
-                        01 / Jurisdictional Selection</div>
-                    <p style="color: #a0aec0; font-size: 0.95rem; line-height: 1.6;">Evaluating mainland corporate
-                        vehicles versus optimal Free Zone positioning (e.g., JAFZA, DAFZA, KIZAD) based on your target
-                        import/export markets and warehouse logistics requirements.</p>
-                </div>
-                <div
-                    style="background: var(--navy-mid); padding: 40px 30px; border: 1px solid #1e2d3d; border-radius: 4px;">
-                    <div
-                        style="color: var(--gold); font-size: 1.5rem; font-family: 'Cormorant Garamond', serif; font-weight: 600; margin-bottom: 15px;">
-                        02 / Supply Chain Engineering</div>
-                    <p style="color: #a0aec0; font-size: 0.95rem; line-height: 1.6;">Structuring global distribution
-                        frameworks, custom clearing access, and cross-border commercial pathways optimized to minimize
-                        duty exposures and transit constraints.</p>
-                </div>
-                <div
-                    style="background: var(--navy-mid); padding: 40px 30px; border: 1px solid #1e2d3d; border-radius: 4px;">
-                    <div
-                        style="color: var(--gold); font-size: 1.5rem; font-family: 'Cormorant Garamond', serif; font-weight: 600; margin-bottom: 15px;">
-                        03 / Regulatory & Customs Clear</div>
-                    <p style="color: #a0aec0; font-size: 0.95rem; line-height: 1.6;">Securing critical HS Code matches,
-                        commercial customs code registrations, and handling blueprints for regulatory bodies including
-                        Dubai Customs and international safety standards.</p>
-                </div>
-            </div>
-        </section>
 
         <section class="services-section" style="padding-top: 30px;">
             <div class="service-block">
@@ -6327,7 +6457,7 @@
             style="background: rgba(16, 33, 51, 0.4); border-top: 1px solid #1e2d3d; border-bottom: 1px solid #1e2d3d;">
             <div class="service-block" style="display: flex; flex-wrap: wrap; gap: 40px; align-items: center;">
                 <div class="service-block-visual" style="flex: 1; min-width: 300px;">
-                    <img src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=800&q=80"
+                    <img src="https://images.unsplash.com/photo-1587293852726-70cdb56c2866?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8d2FyZWhvdXNlfGVufDB8fDB8fHww"
                         alt="Modern commercial port warehouse logistics execution"
                         style="width: 100%; height: auto; border-radius: 4px; border: 1px solid #1e2d3d;">
                 </div>
@@ -6405,162 +6535,7 @@
         </section>
     </template>
 
-    <template id="page-services-ecommerce">
-        <!-- Hero Section -->
-        <div class="page-hero">
-            <div class="page-hero-eyebrow">Luizmary Associates Capabilities</div>
-            <h1>E-Commerce <em>& Retail Architecture</em></h1>
-            <p>Custom governance protocols for digital stores and international transactional paths.</p>
-            <div class="breadcrumb">
-                <a onclick="loadPage('home')">Home</a> <span>/</span> <a
-                    onclick="loadPage('services-ecommerce')">E-Commerce</a>
-            </div>
-        </div>
 
-        <!-- Architectural Pillars Grid -->
-        <section class="services-section" style="padding-bottom: 0;">
-            <div class="section-header" style="text-align: center; margin-bottom: 50px;">
-                <span class="service-tag" style="display: block; margin-bottom: 10px;">Strategic Frameworks</span>
-                <h2 style="font-family: 'Cormorant Garamond', serif; font-size: 2.8rem; color: #fff;">Digital
-                    Operational Core</h2>
-            </div>
-
-            <div
-                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-bottom: 60px;">
-                <div
-                    style="background: var(--navy-mid); padding: 40px 30px; border: 1px solid #1e2d3d; border-radius: 4px;">
-                    <div
-                        style="color: var(--gold); font-size: 1.5rem; font-family: 'Cormorant Garamond', serif; font-weight: 600; margin-bottom: 15px;">
-                        01 / Global Gateway Setup</div>
-                    <p style="color: #a0aec0; font-size: 0.95rem; line-height: 1.6;">Structuring multi-currency payment
-                        infrastructure links and processing agreements across key corporate merchant jurisdictions.</p>
-                </div>
-                <div
-                    style="background: var(--navy-mid); padding: 40px 30px; border: 1px solid #1e2d3d; border-radius: 4px;">
-                    <div
-                        style="color: var(--gold); font-size: 1.5rem; font-family: 'Cormorant Garamond', serif; font-weight: 600; margin-bottom: 15px;">
-                        02 / Cross-Border VAT & Tax</div>
-                    <p style="color: #a0aec0; font-size: 0.95rem; line-height: 1.6;">Aligning regional digital commerce
-                        platforms with multi-tier corporate tax codes, compliance reporting, and systemic audit paths.
-                    </p>
-                </div>
-                <div
-                    style="background: var(--navy-mid); padding: 40px 30px; border: 1px solid #1e2d3d; border-radius: 4px;">
-                    <div
-                        style="color: var(--gold); font-size: 1.5rem; font-family: 'Cormorant Garamond', serif; font-weight: 600; margin-bottom: 15px;">
-                        03 / Data Security & IP</div>
-                    <p style="color: #a0aec0; font-size: 0.95rem; line-height: 1.6;">Enforcing digital consumer asset
-                        protection rules, platform privacy frameworks, and brand registration protocols across target
-                        regions.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Block 1: Marketplace Frameworks (Image Left, Text Right using your 'reverse' class structure) -->
-        <section class="services-section" style="padding-top: 30px;">
-            <div class="service-block reverse">
-                <div class="service-block-visual">
-                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80"
-                        alt="Digital architecture integration mapping">
-                </div>
-                <div class="service-block-meta">
-                    <span class="service-tag">Digital Retail</span>
-                    <h2 class="service-block-title">Marketplace Optimization Frameworks</h2>
-                    <p class="service-block-desc">Custom compliance models configured for regional electronic
-                        marketplaces utilizing secure global gateways.</p>
-                    <ul class="service-sub-list">
-                        <li>Merchant account processing clearance support mapping</li>
-                        <li>International digital tax localization alignment systems</li>
-                        <li>Regional electronic asset processing protection matrices</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <!-- Block 2: Transactional Infrastructure (Text Left, Image Right) -->
-        <section class="services-section"
-            style="background: rgba(16, 33, 51, 0.4); border-top: 1px solid #1e2d3d; border-bottom: 1px solid #1e2d3d;">
-            <div class="service-block">
-                <div class="service-block-meta">
-                    <span class="service-tag">Merchant Processing</span>
-                    <h2 class="service-block-title">Payment Architecture & Rails</h2>
-                    <p class="service-block-desc">Deploying scalable transactional pipelines that align multi-currency
-                        corporate bank routing with enterprise-grade e-commerce checkout mechanisms.</p>
-                    <ul class="service-sub-list">
-                        <li>Cross-border digital remittance governance setups</li>
-                        <li>Corporate payment settlement mechanism designs</li>
-                        <li>Fraud prevention architecture and merchant alignment</li>
-                    </ul>
-                    <a onclick="loadPage('contact')" class="btn-primary">Launch Virtual Architecture</a>
-                </div>
-                <div class="service-block-visual">
-                    <img src="https://images.unsplash.com/photo-1643000867361-cd545336249b?q=80&w=1181&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                        alt="Secure digital transactional processing infrastructure">
-                </div>
-            </div>
-        </section>
-
-        <!-- Deployment Pipeline / Steps -->
-        <section class="services-section">
-            <div class="section-header" style="text-align: center; margin-bottom: 50px;">
-                <span class="service-tag">Methodology</span>
-                <h2 style="font-family: 'Cormorant Garamond', serif; font-size: 2.8rem; color: #fff;">Implementation
-                    Roadmap</h2>
-            </div>
-
-            <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: space-between; position: relative;">
-                <div
-                    style="flex: 1; min-width: 220px; position: relative; padding-left: 20px; border-left: 2px solid var(--gold);">
-                    <span
-                        style="font-family: 'Montserrat', sans-serif; font-size: 0.85rem; color: var(--gold); font-weight: 600; letter-spacing: 1px; text-transform: uppercase;">Step
-                        01</span>
-                    <h4
-                        style="font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; color: #fff; margin: 10px 0;">
-                        Structural Audit</h4>
-                    <p style="color: #a0aec0; font-size: 0.9rem; line-height: 1.5;">Mapping operational geography,
-                        transactional projections, and payment processing goals.</p>
-                </div>
-                <div
-                    style="flex: 1; min-width: 220px; position: relative; padding-left: 20px; border-left: 2px solid var(--gold);">
-                    <span
-                        style="font-family: 'Montserrat', sans-serif; font-size: 0.85rem; color: var(--gold); font-weight: 600; letter-spacing: 1px; text-transform: uppercase;">Step
-                        02</span>
-                    <h4
-                        style="font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; color: #fff; margin: 10px 0;">
-                        Gateway Integration</h4>
-                    <p style="color: #a0aec0; font-size: 0.9rem; line-height: 1.5;">Configuring compliant payment
-                        frameworks and securing domestic/offshore bank account matches.</p>
-                </div>
-                <div
-                    style="flex: 1; min-width: 220px; position: relative; padding-left: 20px; border-left: 2px solid var(--gold);">
-                    <span
-                        style="font-family: 'Montserrat', sans-serif; font-size: 0.85rem; color: var(--gold); font-weight: 600; letter-spacing: 1px; text-transform: uppercase;">Step
-                        03</span>
-                    <h4
-                        style="font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; color: #fff; margin: 10px 0;">
-                        Tax & Scale Launch</h4>
-                    <p style="color: #a0aec0; font-size: 0.9rem; line-height: 1.5;">Setting up automated cross-border
-                        tax processing before deployment to active target markets.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Final CTA Block -->
-        <section class="services-section" style="padding-top: 20px; padding-bottom: 80px;">
-            <div
-                style="background: linear-gradient(135deg, var(--navy-mid) 0%, #0d1b2a 100%); border: 1px solid var(--gold-dark); padding: 50px; text-align: center; border-radius: 4px;">
-                <h3
-                    style="font-family: 'Cormorant Garamond', serif; font-size: 2.3rem; color: #fff; margin-bottom: 15px;">
-                    Ready to Secure Your Digital Enterprise Setup?</h3>
-                <p
-                    style="color: #a0aec0; max-width: 600px; margin: 0 auto 30px auto; font-size: 1rem; line-height: 1.6;">
-                    Let our corporate architects implement structured compliance solutions configured directly for your
-                    international digital commerce store.</p>
-                <a onclick="goToQueryForm()" class="btn-primary" style="display: inline-block;">Consult an
-                    Architect</a>
-            </div>
-        </section>
-    </template>
 
     <template id="page-services-amazon">
         <!-- PAGE HERO -->
@@ -7018,6 +6993,48 @@
 
             </div>
         </div>
+        <!-- Block 1: Marketplace Frameworks (Image Left, Text Right using your 'reverse' class structure) -->
+        <section class="services-section" style="padding-top: 30px;">
+            <div class="service-block reverse">
+                <div class="service-block-visual">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80"
+                        alt="Digital architecture integration mapping">
+                </div>
+                <div class="service-block-meta">
+                    <span class="service-tag">Digital Retail</span>
+                    <h2 class="service-block-title">Marketplace Optimization Frameworks</h2>
+                    <p class="service-block-desc">Custom compliance models configured for regional electronic
+                        marketplaces utilizing secure global gateways.</p>
+                    <ul class="service-sub-list">
+                        <li>Merchant account processing clearance support mapping</li>
+                        <li>International digital tax localization alignment systems</li>
+                        <li>Regional electronic asset processing protection matrices</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Block 2: Transactional Infrastructure (Text Left, Image Right) -->
+        <section class="services-section"
+            style="background: rgba(16, 33, 51, 0.4); border-top: 1px solid #1e2d3d; border-bottom: 1px solid #1e2d3d;">
+            <div class="service-block">
+                <div class="service-block-meta">
+                    <span class="service-tag">Merchant Processing</span>
+                    <h2 class="service-block-title">Payment Architecture & Rails</h2>
+                    <p class="service-block-desc">Deploying scalable transactional pipelines that align multi-currency
+                        corporate bank routing with enterprise-grade e-commerce checkout mechanisms.</p>
+                    <ul class="service-sub-list">
+                        <li>Cross-border digital remittance governance setups</li>
+                        <li>Corporate payment settlement mechanism designs</li>
+                        <li>Fraud prevention architecture and merchant alignment</li>
+                    </ul>
+                </div>
+                <div class="service-block-visual">
+                    <img src="https://images.unsplash.com/photo-1643000867361-cd545336249b?q=80&w=1181&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                        alt="Secure digital transactional processing infrastructure">
+                </div>
+            </div>
+        </section>
 
         <!-- STATS BAR -->
         <div class="stats-bar" style="margin-top: 0;">
@@ -7534,7 +7551,7 @@
     <template id="page-services">
         <div class="page-hero">
             <div class="page-hero-eyebrow">Capabilities & Execution</div>
-            <h1>End-to-End <em>Business & Compliance</em> Services in the UAE.</h1>
+            <h1>End-to-End <em>Business Setup & Compliance</em> Services in the UAE.</h1>
             <p>From company formation and e-commerce setup to tax, audit, accounting, and corporate support —
                 Luizmary Associates delivers expert-led solutions across every stage of your business journey.</p>
             <div class="breadcrumb">
@@ -7574,7 +7591,7 @@
 
         <hr class="section-divider">
 
-        <div class="services-section">
+        <!-- <div class="services-section">
             <div class="service-block reverse">
                 <div class="service-block-content">
                     <div class="service-block-visual">
@@ -7598,7 +7615,7 @@
                     <a onclick="loadPage('services-ecommerce')" class="btn-primary">Explore E-Commerce →</a>
                 </div>
             </div>
-        </div>
+        </div> -->
 
         <hr class="section-divider">
 
@@ -7689,8 +7706,8 @@
             <div class="service-block reverse">
                 <div class="service-block-content">
                     <div class="service-block-visual">
-                        <img src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=900&q=70"
-                            alt="Corporate services and PRO support team">
+                        <img
+                            src="https://plus.unsplash.com/premium_photo-1661573729122-6619f62ef0ea?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8Y29ycG9yYXRlJTIwc2VydmljZXxlbnwwfHwwfHx8MA%3D%3D">
                     </div>
                     <ul class="service-sub-list" style="margin-top: 2rem;">
                         <li>Company registration & licensing</li>
@@ -8009,7 +8026,18 @@
             // Wait a tick for the home template to mount, then scroll to the form
             setTimeout(() => {
                 const formEl = document.getElementById('hero-contact-form');
-                if (formEl) formEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                if (!formEl) return;
+                const nav = document.querySelector('nav');
+                const navHeight = nav ? nav.offsetHeight : 0;
+                const formHeight = formEl.offsetHeight;
+                const availableSpace = window.innerHeight - navHeight;
+                // If the form fits in the visible space below the nav, center it there.
+                // Otherwise, just align its top below the nav (it won't fully fit either way).
+                const offsetWithinAvailable = formHeight < availableSpace
+                    ? (availableSpace - formHeight) / 2
+                    : 0;
+                const targetY = formEl.getBoundingClientRect().top + window.pageYOffset - navHeight - offsetWithinAvailable;
+                window.scrollTo({ top: targetY, behavior: 'smooth' });
             }, 50);
         }
 
@@ -8613,7 +8641,18 @@
             // Wait a tick for the home template to mount, then scroll to the form
             setTimeout(() => {
                 const formEl = document.getElementById('hero-contact-form');
-                if (formEl) formEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                if (!formEl) return;
+                const nav = document.querySelector('nav');
+                const navHeight = nav ? nav.offsetHeight : 0;
+                const formHeight = formEl.offsetHeight;
+                const availableSpace = window.innerHeight - navHeight;
+                // If the form fits in the visible space below the nav, center it there.
+                // Otherwise, just align its top below the nav (it won't fully fit either way).
+                const offsetWithinAvailable = formHeight < availableSpace
+                    ? (availableSpace - formHeight) / 2
+                    : 0;
+                const targetY = formEl.getBoundingClientRect().top + window.pageYOffset - navHeight - offsetWithinAvailable;
+                window.scrollTo({ top: targetY, behavior: 'smooth' });
             }, 50);
         }
 
