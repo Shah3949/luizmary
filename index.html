@@ -3754,6 +3754,467 @@
             top: 96px;
         }
 
+        /* ── LEGAL PAGE VISUAL COMPONENTS (Privacy Policy / Terms) ───────────── */
+        .legal-wrap {
+            max-width: 880px;
+            margin: 0 auto;
+        }
+
+        .legal-updated {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-muted);
+            font-size: 0.78rem;
+            letter-spacing: 0.03em;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+            padding: 6px 14px;
+            border: 1px solid var(--border);
+            border-radius: 30px;
+            background: rgba(201, 168, 76, 0.05);
+        }
+
+        /* Quick Navigation pill bar */
+        .legal-nav-box {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.75rem;
+            margin-bottom: 3rem;
+        }
+
+        .legal-nav-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.15rem;
+            color: var(--gold);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            letter-spacing: 0.02em;
+        }
+
+        .legal-nav-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+        }
+
+        .legal-nav-pills a {
+            display: inline-block;
+            padding: 0.45rem 1.1rem;
+            border: 1px solid var(--border);
+            border-radius: 30px;
+            background: rgba(255, 255, 255, 0.02);
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            text-decoration: none;
+        }
+
+        .legal-nav-pills a:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+            background: rgba(201, 168, 76, 0.08);
+            transform: translateY(-2px);
+        }
+
+        /* Section heading row with icon chip */
+        .legal-section {
+            margin-bottom: 2.75rem;
+            scroll-margin-top: 100px;
+        }
+
+        .legal-heading-row {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 1rem;
+        }
+
+        .legal-icon-chip {
+            flex-shrink: 0;
+            width: 42px;
+            height: 42px;
+            border-radius: 8px;
+            background: rgba(201, 168, 76, 0.1);
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .legal-icon-chip svg {
+            width: 20px;
+            height: 20px;
+            stroke: var(--gold);
+            fill: none;
+            stroke-width: 1.6;
+        }
+
+        .legal-heading-row h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.55rem;
+            font-weight: 600;
+            color: var(--white);
+            margin: 0;
+        }
+
+        .legal-section p,
+        .legal-section>ul {
+            margin-left: 0;
+            color: var(--soft-white);
+            line-height: 1.85;
+        }
+
+        /* Two-column info card grid (e.g. Personal Info / Technical Info) */
+        .legal-info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.25rem;
+            margin: 1.25rem 0;
+        }
+
+        @media (max-width: 700px) {
+            .legal-info-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .legal-info-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 1.4rem 1.5rem;
+        }
+
+        .legal-info-card-title {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 0.92rem;
+            color: var(--gold-accent);
+            margin-bottom: 0.85rem;
+        }
+
+        .legal-info-card-title svg {
+            width: 17px;
+            height: 17px;
+            stroke: var(--gold);
+            fill: none;
+            stroke-width: 1.8;
+        }
+
+        .legal-info-card ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .legal-info-card ul li {
+            position: relative;
+            padding-left: 16px;
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+            line-height: 1.5;
+        }
+
+        .legal-info-card ul li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.55em;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: var(--gold);
+        }
+
+        /* Checklist with check icon (How We Use Your Info, etc.) */
+        .legal-checklist {
+            list-style: none;
+            margin: 1rem 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0.65rem;
+        }
+
+        .legal-checklist li {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 0.95rem;
+            color: var(--soft-white);
+            line-height: 1.6;
+        }
+
+        .legal-check-ico {
+            flex-shrink: 0;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: rgba(34, 197, 94, 0.12);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 2px;
+        }
+
+        .legal-check-ico svg {
+            width: 11px;
+            height: 11px;
+            stroke: var(--green);
+            fill: none;
+            stroke-width: 3;
+        }
+
+        /* Numbered responsibility list */
+        .legal-numbered {
+            list-style: none;
+            margin: 1rem 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .legal-numbered li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            font-size: 0.95rem;
+            color: var(--soft-white);
+            line-height: 1.6;
+        }
+
+        .legal-num-badge {
+            flex-shrink: 0;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: rgba(201, 168, 76, 0.12);
+            border: 1px solid var(--border);
+            color: var(--gold);
+            font-size: 0.72rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 1px;
+        }
+
+        /* Generic gold bullet list used inside cards/plain sections */
+        .legal-bullets {
+            list-style: none;
+            margin: 1rem 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0.55rem;
+        }
+
+        .legal-bullets li {
+            position: relative;
+            padding-left: 20px;
+            font-size: 0.95rem;
+            color: var(--soft-white);
+            line-height: 1.7;
+        }
+
+        .legal-bullets li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.65em;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--gold);
+        }
+
+        /* Rights / pill-grid boxes (GDPR-style rights, etc.) */
+        .legal-rights-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.9rem;
+            margin: 1.25rem 0;
+        }
+
+        @media (max-width: 700px) {
+            .legal-rights-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .legal-right-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 0.85rem 1.1rem;
+            font-size: 0.88rem;
+            color: var(--soft-white);
+            transition: border-color 0.25s ease, background 0.25s ease;
+        }
+
+        .legal-right-item:hover {
+            border-color: rgba(201, 168, 76, 0.5);
+            background: rgba(201, 168, 76, 0.06);
+        }
+
+        .legal-right-item .legal-check-ico {
+            background: rgba(201, 168, 76, 0.12);
+        }
+
+        .legal-right-item .legal-check-ico svg {
+            stroke: var(--gold);
+        }
+
+        /* Company info / key-value table card */
+        .legal-kv-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 0.5rem 1.5rem;
+            margin: 1.25rem 0;
+        }
+
+        .legal-kv-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 1rem;
+            padding: 0.85rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            flex-wrap: wrap;
+        }
+
+        .legal-kv-row:last-child {
+            border-bottom: none;
+        }
+
+        .legal-kv-label {
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            color: var(--text-muted);
+            white-space: nowrap;
+        }
+
+        .legal-kv-value {
+            font-size: 0.92rem;
+            color: var(--white);
+            font-weight: 500;
+            text-align: right;
+        }
+
+        /* Contact card strip */
+        .legal-contact-card {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 1.5rem 1.75rem;
+            margin: 1.25rem 0;
+        }
+
+        @media (max-width: 700px) {
+            .legal-contact-card {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .legal-contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .legal-contact-item svg {
+            width: 18px;
+            height: 18px;
+            stroke: var(--gold);
+            fill: none;
+            stroke-width: 1.8;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+
+        .legal-contact-label {
+            display: block;
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            color: var(--text-muted);
+            margin-bottom: 2px;
+        }
+
+        .legal-contact-value {
+            font-size: 0.92rem;
+            color: var(--white);
+            font-weight: 500;
+        }
+
+        .legal-contact-value a {
+            color: var(--white);
+            text-decoration: none;
+        }
+
+        .legal-contact-value a:hover {
+            color: var(--gold);
+        }
+
+        /* Disclaimer / warning callout */
+        .legal-disclaimer {
+            display: flex;
+            gap: 14px;
+            background: rgba(201, 168, 76, 0.07);
+            border: 1px solid rgba(201, 168, 76, 0.35);
+            border-radius: 10px;
+            padding: 1.5rem 1.75rem;
+            margin: 2rem 0;
+        }
+
+        .legal-disclaimer svg {
+            width: 24px;
+            height: 24px;
+            stroke: var(--gold);
+            fill: none;
+            stroke-width: 1.8;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .legal-disclaimer-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--gold);
+            margin-bottom: 0.4rem;
+        }
+
+        .legal-disclaimer p {
+            font-size: 0.88rem;
+            color: var(--soft-white);
+            line-height: 1.7;
+            margin: 0;
+        }
+
+        .legal-divider {
+            border: none;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            margin: 2.5rem 0;
+        }
+
         .sidebar-box {
             background: var(--navy-mid);
             border: 1px solid var(--border);
@@ -4155,8 +4616,9 @@
             <div class="footer-col">
                 <div class="footer-col-title">Useful Links</div>
                 <ul>
-                    <li><a>Privacy Policy</a></li>
-                    <li><a>Terms &amp; Conditions</a></li>
+                    <li><a style="cursor:pointer;" onclick="loadPage('privacy-policy')">Privacy Policy</a></li>
+                    <li><a style="cursor:pointer;" onclick="loadPage('terms-conditions')">Terms &amp; Conditions</a>
+                    </li>
                 </ul>
             </div>
             <div class="footer-col">
@@ -4243,6 +4705,828 @@
     </div>
 
 
+
+
+    <template id="page-privacy-policy">
+        <div class="page-hero">
+            <div class="page-hero-eyebrow">Legal</div>
+            <h1>Privacy <em>Policy</em></h1>
+            <p>How Luizmary Associates collects, uses, and protects your personal data.</p>
+            <div class="breadcrumb">
+                <a onclick="loadPage('home')">Home</a>
+                <svg viewBox="0 0 24 24" style="width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2;">
+                    <polyline points="9 18 15 12 9 6" />
+                </svg>
+                <a onclick="loadPage('privacy-policy')">Legal</a>
+                <svg viewBox="0 0 24 24" style="width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2;">
+                    <polyline points="9 18 15 12 9 6" />
+                </svg>
+                <span>Privacy Policy</span>
+            </div>
+        </div>
+
+        <div class="services-section" style="padding-top:0;">
+            <div class="legal-wrap">
+
+                <div class="legal-updated">
+                    <svg viewBox="0 0 24 24"
+                        style="width:14px;height:14px;stroke:var(--gold);fill:none;stroke-width:2;">
+                        <circle cx="12" cy="12" r="9" />
+                        <path d="M12 7v5l3 3" />
+                    </svg>
+                    Last updated: 26 June 2026
+                </div>
+
+                <!-- Quick Navigation -->
+                <div class="legal-nav-box">
+                    <div class="legal-nav-title">Quick Navigation</div>
+                    <div class="legal-nav-pills">
+                        <a onclick="scrollToSection('overview')">Introduction</a>
+                        <a onclick="scrollToSection('info-we-collect')">Data Collection</a>
+                        <a onclick="scrollToSection('how-we-use')">Data Usage</a>
+                        <a onclick="scrollToSection('sharing')">Data Sharing</a>
+                        <a onclick="scrollToSection('data-security')">Security</a>
+                        <a onclick="scrollToSection('your-rights')">Your Rights</a>
+                        <a onclick="scrollToSection('contact')">Contact</a>
+                    </div>
+                </div>
+
+                <!-- Overview / Introduction -->
+                <div class="legal-section" id="overview">
+                    <div class="legal-heading-row">
+                        <div class="legal-icon-chip">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" />
+                                <path d="M14 2v6h6" />
+                            </svg>
+                        </div>
+                        <h2>Introduction</h2>
+                    </div>
+                    <p>Luizmary Associates ("we," "our," or "us") respects your privacy and is committed to
+                        protecting your personal data. This Privacy Policy explains how we collect, use, disclose,
+                        and safeguard your information when you visit our website, submit an inquiry, or engage our
+                        business setup, compliance, accounting, tax, audit, or corporate services in the United Arab
+                        Emirates. By using our website or services, you acknowledge that you have read and
+                        understood this Policy.</p>
+                </div>
+
+                <!-- 1. Information We Collect -->
+                <div class="legal-section" id="info-we-collect">
+                    <div class="legal-heading-row">
+                        <div class="legal-icon-chip">
+                            <svg viewBox="0 0 24 24">
+                                <rect x="3" y="3" width="18" height="18" rx="2" />
+                                <path d="M3 9h18M9 21V9" />
+                            </svg>
+                        </div>
+                        <h2>1. Information We Collect</h2>
+                    </div>
+                    <p>We collect information that you voluntarily provide to us, as well as limited information
+                        collected automatically when you interact with our website.</p>
+
+                    <div class="legal-info-grid">
+                        <div class="legal-info-card">
+                            <div class="legal-info-card-title">
+                                <svg viewBox="0 0 24 24">
+                                    <circle cx="12" cy="8" r="4" />
+                                    <path d="M4 21c0-4 4-6 8-6s8 2 8 6" />
+                                </svg>
+                                Identity &amp; Contact
+                            </div>
+                            <ul>
+                                <li>Full name, email address, and phone number</li>
+                                <li>Country of residence</li>
+                                <li>Submitted via consultation forms, WhatsApp, or email</li>
+                            </ul>
+                        </div>
+                        <div class="legal-info-card">
+                            <div class="legal-info-card-title">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M3 21h18M5 21V7l7-4 7 4v14M9 9h2m-2 4h2m4-4h2m-2 4h2" />
+                                </svg>
+                                Business Information
+                            </div>
+                            <ul>
+                                <li>Intended company activity</li>
+                                <li>Jurisdiction preference</li>
+                                <li>Existing trade licence details, where relevant</li>
+                            </ul>
+                        </div>
+                        <div class="legal-info-card">
+                            <div class="legal-info-card-title">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" />
+                                </svg>
+                                Engagement Data
+                            </div>
+                            <ul>
+                                <li>Service category selected</li>
+                                <li>Message or scope details shared when booking a consultation</li>
+                            </ul>
+                        </div>
+                        <div class="legal-info-card">
+                            <div class="legal-info-card-title">
+                                <svg viewBox="0 0 24 24">
+                                    <circle cx="12" cy="12" r="9" />
+                                    <path d="M3 12h18M12 3a14 14 0 010 18M12 3a14 14 0 000 18" />
+                                </svg>
+                                Technical Data
+                            </div>
+                            <ul>
+                                <li>IP address and browser type</li>
+                                <li>Device information</li>
+                                <li>General usage data via standard website logs and cookies</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <p>We do not knowingly collect sensitive personal data (such as financial account credentials,
+                        passport scans, or identification documents) through this website. Where such documents are
+                        required to deliver a service — for example, during company formation or licensing — these
+                        are collected securely through direct, agreed channels as part of your engagement with us.
+                    </p>
+                </div>
+
+                <!-- 2. How We Use Your Information -->
+                <div class="legal-section" id="how-we-use">
+                    <div class="legal-heading-row">
+                        <div class="legal-icon-chip">
+                            <svg viewBox="0 0 24 24">
+                                <circle cx="12" cy="12" r="3" />
+                                <path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7-10-7-10-7z" />
+                            </svg>
+                        </div>
+                        <h2>2. How We Use Your Information</h2>
+                    </div>
+                    <p>We use the information we collect for the following purposes:</p>
+                    <ul class="legal-checklist">
+                        <li>
+                            <span class="legal-check-ico"><svg viewBox="0 0 24 24">
+                                    <polyline points="20 6 9 17 4 12" />
+                                </svg></span>
+                            To respond to your inquiry and provide the consultation or service you have requested.
+                        </li>
+                        <li>
+                            <span class="legal-check-ico"><svg viewBox="0 0 24 24">
+                                    <polyline points="20 6 9 17 4 12" />
+                                </svg></span>
+                            To prepare proposals, engagement scopes, and fee estimates for company formation,
+                            compliance, accounting, tax, audit, or corporate services.
+                        </li>
+                        <li>
+                            <span class="legal-check-ico"><svg viewBox="0 0 24 24">
+                                    <polyline points="20 6 9 17 4 12" />
+                                </svg></span>
+                            To communicate with you about your request via email, phone, or WhatsApp, including
+                            service updates, renewals, and compliance deadlines relevant to your engagement.
+                        </li>
+                        <li>
+                            <span class="legal-check-ico"><svg viewBox="0 0 24 24">
+                                    <polyline points="20 6 9 17 4 12" />
+                                </svg></span>
+                            To maintain internal business records and improve the quality of our advisory services.
+                        </li>
+                        <li>
+                            <span class="legal-check-ico"><svg viewBox="0 0 24 24">
+                                    <polyline points="20 6 9 17 4 12" />
+                                </svg></span>
+                            To comply with our legal, regulatory, and contractual obligations under UAE law,
+                            including those applicable to FTA-registered tax agents and licensed corporate service
+                            providers.
+                        </li>
+                    </ul>
+                    <p>We do not sell, rent, or trade your personal data to third parties for marketing purposes.</p>
+                </div>
+
+                <!-- 3. How We Share Your Information -->
+                <div class="legal-section" id="sharing">
+                    <div class="legal-heading-row">
+                        <div class="legal-icon-chip">
+                            <svg viewBox="0 0 24 24">
+                                <circle cx="9" cy="7" r="4" />
+                                <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" />
+                                <path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75" />
+                            </svg>
+                        </div>
+                        <h2>3. How We Share Your Information</h2>
+                    </div>
+                    <p>We may share your information only in the following circumstances:</p>
+                    <ul class="legal-bullets">
+                        <li><strong>With relevant authorities</strong> — including free zone authorities, the
+                            Federal Tax Authority (FTA), Dubai Economy Department, and other government bodies,
+                            strictly where necessary to process your licensing, registration, tax, or compliance
+                            matters.</li>
+                        <li><strong>With trusted service providers</strong> — such as our email and communication
+                            platforms, who process data on our behalf and are bound by confidentiality obligations.
+                        </li>
+                        <li><strong>For legal reasons</strong> — where disclosure is required to comply with a legal
+                            obligation, court order, or regulatory request applicable in the UAE.</li>
+                    </ul>
+                    <p>We do not transfer your personal data to any party outside of the purposes described above
+                        without your knowledge.</p>
+                </div>
+
+                <!-- 4. Cookies -->
+                <div class="legal-section" id="cookies">
+                    <div class="legal-heading-row">
+                        <div class="legal-icon-chip">
+                            <svg viewBox="0 0 24 24">
+                                <circle cx="12" cy="12" r="9" />
+                                <circle cx="9" cy="10" r="1" />
+                                <circle cx="14" cy="9" r="1" />
+                                <circle cx="15" cy="14" r="1" />
+                                <circle cx="9.5" cy="15" r="1" />
+                            </svg>
+                        </div>
+                        <h2>4. Cookies &amp; Tracking Technologies</h2>
+                    </div>
+                    <p>Our website may use essential cookies required for core functionality, such as remembering
+                        your form inputs during a session. We do not currently use third-party advertising or
+                        tracking cookies. Should this change in future, this Policy will be updated accordingly and,
+                        where required, your consent will be requested. You can control or disable cookies at any
+                        time through your browser settings, though this may affect certain website features.</p>
+                </div>
+
+                <!-- 5. Data Security -->
+                <div class="legal-section" id="data-security">
+                    <div class="legal-heading-row">
+                        <div class="legal-icon-chip">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M12 2 4 5v6c0 5 3.5 8.5 8 11 4.5-2.5 8-6 8-11V5l-8-3Z" />
+                            </svg>
+                        </div>
+                        <h2>5. Data Security</h2>
+                    </div>
+                    <p>We implement reasonable technical and organizational measures designed to protect your
+                        personal data against unauthorized access, alteration, disclosure, or destruction. This
+                        includes restricting access to client data to authorized personnel and using secure channels
+                        for communication wherever possible. However, no method of transmission over the internet,
+                        or method of electronic storage, is ever completely secure, and we cannot guarantee absolute
+                        security.</p>
+                </div>
+
+                <!-- 6. Data Retention -->
+                <div class="legal-section" id="retention">
+                    <div class="legal-heading-row">
+                        <div class="legal-icon-chip">
+                            <svg viewBox="0 0 24 24">
+                                <rect x="3" y="11" width="18" height="10" rx="2" />
+                                <path d="M7 11V7a5 5 0 0110 0v4" />
+                            </svg>
+                        </div>
+                        <h2>6. Data Retention</h2>
+                    </div>
+                    <p>We retain your personal data only for as long as necessary to fulfil the purposes outlined in
+                        this Policy, or as required to meet our legal, accounting, and regulatory obligations —
+                        including statutory record-keeping requirements applicable to corporate service providers,
+                        tax agents, and auditors operating in the UAE. Inquiry data from prospective clients who do
+                        not proceed with an engagement is retained only for a limited period before being securely
+                        deleted.</p>
+                </div>
+
+                <!-- 7. Your Rights -->
+                <div class="legal-section" id="your-rights">
+                    <div class="legal-heading-row">
+                        <div class="legal-icon-chip">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M12 2 4 5v6c0 5 3.5 8.5 8 11 4.5-2.5 8-6 8-11V5l-8-3Z" />
+                                <path d="m9 12 2 2 4-4" />
+                            </svg>
+                        </div>
+                        <h2>7. Your Rights</h2>
+                    </div>
+                    <p>Depending on applicable law, including the UAE Federal Decree-Law on the Protection of
+                        Personal Data, you may have the right to:</p>
+
+                    <div class="legal-rights-grid">
+                        <div class="legal-right-item">
+                            <span class="legal-check-ico"><svg viewBox="0 0 24 24">
+                                    <polyline points="20 6 9 17 4 12" />
+                                </svg></span>
+                            Request access to the personal data we hold about you
+                        </div>
+                        <div class="legal-right-item">
+                            <span class="legal-check-ico"><svg viewBox="0 0 24 24">
+                                    <polyline points="20 6 9 17 4 12" />
+                                </svg></span>
+                            Request correction of inaccurate or incomplete data
+                        </div>
+                        <div class="legal-right-item">
+                            <span class="legal-check-ico"><svg viewBox="0 0 24 24">
+                                    <polyline points="20 6 9 17 4 12" />
+                                </svg></span>
+                            Request deletion, subject to our legal retention obligations
+                        </div>
+                        <div class="legal-right-item">
+                            <span class="legal-check-ico"><svg viewBox="0 0 24 24">
+                                    <polyline points="20 6 9 17 4 12" />
+                                </svg></span>
+                            Withdraw consent to marketing communications at any time
+                        </div>
+                        <div class="legal-right-item">
+                            <span class="legal-check-ico"><svg viewBox="0 0 24 24">
+                                    <polyline points="20 6 9 17 4 12" />
+                                </svg></span>
+                            Object to or restrict certain processing of your data
+                        </div>
+                    </div>
+
+                    <p>To exercise any of these rights, please contact us using the details below. We will respond
+                        to legitimate requests within a reasonable timeframe.</p>
+                </div>
+
+                <!-- 8. Children's Privacy -->
+                <div class="legal-section" id="children">
+                    <div class="legal-heading-row">
+                        <div class="legal-icon-chip">
+                            <svg viewBox="0 0 24 24">
+                                <circle cx="12" cy="8" r="4" />
+                                <path d="M4 21c0-4 4-6 8-6s8 2 8 6" />
+                            </svg>
+                        </div>
+                        <h2>8. Children's Privacy</h2>
+                    </div>
+                    <p>Our website and services are intended for business use by adults and are not directed at
+                        individuals under the age of 18. We do not knowingly collect personal data from minors.</p>
+                </div>
+
+                <!-- 9. Third-Party Links -->
+                <div class="legal-section" id="third-party-links">
+                    <div class="legal-heading-row">
+                        <div class="legal-icon-chip">
+                            <svg viewBox="0 0 24 24">
+                                <circle cx="12" cy="12" r="9" />
+                                <path d="M3 12h18M12 3a14 14 0 010 18M12 3a14 14 0 000 18" />
+                            </svg>
+                        </div>
+                        <h2>9. Third-Party Links</h2>
+                    </div>
+                    <p>Our website may contain links to third-party websites, including free zone authorities or
+                        government portals. We are not responsible for the privacy practices or content of these
+                        external sites, and we encourage you to review their respective privacy policies.</p>
+                </div>
+
+                <!-- 10. Updates -->
+                <div class="legal-section" id="updates">
+                    <div class="legal-heading-row">
+                        <div class="legal-icon-chip">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M3 12a9 9 0 0115-6.7L21 8M21 3v5h-5M21 12a9 9 0 01-15 6.7L3 16M3 21v-5h5" />
+                            </svg>
+                        </div>
+                        <h2>10. Updates to This Policy</h2>
+                    </div>
+                    <p>We may update this Privacy Policy from time to time to reflect changes in our practices,
+                        services, or legal requirements. Any changes will be posted on this page with a revised
+                        "Last updated" date. We encourage you to review this Policy periodically.</p>
+                </div>
+
+                <hr class="legal-divider">
+
+                <!-- 11. Contact Us -->
+                <div class="legal-section" id="contact" style="margin-bottom:0;">
+                    <div class="legal-heading-row">
+                        <div class="legal-icon-chip">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                                <polyline points="22,6 12,13 2,6" />
+                            </svg>
+                        </div>
+                        <h2>11. Contact Us</h2>
+                    </div>
+                    <p>If you have any questions, concerns, or requests regarding this Privacy Policy or how we
+                        handle your personal data, please contact us:</p>
+
+                    <div class="legal-contact-card">
+                        <div class="legal-contact-item">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                                <polyline points="22,6 12,13 2,6" />
+                            </svg>
+                            <div>
+                                <span class="legal-contact-label">Email</span>
+                                <span class="legal-contact-value"><a
+                                        href="mailto:info@luizmaryfze.com">info@luizmary.com</a></span>
+                            </div>
+                        </div>
+                        <div class="legal-contact-item">
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z" />
+                            </svg>
+                            <div>
+                                <span class="legal-contact-label">Phone / WhatsApp</span>
+                                <span class="legal-contact-value">+971 50 145 4198</span>
+                            </div>
+                        </div>
+                        <div class="legal-contact-item">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
+                                <circle cx="12" cy="10" r="3" />
+                            </svg>
+                            <div>
+                                <span class="legal-contact-label">Location</span>
+                                <span class="legal-contact-value">Sharjah, UAE</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <section style="padding-top:0;">
+            <div style="margin-top:1rem;text-align:center">
+                <a class="btn-outline" onclick="goToQueryForm()">Have a Question? Book a Free Consultation →</a>
+            </div>
+        </section>
+    </template>
+
+
+    <template id="page-terms-conditions">
+        <div class="page-hero">
+            <div class="page-hero-eyebrow">Legal</div>
+            <h1>Terms &amp; <em>Conditions</em></h1>
+            <p>The terms governing your use of our website and engagement of our services.</p>
+            <div class="breadcrumb">
+                <a onclick="loadPage('home')">Home</a>
+                <svg viewBox="0 0 24 24" style="width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2;">
+                    <polyline points="9 18 15 12 9 6" />
+                </svg>
+                <a onclick="loadPage('privacy-policy')">Legal</a>
+                <svg viewBox="0 0 24 24" style="width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2;">
+                    <polyline points="9 18 15 12 9 6" />
+                </svg>
+                <span>Terms &amp; Conditions</span>
+            </div>
+        </div>
+
+        <div class="services-section" style="padding-top:0;">
+            <div class="legal-wrap">
+
+                <div class="legal-updated">
+                    <svg viewBox="0 0 24 24"
+                        style="width:14px;height:14px;stroke:var(--gold);fill:none;stroke-width:2;">
+                        <circle cx="12" cy="12" r="9" />
+                        <path d="M12 7v5l3 3" />
+                    </svg>
+                    Last updated: 26 June 2026
+                </div>
+
+                <!-- Quick Navigation -->
+                <div class="legal-nav-box">
+                    <div class="legal-nav-title">Quick Navigation</div>
+                    <div class="legal-nav-pills">
+                        <a onclick="scrollToSection('tc-agreement')">Agreement</a>
+                        <a onclick="scrollToSection('tc-company')">Company Info</a>
+                        <a onclick="scrollToSection('tc-services')">Services</a>
+                        <a onclick="scrollToSection('tc-limitations')">Limitations</a>
+                        <a onclick="scrollToSection('tc-fees')">Fees</a>
+                        <a onclick="scrollToSection('tc-liability')">Liability</a>
+                        <a onclick="scrollToSection('tc-contact')">Contact</a>
+                    </div>
+                </div>
+
+                <!-- 1. Agreement to Terms -->
+                <div class="legal-section" id="tc-agreement">
+                    <div class="legal-heading-row">
+                        <div class="legal-icon-chip">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M9 11l3 3L22 4" />
+                                <path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11" />
+                            </svg>
+                        </div>
+                        <h2>1. Agreement to Terms</h2>
+                    </div>
+                    <p>By accessing or using the Luizmary Associates website ("the Website") and engaging our
+                        services, you accept and agree to be bound by these Terms &amp; Conditions. If you do not
+                        agree to these terms, please do not use our website or services. These Terms apply to all
+                        visitors, prospective clients, and clients who access or use the Website.</p>
+                </div>
+
+                <!-- 2. Company Information -->
+                <div class="legal-section" id="tc-company">
+                    <div class="legal-heading-row">
+                        <div class="legal-icon-chip">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M3 21h18M5 21V7l7-4 7 4v14M9 9h2m-2 4h2m4-4h2m-2 4h2M9 21v-4h6v4" />
+                            </svg>
+                        </div>
+                        <h2>2. Company Information</h2>
+                    </div>
+                    <div class="legal-kv-card">
+                        <div class="legal-kv-row">
+                            <span class="legal-kv-label">Operating Brand</span>
+                            <span class="legal-kv-value">Luizmary Associates</span>
+                        </div>
+                        <div class="legal-kv-row">
+                            <span class="legal-kv-label">Jurisdiction</span>
+                            <span class="legal-kv-value">United Arab Emirates</span>
+                        </div>
+                        <div class="legal-kv-row">
+                            <span class="legal-kv-label">Service Scope</span>
+                            <span class="legal-kv-value">Business Setup, Tax, Audit, Accounting &amp; Corporate
+                                Services</span>
+                        </div>
+                        <div class="legal-kv-row">
+                            <span class="legal-kv-label">Regulatory Status</span>
+                            <span class="legal-kv-value">FTA-Registered Tax Agents &amp; Auditors</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. Service Description -->
+                <div class="legal-section" id="tc-services">
+                    <div class="legal-heading-row">
+                        <div class="legal-icon-chip">
+                            <svg viewBox="0 0 24 24">
+                                <circle cx="12" cy="12" r="3" />
+                                <path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7-10-7-10-7z" />
+                            </svg>
+                        </div>
+                        <h2>3. Service Description</h2>
+                    </div>
+                    <p>Luizmary Associates provides:</p>
+                    <ul class="legal-checklist">
+                        <li>
+                            <span class="legal-check-ico"><svg viewBox="0 0 24 24">
+                                    <polyline points="20 6 9 17 4 12" />
+                                </svg></span>
+                            Company formation and business setup advisory across UAE Mainland and Free Zones
+                        </li>
+                        <li>
+                            <span class="legal-check-ico"><svg viewBox="0 0 24 24">
+                                    <polyline points="20 6 9 17 4 12" />
+                                </svg></span>
+                            PRO and corporate services facilitation, including licensing, visas, and renewals
+                        </li>
+                        <li>
+                            <span class="legal-check-ico"><svg viewBox="0 0 24 24">
+                                    <polyline points="20 6 9 17 4 12" />
+                                </svg></span>
+                            Tax, audit, accounting, and bookkeeping services delivered by FTA-registered agents and
+                            ACCA-qualified professionals
+                        </li>
+                        <li>
+                            <span class="legal-check-ico"><svg viewBox="0 0 24 24">
+                                    <polyline points="20 6 9 17 4 12" />
+                                </svg></span>
+                            AML, regulatory, and corporate compliance consultancy
+                        </li>
+                        <li>
+                            <span class="legal-check-ico"><svg viewBox="0 0 24 24">
+                                    <polyline points="20 6 9 17 4 12" />
+                                </svg></span>
+                            Amazon Seller account setup, optimization, and ongoing management support
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- 4. Service Limitations -->
+                <div class="legal-section" id="tc-limitations">
+                    <div class="legal-heading-row">
+                        <div class="legal-icon-chip">
+                            <svg viewBox="0 0 24 24">
+                                <circle cx="12" cy="12" r="10" />
+                                <path d="M12 8v4M12 16h.01" />
+                            </svg>
+                        </div>
+                        <h2>4. Service Limitations</h2>
+                    </div>
+                    <p>Our services are limited to consultation, advisory, and facilitation. We do not:</p>
+                    <ul class="legal-bullets">
+                        <li>Issue government licenses, permits, or official documents</li>
+                        <li>Act as a government authority or agency</li>
+                        <li>Guarantee approval of any application submitted to a government body or free zone
+                            authority</li>
+                        <li>Provide legal advice, except where specifically licensed and engaged to do so</li>
+                        <li>Process visa applications directly without proper authorization from the relevant
+                            authority</li>
+                    </ul>
+                </div>
+
+                <!-- 5. Client Responsibilities -->
+                <div class="legal-section" id="tc-responsibilities">
+                    <div class="legal-heading-row">
+                        <div class="legal-icon-chip">
+                            <svg viewBox="0 0 24 24">
+                                <circle cx="12" cy="8" r="4" />
+                                <path d="M4 21c0-4 4-6 8-6s8 2 8 6" />
+                            </svg>
+                        </div>
+                        <h2>5. Client Responsibilities</h2>
+                    </div>
+                    <p>Clients are responsible for:</p>
+                    <ul class="legal-numbered">
+                        <li><span class="legal-num-badge">1</span> Providing accurate and complete information at
+                            every stage of the engagement</li>
+                        <li><span class="legal-num-badge">2</span> Supplying all required documents in a timely
+                            manner</li>
+                        <li><span class="legal-num-badge">3</span> Paying all government fees and third-party costs
+                            associated with their engagement</li>
+                        <li><span class="legal-num-badge">4</span> Complying with applicable UAE laws and
+                            regulations</li>
+                        <li><span class="legal-num-badge">5</span> Maintaining confidentiality of sensitive
+                            information shared during the engagement</li>
+                    </ul>
+                </div>
+
+                <!-- 6. Fees and Payment -->
+                <div class="legal-section" id="tc-fees">
+                    <div class="legal-heading-row">
+                        <div class="legal-icon-chip">
+                            <svg viewBox="0 0 24 24">
+                                <rect x="2" y="5" width="20" height="14" rx="2" />
+                                <path d="M2 10h20" />
+                            </svg>
+                        </div>
+                        <h2>6. Fees and Payment</h2>
+                    </div>
+                    <ul class="legal-bullets">
+                        <li>Service fees are quoted separately and must be agreed in writing before commencement of
+                            work.</li>
+                        <li>Government and third-party authority fees are additional and payable directly to the
+                            relevant authority.</li>
+                        <li>Payment terms, instalments, and due dates are specified in the individual engagement
+                            letter or service agreement.</li>
+                        <li>Refunds, where applicable, are subject to the refund terms agreed in the specific
+                            engagement letter.</li>
+                    </ul>
+                </div>
+
+                <!-- 7. Intellectual Property -->
+                <div class="legal-section" id="tc-ip">
+                    <div class="legal-heading-row">
+                        <div class="legal-icon-chip">
+                            <svg viewBox="0 0 24 24">
+                                <circle cx="12" cy="12" r="10" />
+                                <path d="M12 2 4 5v6c0 5 3.5 8.5 8 11" />
+                            </svg>
+                        </div>
+                        <h2>7. Intellectual Property</h2>
+                    </div>
+                    <p>All content on this website, including text, graphics, logos, and software, is the property
+                        of Luizmary Associates or its licensors and is protected by applicable intellectual property
+                        laws. You may not reproduce, distribute, or modify any content from this website without
+                        our prior written consent, except for personal, non-commercial reference.</p>
+                </div>
+
+                <!-- 8. Privacy -->
+                <div class="legal-section" id="tc-privacy">
+                    <div class="legal-heading-row">
+                        <div class="legal-icon-chip">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M12 2 4 5v6c0 5 3.5 8.5 8 11 4.5-2.5 8-6 8-11V5l-8-3Z" />
+                            </svg>
+                        </div>
+                        <h2>8. Privacy and Data Protection</h2>
+                    </div>
+                    <p>Your privacy is important to us. Please review our <a onclick="loadPage('privacy-policy')"
+                            style="color:var(--gold-accent);cursor:pointer;">Privacy
+                            Policy</a> to understand how we collect, use, and protect your personal information.</p>
+                </div>
+
+                <!-- 9. Limitation of Liability -->
+                <div class="legal-section" id="tc-liability">
+                    <div class="legal-heading-row">
+                        <div class="legal-icon-chip">
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M10.29 3.86 1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z" />
+                                <path d="M12 9v4M12 17h.01" />
+                            </svg>
+                        </div>
+                        <h2>9. Limitation of Liability</h2>
+                    </div>
+                    <p>To the maximum extent permitted by law, Luizmary Associates shall not be liable for:</p>
+                    <ul class="legal-bullets">
+                        <li>Delays or rejections by government authorities or free zone bodies</li>
+                        <li>Changes in government policies, fees, or procedures after engagement</li>
+                        <li>Indirect, consequential, or punitive damages arising from use of our services</li>
+                        <li>Loss of profits or business opportunities arising from delays outside our control</li>
+                    </ul>
+                </div>
+
+                <!-- 10. Force Majeure -->
+                <div class="legal-section" id="tc-force-majeure">
+                    <div class="legal-heading-row">
+                        <div class="legal-icon-chip">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M2 12h4l3-9 4 18 3-9h4" />
+                            </svg>
+                        </div>
+                        <h2>10. Force Majeure</h2>
+                    </div>
+                    <p>We shall not be liable for any failure or delay in performing our obligations due to
+                        circumstances beyond our reasonable control, including but not limited to government
+                        actions, natural disasters, or pandemic-related restrictions.</p>
+                </div>
+
+                <!-- 11. Governing Law -->
+                <div class="legal-section" id="tc-governing-law">
+                    <div class="legal-heading-row">
+                        <div class="legal-icon-chip">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M12 3v18M5 8l-3 6a4 4 0 008 0l-3-6M19 8l-3 6a4 4 0 008 0l-3-6M5 8h6M16 8h6" />
+                            </svg>
+                        </div>
+                        <h2>11. Governing Law</h2>
+                    </div>
+                    <p>These Terms are governed by and construed in accordance with the laws of the United Arab
+                        Emirates. Any disputes arising from these Terms shall be subject to the exclusive
+                        jurisdiction of the courts of the United Arab Emirates.</p>
+                </div>
+
+                <!-- 12. Modifications -->
+                <div class="legal-section" id="tc-modifications">
+                    <div class="legal-heading-row">
+                        <div class="legal-icon-chip">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M3 12a9 9 0 0115-6.7L21 8M21 3v5h-5M21 12a9 9 0 01-15 6.7L3 16M3 21v-5h5" />
+                            </svg>
+                        </div>
+                        <h2>12. Modifications</h2>
+                    </div>
+                    <p>We reserve the right to modify these Terms at any time. Changes will be effective immediately
+                        upon posting on our website. Continued use of our website or services after changes are
+                        posted constitutes your acceptance of the modified Terms.</p>
+                </div>
+
+                <hr class="legal-divider">
+
+                <!-- 13. Contact Information -->
+                <div class="legal-section" id="tc-contact" style="margin-bottom:2rem;">
+                    <div class="legal-heading-row">
+                        <div class="legal-icon-chip">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                                <polyline points="22,6 12,13 2,6" />
+                            </svg>
+                        </div>
+                        <h2>13. Contact Information</h2>
+                    </div>
+                    <p>If you have any questions about these Terms &amp; Conditions, please contact us:</p>
+
+                    <div class="legal-contact-card">
+                        <div class="legal-contact-item">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                                <polyline points="22,6 12,13 2,6" />
+                            </svg>
+                            <div>
+                                <span class="legal-contact-label">Email</span>
+                                <span class="legal-contact-value"><a
+                                        href="mailto:info@luizmaryfze.com">info@luizmary.com</a></span>
+                            </div>
+                        </div>
+                        <div class="legal-contact-item">
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z" />
+                            </svg>
+                            <div>
+                                <span class="legal-contact-label">Phone / WhatsApp</span>
+                                <span class="legal-contact-value">+971 50 145 4198</span>
+                            </div>
+                        </div>
+                        <div class="legal-contact-item">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
+                                <circle cx="12" cy="10" r="3" />
+                            </svg>
+                            <div>
+                                <span class="legal-contact-label">Location</span>
+                                <span class="legal-contact-value">Sharjah, UAE</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Disclaimer -->
+                <div class="legal-disclaimer">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M10.29 3.86 1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z" />
+                        <path d="M12 9v4M12 17h.01" />
+                    </svg>
+                    <div>
+                        <div class="legal-disclaimer-title">Important Disclaimer</div>
+                        <p><strong style="color:var(--gold-accent);">Luizmary Associates provides consultancy and
+                                advisory services only.</strong> We do not issue, process, or sell government
+                            documents, identifiers, visas, or permits. All official documents are issued solely by
+                            UAE free zones and government authorities. Our services are limited to advisory and
+                            facilitation support within the UAE region.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <section style="padding-top:0;">
+            <div style="margin-top:1rem;text-align:center">
+                <a class="btn-outline" onclick="goToQueryForm()">Have a Question? Book a Free Consultation →</a>
+            </div>
+        </section>
+    </template>
 
 
     <template id="page-home" class="fade-in-on-load">
