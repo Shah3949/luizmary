@@ -1976,6 +1976,12 @@
             line-height: 1.5;
             margin-top: 1rem;
             display: none;
+            opacity: 1;
+            transition: opacity 0.5s ease;
+        }
+
+        .alert.fade-out {
+            opacity: 0;
         }
 
         .alert.success {
@@ -9510,6 +9516,11 @@
         })();
 
         // ── HERO QUICK-INQUIRY FORM TRANSMISSION HANDLER ───────────────────────
+        // Tracks the pending auto-hide timers for the hero form alerts so a
+        // rapid re-submit doesn't leave an old timer fighting a new one.
+        let heroSuccessHideTimer = null;
+        let heroSuccessFadeTimer = null;
+
         async function handleHeroSubmit(event) {
             event.preventDefault();
 
@@ -9525,7 +9536,13 @@
             const fullPhoneNumber = `${countryCode} ${partialPhone}`;
             const heroService = document.getElementById('hero-service').value;
 
-            if (successDisplay) successDisplay.classList.remove('show');
+            // Cancel any pending auto-hide from a previous submission and reset
+            // the alert to a clean, fully-visible state before showing it again.
+            if (heroSuccessHideTimer) clearTimeout(heroSuccessHideTimer);
+            if (heroSuccessFadeTimer) clearTimeout(heroSuccessFadeTimer);
+            if (successDisplay) {
+                successDisplay.classList.remove('show', 'fade-out');
+            }
             if (errorDisplay) errorDisplay.classList.remove('show');
 
             submitButton.disabled = true;
@@ -9545,7 +9562,17 @@
                 // Fire a single email to the company with the lead's details
                 await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_COMPANY, companyPayload);
                 // Email sent successfully — show the "we will connect soon" message on screen
-                if (successDisplay) successDisplay.classList.add('show');
+                if (successDisplay) {
+                    successDisplay.classList.add('show');
+                    // Let it sit fully visible for a few seconds, then fade out,
+                    // then switch display:none so it doesn't take up layout space.
+                    heroSuccessFadeTimer = setTimeout(() => {
+                        successDisplay.classList.add('fade-out');
+                        heroSuccessHideTimer = setTimeout(() => {
+                            successDisplay.classList.remove('show', 'fade-out');
+                        }, 500); // matches the 0.5s CSS opacity transition
+                    }, 4000);
+                }
                 formElement.reset();
             } catch (exceptionErr) {
                 console.error('EmailJS SDK Transaction Exception Alert:', exceptionErr);
