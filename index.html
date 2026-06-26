@@ -1481,13 +1481,7 @@
             color: var(--gold);
         }
 
-        .blog-about-section .about-container .about-visual-wrapper img {
-            transition: transform 0.3s ease-in-out;
-        }
 
-        .blog-about-section:hover .about-container .about-visual-wrapper img {
-            transform: scale(1.05);
-        }
 
 
 
@@ -3387,6 +3381,29 @@
             animation: fadeInUp 1s ease-out forwards;
         }
 
+        /* BLOG ABOUT SECTION */
+        #blog-about {
+            background: var(--navy);
+        }
+
+        .blog-about-container {
+            max-width: 1200px;
+            width: 90%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px 80px;
+            /* Separates the top header row from content columns */
+            align-items: start;
+        }
+
+        .blog-about-section .blog-about-container .about-visual-wrapper img {
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .blog-about-section:hover .blog-about-container .about-visual-wrapper img {
+            transform: scale(1.05);
+        }
+
         /* ══════════════════════════════════════════════════════════════════
            BLOG SYSTEM — listing grid (page-blog) + single article (page-blog-post-X)
            ══════════════════════════════════════════════════════════════════ */
@@ -4512,7 +4529,6 @@
 
                 <li><a id="nav-link-blog" onclick="loadPage('blog')">Blog</a></li>
 
-                <!-- <li><a id="nav-link-contact" onclick="loadPage('contact')">Contact Us</a></li> -->
             </ul>
             <a onclick="goToQueryForm()" class="nav-cta">Book Consultation</a>
             <button class="hamburger" id="hamburgerBtn" aria-label="Toggle navigation" onclick="toggleMobileNav()">
@@ -4540,7 +4556,6 @@
             <a onclick="loadPage('services-corporate'); closeMobileNav()">Corporate Services</a>
         </div>
         <a onclick="loadPage('blog'); closeMobileNav()">Blog</a>
-        <a onclick="loadPage('contact'); closeMobileNav()">Contact Us</a>
         <a onclick="goToQueryForm(); closeMobileNav()" class="mob-cta">Book Consultation</a>
     </div>
 
@@ -4589,10 +4604,10 @@
             <div class="footer-col">
                 <div class="footer-col-title">Quick Links</div>
                 <ul>
-                    <li><a href="#about">About Us</a></li>
+                    <li><a style="cursor: pointer;" onclick="goToHomeSection('about')">About Us</a></li>
                     <li><a style="cursor: pointer;" onclick="loadPage('services')">Our Services</a></li>
                     <li><a style="cursor: pointer;" onclick="loadPage('blog')">Blog</a></li>
-                    <li><a href="#process">Our Process</a></li>
+                    <li><a style="cursor: pointer;" onclick="goToHomeSection('process')">Our Process</a></li>
                     <li><a onclick="goToQueryForm()" style="cursor: pointer;">Book Appointment</a></li>
                 </ul>
             </div>
@@ -5614,8 +5629,7 @@
                         <span>Send Request</span>
                     </button>
 
-                    <div class="alert success" id="hero-alert-success">Thanks! We will be connecting soon — check your
-                        inbox for confirmation.</div>
+                    <div class="alert success" id="hero-alert-success">Thanks! We will connect soon.</div>
                     <div class="alert error" id="hero-alert-error">Failed to dispatch request. Try again.</div>
                 </form>
             </div>
@@ -5924,8 +5938,7 @@
                         </div>
                     </div>
 
-                    <div class="service-arrow"
-                        onclick="event.stopPropagation(); goToQueryForm(); document.getElementById('querySection').scrollIntoView({ behavior: 'smooth' });">
+                    <div class="service-arrow" onclick="event.stopPropagation(); goToQueryForm();">
                         <svg viewBox="0 0 24 24">
                             <path d="M5 12h14M12 5l7 7-7 7" />
                         </svg>
@@ -6079,8 +6092,7 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="service-arrow"
-                        onclick="event.stopPropagation(); document.getElementById('querySection').scrollIntoView({ behavior: 'smooth' });">
+                    <div class="service-arrow" onclick="event.stopPropagation(); goToQueryForm();">
                         <svg viewBox="0 0 24 24">
                             <path d="M5 12h14M12 5l7 7-7 7" />
                         </svg>
@@ -6398,8 +6410,8 @@
                 <span>Blog</span>
             </div>
         </div>
-        <section id="about" class="about-section blog-about-section scroll-reveal">
-            <div class="about-container" onclick="loadPage('blog-post-4')" style="cursor: pointer;">
+        <section id="blog-about" class="about-section blog-about-section scroll-reveal">
+            <div class="blog-about-container" onclick="loadPage('blog-post-4')" style="cursor: pointer;">
                 <div class="section-pre-header">
                     <span class="pre-header-line"></span>
                     <span class="pre-header-text">Featured</span>
@@ -7848,7 +7860,7 @@
                         provides
                         comprehensive solutions designed to take your brand from setup to scale — handling everything
                         from account creation and listing optimization to advertising and FBA logistics.</p>
-                    <a onclick="loadPage('contact')" class="btn-primary">Start Your Amazon Journey →</a>
+                    <a onclick="goToQueryForm()" class="btn-primary">Start Your Amazon Journey →</a>
                 </div>
                 <div class="service-block-content">
                     <div class="service-block-visual">
@@ -7900,7 +7912,7 @@
                     <p class="service-block-desc">We deliver a full suite of marketplace services so you can focus on
                         your products while we handle the complexity of the Amazon ecosystem — policies, algorithms,
                         seller metrics, and competitive positioning.</p>
-                    <a onclick="loadPage('contact')" class="btn-primary">Discuss Your Requirements →</a>
+                    <a onclick="goToQueryForm()" class="btn-primary">Discuss Your Requirements →</a>
                 </div>
             </div>
         </div>
@@ -8601,7 +8613,7 @@
                         <li>Profit & Loss transactional audit-trail configuration</li>
                         <li>Strategic financial modeling alignment strategies</li>
                     </ul>
-                    <a onclick="loadPage('contact')" class="btn-primary">Initiate Audit Design</a>
+                    <a onclick="goToQueryForm()" class="btn-primary">Initiate Audit Design</a>
                 </div>
                 <div class="service-block-visual">
                     <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=80"
@@ -8763,7 +8775,7 @@
                         <li>Manager and Director appointment or removal processing</li>
                         <li>Official company liquidation and closing procedures</li>
                     </ul>
-                    <a onclick="loadPage('contact')" class="btn-primary">Manage Corporate Structure</a>
+                    <a onclick="goToQueryForm()" class="btn-primary">Manage Corporate Structure</a>
                 </div>
             </div>
         </section>
@@ -9022,783 +9034,6 @@
 
 
 
-    <!-- <template id="page-contact">
-        <div class="page-hero">
-            <div class="page-hero-eyebrow">Strategic Gateway</div>
-            <h1>Initiate Your <em>UAE Enterprise</em> Engagement Profile Today.</h1>
-            <p>Connect directly with our corporate advisory division. Secure processing pathways begin with a
-                comprehensive structural profile layout review.</p>
-            <div class="breadcrumb">
-                <a onclick="loadPage('home')">Home</a>
-                <svg viewBox="0 0 24 24" style="width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2;">
-                    <polyline points="9 18 15 12 9 6" />
-                </svg>
-                <span>Contact Us</span>
-            </div>
-        </div>
-
-        <div class="contact-main">
-            <div class="contact-info-wrap">
-                <h2 class="contact-info-title">Executive Advisory Division</h2>
-                <p class="contact-info-lead">For urgent structural setup, ongoing entity management, or international
-                    compliance auditing requests, please utilize the specialized communications routing links below.</p>
-
-                <div class="contact-info-items">
-                    <div class="contact-info-item">
-                        <div class="contact-icon">
-                            <svg viewBox="0 0 24 24">
-                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-                                <polyline points="22,6 12,13 2,6" />
-                            </svg>
-                        </div>
-                        <div>
-                            <div class="contact-info-label">Secure Electronic Mail</div>
-                            <div class="contact-info-text"><a href="mailto:info@luizmary.com">info@luizmary.com</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="contact-info-item">
-                        <div class="contact-icon">
-                            <svg viewBox="0 0 24 24">
-                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
-                                <circle cx="12" cy="10" r="3" />
-                            </svg>
-                        </div>
-                        <div>
-                            <div class="contact-info-label">Registered Sharjah HQ</div>
-                            <div class="contact-info-text">Sharjah Media City (Shams),<br>Al Messaned, Sharjah, United
-                                Arab Emirates.</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="hours-note">
-                    <p><strong>Operational Hours:</strong> Monday – Friday, 09:00 – 18:00 (Gulf Standard Time). On-site
-                        consultations require a pre-scheduled appointment confirmation.</p>
-                </div>
-            </div>
-
-            <div class="contact-form-wrap scroll-reveal">
-                <h3 class="contact-form-title">Consultation Intake Form</h3>
-                <p class="contact-form-sub">Please outline your operational objectives below to guarantee route-matching
-                    to the appropriate advisor.</p>
-
-                <form id="consultationForm" onsubmit="handleFormSubmission(event)">
-                    <div class="form-row">
-                        <div class="form-field">
-                            <label for="clientName">Your Full Name <span class="req">*</span></label>
-                            <input type="text" id="clientName" required placeholder="John Doe">
-                        </div>
-                        <div class="form-field">
-                            <label for="clientEmail">Corporate Email <span class="req">*</span></label>
-                            <input type="email" id="clientEmail" required placeholder="john@enterprise.com">
-                        </div>
-                    </div>
-
-                    <div class="form-row">
-                        <div class="form-field">
-                            <label for="clientPhone">Phone Number</label>
-                            <input type="tel" id="clientPhone" placeholder="+1 (555) 000-0000">
-                        </div>
-                        <div class="form-field">
-                            <label for="targetJurisdiction">Target Jurisdiction</label>
-                            <select id="targetJurisdiction">
-                                <option value="Unsure">Undecided / Need Advisory</option>
-                                <option value="Sharjah FreeZone">Sharjah Free Zone (Shams / SAIF)</option>
-                                <option value="Dubai Mainland">Dubai Onshore Mainland</option>
-                                <option value="RAK Holding">RAKICC Holding Container</option>
-                                <option value="Other">Other UAE Jurisdiction</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="form-field">
-                        <label for="scopeDetails">Capital Architecture / Operational Scope <span
-                                class="req">*</span></label>
-                        <textarea id="scopeDetails" rows="4" required
-                            placeholder="Please summarize your project parameters, capital scope, and processing timelines..."></textarea>
-                    </div>
-
-                    <button type="submit" class="btn-submit" id="submitBtn">
-                        <svg viewBox="0 0 24 24"
-                            style="width:16px;height:16px;stroke:var(--navy);fill:none;stroke-width:2">
-                            <line x1="22" y1="2" x2="11" y2="13" />
-                            <polygon points="22 2 15 22 11 13 2 9 22 2" />
-                        </svg>
-                        Send Consultation Request
-                    </button>
-
-                    <div class="alert success" id="successAlert">
-                        <strong>Transmission Complete.</strong> Thank you for reaching out — we will be connecting
-                        soon. A confirmation email is on its way to your inbox.
-                    </div>
-                    <div class="alert error" id="errorAlert">
-                        <strong>System Friction Alert.</strong> Failed to transmit form payload securely. Please contact
-                        <a href="mailto:info@luizmary.com"
-                            style="color:inherit;text-decoration:underline">info@luizmary.com</a> directly.
-                    </div>
-                </form>
-                <p class="privacy-note">We maintain a strict zero-leak storage mandate. All transaction communications
-                    are protected by non-disclosure conditions.</p>
-            </div>
-        </div>
-
-        <div class="branches-section">
-            <h3 class="branches-section-title">Regional Jurisdictional Access Links</h3>
-            <p class="branches-section-sub">Providing processing capabilities across the entire economic ecosystem of
-                the UAE.</p>
-
-            <div class="branches-grid scroll-reveal">
-                <div class="branch-card">
-                    <div class="branch-city">Sharjah HQ</div>
-                    <div class="branch-type">Free Zone Operations Hub</div>
-                    <div class="branch-details">
-                        <div class="branch-line">
-                            <svg viewBox="0 0 24 24">
-                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
-                                <circle cx="12" cy="10" r="3" />
-                            </svg>
-                            <span>Sharjah Media City (Shams), Al Messaned, Sharjah, United Arab Emirates.</span>
-                        </div>
-                        <div class="branch-line">
-                            <svg viewBox="0 0 24 24">
-                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-                                <polyline points="22,6 12,13 2,6" />
-                            </svg>
-                            <span><a href="mailto:info@luizmary.com">shams.desk@luizmary.com</a></span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="branch-card">
-                    <div class="branch-city">Dubai Desk</div>
-                    <div class="branch-type">Onshore Mainland Filing Operations</div>
-                    <div class="branch-details">
-                        <div class="branch-line">
-                            <svg viewBox="0 0 24 24">
-                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
-                                <circle cx="12" cy="10" r="3" />
-                            </svg>
-                            <span>Downtown Dubai Commercial Corridors, Dubai, United Arab Emirates.</span>
-                        </div>
-                        <div class="branch-line">
-                            <svg viewBox="0 0 24 24">
-                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-                                <polyline points="22,6 12,13 2,6" />
-                            </svg>
-                            <span><a href="mailto:info@luizmary.com">dubai.desk@luizmary.com</a></span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </template> -->
-
-
-    <!-- <script>
-        // ── SCROLL REVEAL (FADE IN) OBSERVER ────────────────────────────────────
-        // Watches elements with the .scroll-reveal class and adds .reveal-active
-        // once they enter the viewport while scrolling, triggering the fade/slide
-        // -in transition already defined in CSS. Re-run after every SPA page swap
-        // since loadPage() replaces #main-content's innerHTML with fresh nodes.
-        let scrollRevealObserver = null;
-
-        function initializeScrollRevealObserver() {
-            // Reuse a single observer instance; just point it at whatever is
-            // currently in the DOM so we don't leak observers across page swaps.
-            if (!scrollRevealObserver) {
-                scrollRevealObserver = new IntersectionObserver((entries) => {
-                    entries.forEach((entry) => {
-                        if (entry.isIntersecting) {
-                            entry.target.classList.add('reveal-active');
-                            // One-shot reveal: stop watching once it has appeared.
-                            scrollRevealObserver.unobserve(entry.target);
-                        }
-                    });
-                }, {
-                    threshold: 0.15,
-                    rootMargin: '0px 0px -40px 0px'
-                });
-            }
-
-            document.querySelectorAll('.scroll-reveal').forEach((el) => {
-                // Skip elements already revealed/observed to avoid duplicate triggers.
-                if (!el.classList.contains('reveal-active')) {
-                    scrollRevealObserver.observe(el);
-                }
-            });
-        }
-
-        // ── GLOBAL APPLICATION CONFIGURATION & STATE ───────────────────────────
-        let homeCarouselIntervalId = null;
-
-        // ── EMAILJS CONFIGURATION ───────────────────────────────────────────────
-        // Fill these in from your EmailJS dashboard (https://dashboard.emailjs.com):
-        //   1. EMAILJS_PUBLIC_KEY   -> Account > General > Public Key
-        //   2. EMAILJS_SERVICE_ID   -> Email Services > your connected service ID
-        //   3. EMAILJS_TEMPLATE_COMPANY -> Template that sends the lead's details TO your company inbox
-        //   4. EMAILJS_TEMPLATE_CONFIRMATION -> Template that sends a "we'll be in touch" reply TO the sender
-        // See the setup notes left in chat for exact template field names to use.
-        const EMAILJS_PUBLIC_KEY = "YOUR_PUBLIC_KEY_HERE";
-        const EMAILJS_SERVICE_ID = "YOUR_SERVICE_ID_HERE";
-        const EMAILJS_TEMPLATE_COMPANY = "YOUR_COMPANY_NOTIFY_TEMPLATE_ID_HERE";
-        const EMAILJS_TEMPLATE_CONFIRMATION = "YOUR_SENDER_CONFIRMATION_TEMPLATE_ID_HERE";
-
-        // Initialize environment third-party packages securely on script lifecycle entry
-        (function () {
-            if (typeof emailjs !== 'undefined') {
-                emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
-            }
-        })();
-
-        // Smooth scroll event listeners for anchor elements
-        document.addEventListener("DOMContentLoaded", () => {
-            document.querySelectorAll('a[href^="#"]').forEach(a => {
-                a.addEventListener('click', e => {
-                    e.preventDefault();
-                    const target = document.querySelector(a.getAttribute('href'));
-                    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                });
-            });
-
-            // Force instant mount parameters loading default Home layout
-            loadPage('home');
-
-            // counting effect for about section card
-
-            const counters = document.querySelectorAll('.count-num');
-            const animationDuration = 1500; // Total duration of counting animation in milliseconds (1.5 seconds)
-
-            const startCounting = (counter) => {
-                const target = +counter.getAttribute('data-target');
-                const startTime = performance.now();
-
-                const updateCount = (currentTime) => {
-                    const elapsedTime = currentTime - startTime;
-                    const progress = Math.min(elapsedTime / animationDuration, 1);
-
-                    // Calculate current value based on linear progression
-                    const currentValue = Math.floor(progress * target);
-                    counter.innerText = currentValue;
-
-                    if (progress < 1) {
-                        requestAnimationFrame(updateCount);
-                    } else {
-                        counter.innerText = target; // Ensure it finishes precisely on the target number
-                    }
-                };
-
-                requestAnimationFrame(updateCount);
-            };
-
-            // Use IntersectionObserver to start counting when stats come into view
-            const observer = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        startCounting(entry.target);
-                        observer.unobserve(entry.target); // Stop tracking once animated
-                    }
-                });
-            }, { threshold: 0.2 }); // Triggers when 20% of the element is visible
-
-            counters.forEach(counter => observer.observe(counter));
-        });
-
-        // ── BOOK CONSULTATION SHORTCUT (routes to home page query form) ────────
-        function goToQueryForm() {
-            loadPage('home');
-            // Wait a tick for the home template to mount, then scroll to the form
-            setTimeout(() => {
-                const formEl = document.getElementById('hero-contact-form');
-                if (!formEl) return;
-                const nav = document.querySelector('nav');
-                const navHeight = nav ? nav.offsetHeight : 0;
-                const formHeight = formEl.offsetHeight;
-                const availableSpace = window.innerHeight - navHeight;
-                // If the form fits in the visible space below the nav, center it there.
-                // Otherwise, just align its top below the nav (it won't fully fit either way).
-                const offsetWithinAvailable = formHeight < availableSpace
-                    ? (availableSpace - formHeight) / 2
-                    : 0;
-                const targetY = formEl.getBoundingClientRect().top + window.pageYOffset - navHeight - offsetWithinAvailable;
-                window.scrollTo({ top: targetY, behavior: 'smooth' });
-            }, 50);
-        }
-
-        // ── BLOG POST: READING PROGRESS BAR ─────────────────────────────────────
-        let readingProgressScrollHandler = null;
-
-        function initializeReadingProgress() {
-            // Tear down any previous listener before attaching a fresh one,
-            // since loadPage() re-renders #main-content on every navigation.
-            if (readingProgressScrollHandler) {
-                window.removeEventListener('scroll', readingProgressScrollHandler);
-                readingProgressScrollHandler = null;
-            }
-
-            const fill = document.getElementById('readingProgressFill');
-            const article = document.querySelector('#main-content article');
-            if (!fill || !article) return;
-
-            readingProgressScrollHandler = () => {
-                const articleHeight = article.offsetHeight - window.innerHeight;
-                const scrolled = window.scrollY;
-                const pct = articleHeight > 0 ? Math.min(100, Math.max(0, (scrolled / articleHeight) * 100)) : 0;
-                fill.style.width = pct + '%';
-            };
-
-            window.addEventListener('scroll', readingProgressScrollHandler);
-            readingProgressScrollHandler();
-        }
-
-        // ── BLOG POST: SOCIAL SHARE ACTIONS ─────────────────────────────────────
-        function shareArticle(network, titleText) {
-            const pageUrl = window.location.href;
-            const encodedUrl = encodeURIComponent(pageUrl);
-            const encodedTitle = encodeURIComponent(titleText);
-            let shareUrl = '';
-
-            if (network === 'twitter') {
-                shareUrl = `https://twitter.com/intent/tweet?text=${encodedTitle}&url=${encodedUrl}`;
-            } else if (network === 'linkedin') {
-                shareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`;
-            } else if (network === 'whatsapp') {
-                shareUrl = `https://wa.me/?text=${encodedTitle}%20${encodedUrl}`;
-            }
-
-            if (shareUrl) window.open(shareUrl, '_blank', 'noopener,noreferrer');
-        }
-
-        function copyArticleLink(buttonEl) {
-            navigator.clipboard.writeText(window.location.href).then(() => {
-                if (!buttonEl) return;
-                buttonEl.classList.add('copied');
-                setTimeout(() => buttonEl.classList.remove('copied'), 1800);
-            }).catch(() => {
-                console.error('Clipboard copy failed — clipboard API unavailable.');
-            });
-        }
-
-        // ── BLOG POST: FAQ ACCORDION TOGGLE ─────────────────────────────────────
-        function toggleFaq(buttonEl) {
-            const item = buttonEl.closest('.faq-item');
-            const answer = item.querySelector('.faq-answer');
-            const wasOpen = item.classList.contains('open');
-
-            // Close any sibling FAQ items within the same section
-            const section = item.closest('.faq-section');
-            if (section) {
-                section.querySelectorAll('.faq-item.open').forEach((openItem) => {
-                    if (openItem !== item) {
-                        openItem.classList.remove('open');
-                        openItem.querySelector('.faq-answer').style.maxHeight = null;
-                    }
-                });
-            }
-
-            if (wasOpen) {
-                item.classList.remove('open');
-                answer.style.maxHeight = null;
-            } else {
-                item.classList.add('open');
-                answer.style.maxHeight = answer.scrollHeight + 'px';
-            }
-        }
-
-        // ── BLOG POST: "IN THIS ARTICLE" TOC SCROLLSPY ──────────────────────────
-        let tocScrollHandler = null;
-
-        function initializeTocScrollspy() {
-            if (tocScrollHandler) {
-                window.removeEventListener('scroll', tocScrollHandler);
-                tocScrollHandler = null;
-            }
-
-            const tocLinks = document.querySelectorAll('.toc-list a[data-target]');
-            if (!tocLinks.length) return;
-
-            const sections = Array.from(tocLinks)
-                .map((link) => document.getElementById(link.dataset.target))
-                .filter(Boolean);
-
-            tocScrollHandler = () => {
-                let currentId = sections[0] ? sections[0].id : null;
-                const triggerLine = window.scrollY + 140;
-
-                sections.forEach((sectionEl) => {
-                    if (sectionEl.offsetTop <= triggerLine) {
-                        currentId = sectionEl.id;
-                    }
-                });
-
-                tocLinks.forEach((link) => {
-                    link.classList.toggle('active', link.dataset.target === currentId);
-                });
-            };
-
-            window.addEventListener('scroll', tocScrollHandler);
-            tocScrollHandler();
-        }
-
-        function scrollToSection(targetId) {
-            const targetEl = document.getElementById(targetId);
-            if (targetEl) {
-                const offset = targetEl.getBoundingClientRect().top + window.scrollY - 96;
-                window.scrollTo({ top: offset, behavior: 'smooth' });
-            }
-        }
-
-        // ── DYNAMIC SINGLE PAGE TEMPLATE ROUTER ───────────────────────────────
-        function loadPage(pageId) {
-            const template = document.getElementById(`page-${pageId}`);
-            const mainContent = document.getElementById('main-content');
-
-            if (!template) {
-                console.error(`Template structure design "page-${pageId}" not found inside document context.`);
-                return;
-            }
-
-            // Clear out older HTML elements and clone the updated structural component safely
-            mainContent.innerHTML = '';
-            const clonedNode = template.content.cloneNode(true);
-            mainContent.appendChild(clonedNode);
-
-            // Re-scan freshly injected nodes for the scroll fade-in effect
-            initializeScrollRevealObserver();
-
-            // Reading progress bar + TOC scrollspy only apply to single article pages
-            if (pageId.startsWith('blog-post-')) {
-                initializeReadingProgress();
-                initializeTocScrollspy();
-            } else {
-                if (readingProgressScrollHandler) {
-                    window.removeEventListener('scroll', readingProgressScrollHandler);
-                    readingProgressScrollHandler = null;
-                }
-                if (tocScrollHandler) {
-                    window.removeEventListener('scroll', tocScrollHandler);
-                    tocScrollHandler = null;
-                }
-            }
-
-            // Update navbar highlighting rules
-            document.querySelectorAll('.nav-links a').forEach(link => link.classList.remove('active'));
-            if (pageId.startsWith('services-')) {
-                const servicesLink = document.getElementById('nav-link-services');
-                if (servicesLink) servicesLink.classList.add('active');
-            } else {
-                const targetLink = document.getElementById(`nav-link-${pageId}`);
-                if (targetLink) targetLink.classList.add('active');
-            }
-
-            // CAROUSEL ENGINE INITIALIZATION CONTROL
-            if (pageId === 'home') {
-                initializeHeroCarouselEngine();
-            } else {
-                // Completely clear active interval cycles when migrating away from Home layout
-                if (homeCarouselIntervalId) {
-                    clearInterval(homeCarouselIntervalId);
-                    homeCarouselIntervalId = null;
-                }
-            }
-
-            // Return scroll positioning smoothly back to top layout boundaries
-            window.scrollTo({ top: 0, behavior: 'instant' });
-        }
-
-        // ── HERO CAROUSEL ENGINE (Exclusively active during Home screen states) ──
-        function initializeHeroCarouselEngine() {
-            if (homeCarouselIntervalId) clearInterval(homeCarouselIntervalId);
-
-            const slides = document.querySelectorAll('.hero-slide');
-            const indicatorsContainer = document.getElementById('indicators');
-
-            if (!slides.length || !indicatorsContainer) return;
-
-            // Clear pre-existing indicator dots to prevent duplicates on multi-renders
-            indicatorsContainer.innerHTML = '';
-            let currentIdx = 0;
-
-            // Dynamically build the indicators based on the exact cloned DOM elements found
-            slides.forEach((_, idx) => {
-                const dot = document.createElement('div');
-                dot.className = 'indicator' + (idx === 0 ? ' active' : '');
-                dot.addEventListener('click', () => shiftToSlide(idx));
-                indicatorsContainer.appendChild(dot);
-            });
-
-            const indicators = indicatorsContainer.children;
-
-            function shiftToSlide(targetIdx) {
-                if (!slides[currentIdx] || !indicators[currentIdx]) return;
-
-                slides[currentIdx].classList.remove('active');
-                indicators[currentIdx].classList.remove('active');
-
-                currentIdx = targetIdx;
-
-                slides[currentIdx].classList.add('active');
-                indicators[currentIdx].classList.add('active');
-            }
-
-            // Setup background auto-rotation tracking loop (4000ms cycle)
-            homeCarouselIntervalId = setInterval(() => {
-                shiftToSlide((currentIdx + 1) % slides.length);
-            }, 4000);
-        }
-        // ── INTERACTIVE DRAG-TO-SCROLL TICKER SCRIPT ───────────────────────────
-        (function initCorporateTicker() {
-            const container = document.getElementById('customTickerContainer');
-            const track = document.getElementById('customTickerTrack');
-
-            if (!container || !track) return;
-
-            let isDown = false;
-            let startX;
-            let currentTranslate = 0;
-
-            const getHalfWidth = () => track.offsetWidth / 2;
-
-            // Trigger Drag Start
-            function dragStart(e) {
-                isDown = true;
-                track.style.animationPlayState = 'paused';
-
-                // Grab current computed transformation translation matrix
-                const computedStyle = window.getComputedStyle(track);
-                const matrix = new WebKitCSSMatrix(computedStyle.transform);
-                currentTranslate = matrix.m41; // Captures current visual X Coordinate
-
-                const pageX = e.type.includes('touch') ? e.touches[0].pageX : e.pageX;
-                startX = pageX - currentTranslate;
-            }
-
-            // Trigger Drag Movement
-            function dragMove(e) {
-                if (!isDown) return;
-                e.preventDefault();
-
-                const pageX = e.type.includes('touch') ? e.touches[0].pageX : e.pageX;
-                let walk = pageX - startX;
-                const halfWidth = getHalfWidth();
-
-                // Safe Infinite Boundaries processing loop while actively dragging
-                if (walk > 0) {
-                    walk = -halfWidth;
-                    startX = pageX - walk;
-                } else if (walk < -halfWidth) {
-                    walk = 0;
-                    startX = pageX - walk;
-                }
-
-                track.style.transform = `translateX(${walk}px)`;
-            }
-
-            // Terminate Drag State & Sync Timeline back to CSS Keyframes smoothly
-            function dragEnd() {
-                if (!isDown) return;
-                isDown = false;
-
-                const computedStyle = window.getComputedStyle(track);
-                const matrix = new WebKitCSSMatrix(computedStyle.transform);
-                const finalTranslate = matrix.m41;
-                const halfWidth = getHalfWidth();
-
-                // Dynamic animation restart calculation prevents visual jumping
-                track.style.animation = 'none';
-                track.offsetHeight; // Forces visual browser layout recalculation 
-                track.style.animation = `corporateTickerScroll 30s linear infinite`;
-
-                track.style.animationPlayState = 'running';
-            }
-
-            // Desktop Mouse Events listeners
-            container.addEventListener('mousedown', dragStart);
-            container.addEventListener('mousemove', dragMove);
-            container.addEventListener('mouseup', dragEnd);
-            container.addEventListener('mouseleave', dragEnd);
-
-            // Mobile/Tablet Touch Events listeners
-            container.addEventListener('touchstart', dragStart, { passive: true });
-            container.addEventListener('touchmove', dragMove, { passive: false });
-            container.addEventListener('touchend', dragEnd);
-        })();
-        // ── SECURE INTAKE FORM TRANSMISSION HANDLER (Contact View Event) ──────
-        async function handleFormSubmission(event) {
-            event.preventDefault();
-
-            const formElement = document.getElementById('consultationForm');
-            const submitButton = document.getElementById('submitBtn');
-            const successDisplay = document.getElementById('successAlert');
-            const errorDisplay = document.getElementById('errorAlert');
-
-            const clientName = document.getElementById('clientName').value.trim();
-            const clientEmail = document.getElementById('clientEmail').value.trim();
-            const clientPhone = document.getElementById('clientPhone').value.trim();
-            const jurisdiction = document.getElementById('targetJurisdiction').value;
-            const scopeDetails = document.getElementById('scopeDetails').value.trim();
-
-            // Clear alert banners before starting transmission
-            if (successDisplay) successDisplay.classList.remove('show');
-            if (errorDisplay) errorDisplay.classList.remove('show');
-
-            // Lock submit operations to block race conditions
-            submitButton.disabled = true;
-            const originalBtnContent = submitButton.innerHTML;
-            submitButton.innerHTML = "Securing Payload Line...";
-
-            // Payload sent to the COMPANY inbox notifying them of the new lead
-            const companyPayload = {
-                from_name: clientName,
-                from_email: clientEmail,
-                phone: clientPhone || 'Not provided',
-                jurisdiction: jurisdiction,
-                message: scopeDetails
-            };
-
-            // Payload sent back to the SENDER confirming receipt
-            const confirmationPayload = {
-                to_name: clientName,
-                to_email: clientEmail,
-                jurisdiction: jurisdiction,
-                message: scopeDetails
-            };
-
-            try {
-                // Fire both emails together: one to the company, one back to the sender
-                await Promise.all([
-                    emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_COMPANY, companyPayload),
-                    emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_CONFIRMATION, confirmationPayload)
-                ]);
-                if (successDisplay) successDisplay.classList.add('show');
-                formElement.reset();
-            } catch (exceptionErr) {
-                console.error('EmailJS SDK Transaction Exception Alert:', exceptionErr);
-                if (errorDisplay) errorDisplay.classList.add('show');
-            } finally {
-                submitButton.disabled = false;
-                submitButton.innerHTML = originalBtnContent;
-            }
-        }
-
-        // ── HERO QUICK-INQUIRY FORM TRANSMISSION HANDLER ───────────────────────
-        async function handleHeroSubmit(event) {
-            event.preventDefault();
-
-            const formElement = document.getElementById('hero-contact-form');
-            const submitButton = document.getElementById('hero-submit-btn');
-            const successDisplay = document.getElementById('hero-alert-success');
-            const errorDisplay = document.getElementById('hero-alert-error');
-
-            const heroName = document.getElementById('hero-name').value.trim();
-            const heroEmail = document.getElementById('hero-email').value.trim();
-            const countryCode = document.getElementById('hero-country-code').value;
-            const partialPhone = document.getElementById('hero-phone').value.trim();
-            const fullPhoneNumber = `${countryCode} ${partialPhone}`;
-            const heroService = document.getElementById('hero-service').value;
-
-            if (successDisplay) successDisplay.classList.remove('show');
-            if (errorDisplay) errorDisplay.classList.remove('show');
-
-            submitButton.disabled = true;
-            const originalBtnContent = submitButton.innerHTML;
-            submitButton.innerHTML = "<span>Sending...</span>";
-
-            // Payload sent to the COMPANY inbox notifying them of the new lead
-            const companyPayload = {
-                from_name: heroName,
-                from_email: heroEmail,
-                phone: fullPhoneNumber,
-                jurisdiction: heroService,
-                message: `Quick inquiry — requested service: ${heroService}`
-            };
-
-            // Payload sent back to the SENDER confirming receipt
-            const confirmationPayload = {
-                to_name: heroName,
-                to_email: heroEmail,
-                jurisdiction: heroService,
-                message: `Quick inquiry — requested service: ${heroService}`
-            };
-
-            try {
-                await Promise.all([
-                    emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_COMPANY, companyPayload),
-                    emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_CONFIRMATION, confirmationPayload)
-                ]);
-                if (successDisplay) successDisplay.classList.add('show');
-                formElement.reset();
-            } catch (exceptionErr) {
-                console.error('EmailJS SDK Transaction Exception Alert:', exceptionErr);
-                if (errorDisplay) errorDisplay.classList.add('show');
-            } finally {
-                submitButton.disabled = false;
-                submitButton.innerHTML = originalBtnContent;
-            }
-        }
-
-        // ── FLOATING INTEGRATED SUPPORT CHANNELS (WhatsApp UI Actions) ─────────
-        function toggleWa() {
-            document.getElementById('waPopup').classList.toggle('open');
-        }
-
-        function sendWaRequest() {
-            const nameVal = document.getElementById('waName').value.trim();
-            const phoneVal = document.getElementById('waPhone').value.trim();
-            const messageVal = document.getElementById('waMessage').value.trim();
-
-            if (!nameVal) {
-                alert('Please provide your name to verify alignment configuration protocols.');
-                return;
-            }
-
-            const compiledMessage = encodeURIComponent(
-                `*New Consultation Request — Luizmary Associates*\n\n` +
-                `Name: ${nameVal}\n` +
-                `Phone: ${phoneVal || 'Not provided'}\n` +
-                `Message: ${messageVal || 'No message details provided.'}`
-            );
-
-            window.open(`https://wa.me/+971501454198?text=${compiledMessage}`, '_blank');
-
-            document.getElementById('waForm').style.display = 'none';
-            document.getElementById('waSuccess').style.display = 'block';
-
-            setTimeout(() => {
-                document.getElementById('waPopup').classList.remove('open');
-                document.getElementById('waForm').style.display = 'block';
-                document.getElementById('waSuccess').style.display = 'none';
-                document.getElementById('waName').value = '';
-                document.getElementById('waPhone').value = '';
-                document.getElementById('waMessage').value = '';
-            }, 4000);
-        }
-
-        // ── MOBILE NAV TOGGLE ───────────────────────────────────────────────────
-        function toggleMobileNav() {
-            document.getElementById('hamburgerBtn').classList.toggle('open');
-            document.getElementById('mobileNavOverlay').classList.toggle('open');
-        }
-
-        function closeMobileNav() {
-            document.getElementById('hamburgerBtn').classList.remove('open');
-            document.getElementById('mobileNavOverlay').classList.remove('open');
-
-            const trigger = document.getElementById('mobServicesTrigger');
-            const submenu = document.getElementById('mobServicesSubmenu');
-            if (trigger) trigger.classList.remove('open');
-            if (submenu) submenu.classList.remove('open');
-        }
-
-        function toggleMobServices() {
-            const trigger = document.getElementById('mobServicesTrigger');
-            const submenu = document.getElementById('mobServicesSubmenu');
-            if (trigger) trigger.classList.toggle('open');
-            if (submenu) submenu.classList.toggle('open');
-        }
-
-    </script> -->
-
 
     <script>
         // ── SCROLL REVEAL (FADE IN) OBSERVER ────────────────────────────────────
@@ -9843,12 +9078,12 @@
         //   1. EMAILJS_PUBLIC_KEY   -> Account > General > Public Key
         //   2. EMAILJS_SERVICE_ID   -> Email Services > your connected service ID
         //   3. EMAILJS_TEMPLATE_COMPANY -> Template that sends the lead's details TO your company inbox
-        //   4. EMAILJS_TEMPLATE_CONFIRMATION -> Template that sends a "we'll be in touch" reply TO the sender
-        // See the setup notes left in chat for exact template field names to use.
-        const EMAILJS_PUBLIC_KEY = "YOUR_PUBLIC_KEY_HERE";
-        const EMAILJS_SERVICE_ID = "YOUR_SERVICE_ID_HERE";
-        const EMAILJS_TEMPLATE_COMPANY = "YOUR_COMPANY_NOTIFY_TEMPLATE_ID_HERE";
-        const EMAILJS_TEMPLATE_CONFIRMATION = "YOUR_SENDER_CONFIRMATION_TEMPLATE_ID_HERE";
+        // Only one email is sent per form submission (to the company). No confirmation
+        // email is sent back to the sender — the "We'll connect soon" message is shown
+        // on-screen instead once the company email has been sent successfully.
+        const EMAILJS_PUBLIC_KEY = "FkoxTr85MwoCOzdpE";
+        const EMAILJS_SERVICE_ID = "service_032x5s9";
+        const EMAILJS_TEMPLATE_COMPANY = "template_1eb6xzn";
 
         // Initialize environment third-party packages securely on script lifecycle entry
         (function () {
@@ -9938,6 +9173,34 @@
                 const targetY = formEl.getBoundingClientRect().top + window.pageYOffset - navHeight - offsetWithinAvailable;
                 window.scrollTo({ top: targetY, behavior: 'smooth' });
             }, 50);
+        }
+
+        // ── HOME PAGE SECTION SHORTCUT (e.g. #about, #process from the footer) ──
+        // The footer lives outside #main-content, so it's visible on every page,
+        // but sections like #about and #process only exist inside the Home
+        // template. A plain href="#about" only works while already on Home —
+        // from any other page the browser has nothing to scroll to. This routes
+        // home first (only if we're not already there) and then scrolls.
+        function goToHomeSection(sectionId) {
+            const alreadyOnHome = !!document.getElementById(sectionId);
+            if (!alreadyOnHome) {
+                loadPage('home');
+            }
+            const scrollToTarget = () => {
+                const targetEl = document.getElementById(sectionId);
+                if (!targetEl) return;
+                const nav = document.querySelector('nav');
+                const navHeight = nav ? nav.offsetHeight : 0;
+                const targetY = targetEl.getBoundingClientRect().top + window.pageYOffset - navHeight;
+                window.scrollTo({ top: targetY, behavior: 'smooth' });
+            };
+            // Give the Home template a tick to mount before measuring, unless
+            // we were already on Home and can scroll immediately.
+            if (alreadyOnHome) {
+                scrollToTarget();
+            } else {
+                setTimeout(scrollToTarget, 50);
+            }
         }
 
         // ── BLOG POST: READING PROGRESS BAR ─────────────────────────────────────
@@ -10245,63 +9508,6 @@
             container.addEventListener('touchmove', dragMove, { passive: false });
             container.addEventListener('touchend', dragEnd);
         })();
-        // ── SECURE INTAKE FORM TRANSMISSION HANDLER (Contact View Event) ──────
-        async function handleFormSubmission(event) {
-            event.preventDefault();
-
-            const formElement = document.getElementById('consultationForm');
-            const submitButton = document.getElementById('submitBtn');
-            const successDisplay = document.getElementById('successAlert');
-            const errorDisplay = document.getElementById('errorAlert');
-
-            const clientName = document.getElementById('clientName').value.trim();
-            const clientEmail = document.getElementById('clientEmail').value.trim();
-            const clientPhone = document.getElementById('clientPhone').value.trim();
-            const jurisdiction = document.getElementById('targetJurisdiction').value;
-            const scopeDetails = document.getElementById('scopeDetails').value.trim();
-
-            // Clear alert banners before starting transmission
-            if (successDisplay) successDisplay.classList.remove('show');
-            if (errorDisplay) errorDisplay.classList.remove('show');
-
-            // Lock submit operations to block race conditions
-            submitButton.disabled = true;
-            const originalBtnContent = submitButton.innerHTML;
-            submitButton.innerHTML = "Securing Payload Line...";
-
-            // Payload sent to the COMPANY inbox notifying them of the new lead
-            const companyPayload = {
-                from_name: clientName,
-                from_email: clientEmail,
-                phone: clientPhone || 'Not provided',
-                jurisdiction: jurisdiction,
-                message: scopeDetails
-            };
-
-            // Payload sent back to the SENDER confirming receipt
-            const confirmationPayload = {
-                to_name: clientName,
-                to_email: clientEmail,
-                jurisdiction: jurisdiction,
-                message: scopeDetails
-            };
-
-            try {
-                // Fire both emails together: one to the company, one back to the sender
-                await Promise.all([
-                    emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_COMPANY, companyPayload),
-                    emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_CONFIRMATION, confirmationPayload)
-                ]);
-                if (successDisplay) successDisplay.classList.add('show');
-                formElement.reset();
-            } catch (exceptionErr) {
-                console.error('EmailJS SDK Transaction Exception Alert:', exceptionErr);
-                if (errorDisplay) errorDisplay.classList.add('show');
-            } finally {
-                submitButton.disabled = false;
-                submitButton.innerHTML = originalBtnContent;
-            }
-        }
 
         // ── HERO QUICK-INQUIRY FORM TRANSMISSION HANDLER ───────────────────────
         async function handleHeroSubmit(event) {
@@ -10335,19 +9541,10 @@
                 message: `Quick inquiry — requested service: ${heroService}`
             };
 
-            // Payload sent back to the SENDER confirming receipt
-            const confirmationPayload = {
-                to_name: heroName,
-                to_email: heroEmail,
-                jurisdiction: heroService,
-                message: `Quick inquiry — requested service: ${heroService}`
-            };
-
             try {
-                await Promise.all([
-                    emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_COMPANY, companyPayload),
-                    emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_CONFIRMATION, confirmationPayload)
-                ]);
+                // Fire a single email to the company with the lead's details
+                await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_COMPANY, companyPayload);
+                // Email sent successfully — show the "we will connect soon" message on screen
                 if (successDisplay) successDisplay.classList.add('show');
                 formElement.reset();
             } catch (exceptionErr) {
